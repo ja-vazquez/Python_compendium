@@ -13,5 +13,5 @@ is displayed below.
 * [iPython NB](https://github.com/ja-vazquez/Python_compendium/tree/master/iPython.ipynb)
 
 ----
-###Python for Data Analysis, Wes McKinney, O'Reilly.
+#### Python for Data Analysis, Wes McKinney, O'Reilly.
 
