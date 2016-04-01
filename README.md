@@ -11,6 +11,8 @@ is displayed below.
 
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/iPython.ipynb)
 * [Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb)
+
+
 ----
 ----
 #### Python for Data Analysis, Wes McKinney, O'Reilly.
