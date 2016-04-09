@@ -15,7 +15,9 @@ is displayed below.
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb)
 (Transforming Code into Beautiful, Idiomatic Python)
 ---
+
 ##Visualizations
+
 * [Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb)
 
 ----
