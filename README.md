@@ -17,4 +17,5 @@ is displayed below.
 ----
 ----
 #### Python for Data Analysis, Wes McKinney, O'Reilly.
+#### [IPython tutorial](https://ipython.org/ipython-doc/2/interactive/tutorial.html)
 
