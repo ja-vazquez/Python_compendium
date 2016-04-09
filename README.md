@@ -9,9 +9,10 @@ Most of its content may be found spread around the web, but
 the bibliography I'd like to recommend (and probably where I've got everything) 
 is displayed below.
 
+* [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_basics.ipynb)
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/iPython.ipynb)
 * [Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb)
-
+* [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb)
 
 ----
 ----
