@@ -10,7 +10,7 @@ the bibliography I'd like to recommend (and probably where I've got everything)
 is displayed below.
 
 * [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_basics.ipynb)
-* [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_not_so_basics.ipynb) (Sorting)
+* [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_not_so_basics.ipynb) (partial, map, reduce, filter, zip, decorators, ...)
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/iPython.ipynb)
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb)
 	(Transforming Code into Beautiful, Idiomatic Python)
