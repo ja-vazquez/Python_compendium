@@ -13,6 +13,7 @@ is displayed below.
 * [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_not_so_basics.ipynb) (Sorting)
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/iPython.ipynb)
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb)
+
 (Transforming Code into Beautiful, Idiomatic Python)
 
 
