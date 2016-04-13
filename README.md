@@ -15,6 +15,11 @@ is displayed below.
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb)
 	(Transforming Code into Beautiful, Idiomatic Python)
 
+------
+------
+
+### Getting data
+* [Scraping the web](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data.ipynb)
 
 ------
 ------
@@ -27,7 +32,12 @@ is displayed below.
 ----
 ## References
 
-
-#### Python for Data Analysis, Wes McKinney, O'Reilly.
 #### [IPython tutorial](https://ipython.org/ipython-doc/2/interactive/tutorial.html)
+#### [Beatiful Soup](https://www.crummy.com/software/BeautifulSoup/)
+#### [Requests Library](http://docs.python-requests.org/en/master/)
+#### [html5lib](https://pypi.python.org/pypi/html5lib)
+----
+----
 
+## Books
+#### Python for Data Analysis, Wes McKinney, O'Reilly.
