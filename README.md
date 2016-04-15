@@ -34,7 +34,7 @@ is displayed below.
 ### Getting data
 * [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb)
 
-* [Scraping the we](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scraping_the_web.ipynb) (Beatiful Soup)
+* [Scraping the we](https://github.com/ja-vazquez/Python_compendium/blob/master/Scraping_the_web_books.ipynb) (Beatiful Soup)
 	
 	Make a plot of all books published over the 'data' subject, from O'Reilly Media.
 
