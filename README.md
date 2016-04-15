@@ -9,24 +9,37 @@ Most of its content may be found spread around the web, but
 the bibliography I'd like to recommend (and probably where I've got everything) 
 is displayed below.
 
+------
+
 * [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_basics.ipynb)
-* [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_not_so_basics.ipynb) (partial, map, reduce, filter, zip, decorators, ...)
+
+	(lists, tuples, dictionaries, loops, etc)
+
+* [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_not_so_basics.ipynb) 
+
+	(partial, map, reduce, filter, zip, decorators, etc)
+
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/iPython.ipynb)
+
+	(magic commands, debugger, profiling)
+
+
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb)
+
 	(Transforming Code into Beautiful, Idiomatic Python)
 
 ------
-------
+
 
 ### Getting data
-* [Input/output files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb)
+* [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb)
 
 * [Scraping the we](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scraping_the_web.ipynb) (Beatiful Soup)
 	
-	Make a plot of all books published found over a 'data' subject, from O'Reilly Media.
+	Make a plot of all books published over the 'data' subject, from O'Reilly Media.
 
 ------
-------
+
 
 ###Visualizations
 
