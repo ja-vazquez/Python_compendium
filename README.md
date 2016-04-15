@@ -19,7 +19,9 @@ is displayed below.
 ------
 
 ### Getting data
-* [Scraping the web](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data.ipynb)
+* [Input/output files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb)
+
+* [Scraping the we](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scraping_the_web.ipynb) (Beatiful Soup)
 
 ------
 ------
