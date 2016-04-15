@@ -22,6 +22,8 @@ is displayed below.
 * [Input/output files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb)
 
 * [Scraping the we](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scraping_the_web.ipynb) (Beatiful Soup)
+	
+	Make a plot of all books published found over a 'data' subject, from O'Reilly Media.
 
 ------
 ------
