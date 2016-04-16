@@ -13,20 +13,20 @@ is displayed below.
 
 * [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_basics.ipynb):
 
-	(lists, tuples, dictionaries, loops, etc)
+	(lists, tuples, dictionaries, loops, etc).
 
 * [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_not_so_basics.ipynb): 
 
-	(partial, map, reduce, filter, zip, decorators, etc)
+	(partial, map, reduce, filter, zip, decorators, etc).
 
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/iPython.ipynb):
 
-	(magic commands, debugger, profiling)
+	(magic commands, debugger, profiling).
 
 
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb):
 
-	(Transforming Code into Beautiful, Idiomatic Python)
+	(Transforming Code into Beautiful, Idiomatic Python).
 
 
 
@@ -39,13 +39,17 @@ is displayed below.
 	
 * [Using Twython API](https://github.com/ja-vazquez/Python_compendium/blob/master/Twython_API.ipynb): 
 
-	Getting tweets with hashtag (i.e. Soccer)
+	Getting tweets with hashtag (i.e. Soccer).
 
 ###Visualizations
 
+* [Basics of Matplotlib](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualizing_data.ipynb):
+
+	A general intro of Matplotlib.
+
 * [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb):
 	
-	Map of NY Unemployment
+	Map of NY Unemployment.
  
 
 ----
@@ -69,33 +73,38 @@ is displayed below.
 * [Beatiful Soup](https://www.crummy.com/software/BeautifulSoup/):
 Is a Python library designed for quick turnaround projects like screen-scraping.
 
+* [Scrapy](http://doc.scrapy.org/en/master/intro/tutorial.html):
+For building more complicated web-scrapers.
+
 * [Requests](http://docs.python-requests.org/en/master/):
 * [html5lib](https://pypi.python.org/pypi/html5lib):
 
 -- Data wrangling
 
 * [Pandas](http://pandas.pydata.org/):
-Provides high-performance, easy-to-use data structures and data analysis tools
+Provides high-performance, easy-to-use data structures and data analysis tools.
 
 
 -- Statistics and Probability
 
 
 * [Scipy](http://www.scipy.org/):
-SciPy is a Python-based ecosystem of open-source software for mathematics, science, and engineering
+SciPy is a Python-based ecosystem of open-source software for mathematics, science, and engineering.
 
 * [Statsmodels](http://statsmodels.sourceforge.net/devel/index.html):
-Provides classes and functions for the estimation of many different statistical models
+Provides classes and functions for the estimation of many different statistical models.
 
 ----
 
 ###Visualizations
 
+* [Matplotlib](http://matplotlib.org/)
+
 * [Seaborn](http://stanford.edu/~mwaskom/software/seaborn/):
-Produce prettier visualizations
+Produce prettier visualizations.
 
 * [Bokeh](http://bokeh.pydata.org/en/latest/):
-Brings D3- style visualization into Python
+Brings D3- style visualization into Python.
 
 * [D3.js](http://d3js.org/):
 Sophisticated interactive visualizations for the web (however not for python).
