@@ -31,11 +31,14 @@ is displayed below.
 
 
 ### Getting data
-* [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb):
+* [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb): (Pandas)
 
 * [Scraping the web](https://github.com/ja-vazquez/Python_compendium/blob/master/Scraping_the_web_books.ipynb): (Beatiful Soup)
 	
-	Plotting books published over the 'data' subject, from O'Reilly Media.
+	- O'Reilly Media: Plotting books published over the 'data' subject.
+	
+	- Yellow Pages: Get info for Coffee shops in NYC
+	
 	
 * [Using Twython API](https://github.com/ja-vazquez/Python_compendium/blob/master/Twython_API.ipynb): 
 
