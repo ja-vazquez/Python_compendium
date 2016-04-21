@@ -32,8 +32,11 @@ is displayed below.
 	
 	- O'Reilly Media: Plotting books published over the 'data' subject.
 	
-	- Yellow Pages: Get info for Coffee shops in NYC
-	
+	- Yellow Pages: Get info for Coffee shops in NYC.
+
+* [Scraping the web II](https://github.com/ja-vazquez/Python_compendium/blob/master/Scraping_the_web_II.ipynb): (Parse, urlopen)
+
+	- Yahoo's finance, Options.	
 	
 * [Using Twython API](https://github.com/ja-vazquez/Python_compendium/blob/master/Twython_API.ipynb): 
 Getting tweets with hashtag (i.e. Soccer).
