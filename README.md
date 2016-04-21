@@ -12,28 +12,23 @@ is displayed below.
 ### Python
 
 * [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_basics.ipynb):
-
-	(lists, tuples, dictionaries, loops, etc).
+(lists, tuples, dictionaries, loops, etc).
 
 * [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_not_so_basics.ipynb): 
-
-	(partial, map, reduce, filter, zip, decorators, etc).
+(partial, map, reduce, filter, zip, decorators, etc).
 
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/iPython.ipynb):
-
-	(magic commands, debugger, profiling).
-
+(magic commands, debugger, profiling).
 
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb):
-
-	(Transforming Code into Beautiful, Idiomatic Python).
+(Transforming Code into Beautiful, Idiomatic Python).
 
 
 
 ### Getting data
 * [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb): (Pandas)
 
-* [Scraping the web](https://github.com/ja-vazquez/Python_compendium/blob/master/Scraping_the_web_books.ipynb): (Beatiful Soup)
+* [Scraping the web](https://github.com/ja-vazquez/Python_compendium/blob/master/Scraping_the_web.ipynb): (Beatiful Soup)
 	
 	- O'Reilly Media: Plotting books published over the 'data' subject.
 	
@@ -41,17 +36,14 @@ is displayed below.
 	
 	
 * [Using Twython API](https://github.com/ja-vazquez/Python_compendium/blob/master/Twython_API.ipynb): 
-
-	Getting tweets with hashtag (i.e. Soccer).
+Getting tweets with hashtag (i.e. Soccer).
 
 ###Visualizations
 
 * [Basics of Matplotlib](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualizing_data.ipynb):
-
-	A general intro of Matplotlib.
+A general intro of Matplotlib.
 
 * [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb):
-	
 	Map of NY Unemployment.
  
 
