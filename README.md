@@ -23,12 +23,16 @@ is displayed below.
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb):
 (Transforming Code into Beautiful, Idiomatic Python).
 
+### Working with data 
 
-
-### Getting data
 * [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb): (Pandas)
 
-* [Scraping the web](https://github.com/ja-vazquez/Python_compendium/blob/master/Scraping_the_web.ipynb): (Beatiful Soup)
+* [IPython Notebook & Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/IPyhtonNB_Pandas.ipynb): (Pandas)
+
+### Getting data
+
+
+* [Scraping the web](https://github.com/ja-vazquez/Python_compendium/blob/master/Scraping_the_web.ipynb): (Beatiful Soup, requests)
 	
 	- O'Reilly Media: Plotting books published over the 'data' subject.
 	
@@ -39,7 +43,20 @@ is displayed below.
 	- Yahoo's finance, Options.	
 	
 * [Using Twython API](https://github.com/ja-vazquez/Python_compendium/blob/master/Twython_API.ipynb): 
-Getting tweets with hashtag (i.e. Soccer).
+Getting tweets with hashtag (i.e. Data).
+
+
+### SQL
+
+* x - [SQLite in Python](http://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html)
+* x - [SQLite](http://zetcode.com/db/sqlitepythontutorial/)
+* x - [SQLzoo](http://sqlzoo.net/wiki/SQL_Tutorial)
+* x - [SQLschool](https://sqlschool.modeanalytics.com/)
+
+
+### Machine Learning
+
+* x -
 
 ###Visualizations
 
@@ -48,7 +65,14 @@ A general intro of Matplotlib.
 
 * [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb):
 	Map of NY Unemployment.
- 
+	
+* x - Plotly 
+
+* x - D3
+
+### MapReduce
+
+* x - AWS
 
 ----
 ------
@@ -64,10 +88,9 @@ A general intro of Matplotlib.
 
 ------
 
-### Libraries
 
--- Data scraping 
-
+### Data scraping 
+		 
 * [Beatiful Soup](https://www.crummy.com/software/BeautifulSoup/):
 Is a Python library designed for quick turnaround projects like screen-scraping.
 
@@ -77,14 +100,15 @@ For building more complicated web-scrapers.
 * [Requests](http://docs.python-requests.org/en/master/):
 * [html5lib](https://pypi.python.org/pypi/html5lib):
 
--- Data wrangling
+
+### Data wrangling
 
 * [Pandas](http://pandas.pydata.org/):
 Provides high-performance, easy-to-use data structures and data analysis tools.
 
+* [Pandas Cookbook](https://github.com/jvns/pandas-cookbook) Gives concrete examples for getting started with pandas.
 
--- Statistics and Probability
-
+### Statistics and Probability
 
 * [Scipy](http://www.scipy.org/):
 SciPy is a Python-based ecosystem of open-source software for mathematics, science, and engineering.
@@ -94,7 +118,7 @@ Provides classes and functions for the estimation of many different statistical 
 
 ----
 
-###Visualizations
+### Visualizations
 
 * [Matplotlib](http://matplotlib.org/)
 
