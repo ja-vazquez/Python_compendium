@@ -17,14 +17,10 @@ is displayed below.
 (partial, map, reduce, filter, zip, decorators, etc).
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/iPython.ipynb):
 (magic commands, debugger, profiling).
+* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Numpy.ipynb): (Numerical Python)
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb):
 (Transforming Code into Beautiful, Idiomatic Python).
 
-### Working with data 
-
-* [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb): (Pandas). Basic reading/writing
-csv files, and plotting with pandas.
-* [IPython Notebook & Pandas](https://github.com/ja-vazquez/Python_compendium/blob/master/IPythonNB_Pandas.ipynb): (Pandas). Correlation between people cycling and weather in Montreal. 
 
 ### Getting data
 
@@ -38,7 +34,15 @@ csv files, and plotting with pandas.
 Getting tweets with hashtag (i.e. Data).
 
 
-### SQL
+### Working with data 
+
+* [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb): (Pandas). Basic reading/writing
+csv files, and plotting with pandas.
+* [IPython Notebook & Pandas](https://github.com/ja-vazquez/Python_compendium/blob/master/IPythonNB_Pandas.ipynb): (Pandas). Correlation between people cycling and weather in Montreal. 
+
+
+
+### Databases
 
 * x - [SQLite in Python](http://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html)
 * x - [SQLite](http://zetcode.com/db/sqlitepythontutorial/)
@@ -80,7 +84,7 @@ A general intro of Matplotlib.
 ### Data scraping 
 		 
 * [Beatiful Soup](https://www.crummy.com/software/BeautifulSoup/):
-Is a Python library designed for quick turnaround projects like screen-scraping.
+Python library designed for quick turnaround projects like screen-scraping.
 * [Scrapy](http://doc.scrapy.org/en/master/intro/tutorial.html):
 For building more complicated web-scrapers.
 * [Requests](http://docs.python-requests.org/en/master/):
