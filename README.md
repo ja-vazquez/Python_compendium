@@ -39,6 +39,7 @@ Getting tweets with hashtag (i.e. Data).
 * [Pandas](https://github.com/ja-vazquez/Python_compendium/blob/master/Pandas.ipynb) 
 * [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb): Basic reading/writing
 csv files, and plotting with pandas.
+* [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
 * [IPython Notebook & Pandas](https://github.com/ja-vazquez/Python_compendium/blob/master/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
 
 
