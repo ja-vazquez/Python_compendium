@@ -50,4 +50,8 @@ read stocks info from, i.e. yahoo
     		all_data[ticker] = web.get_data_yahoo(ticker)
 
 
-set_
+pd.options.display.max_rows = 10
+
+pd.set_option('display.width', 5000) 
+
+pd.set_option('display.max_columns', 60)
