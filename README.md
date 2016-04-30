@@ -25,10 +25,10 @@ is displayed below.
 ### Getting data
 
 
-* [Scraping the web](https://github.com/ja-vazquez/Python_compendium/blob/master/Scraping_the_web.ipynb): (Beatiful Soup, requests)
+* [Scraping the web](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scraping_the_web.ipynb): (Beatiful Soup, requests)
 	- O'Reilly Media: Plotting books published over the 'data' subject.
 	- Yellow Pages: Get info for Coffee shops in NYC.
-* [Scraping the web II](https://github.com/ja-vazquez/Python_compendium/blob/master/Scraping_the_web_II.ipynb): (Parse, urlopen)
+* [Scraping the web II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scraping_the_web_II.ipynb): (Parse, urlopen)
 	- Yahoo's finance, Options.	
 * [Using Twython API](https://github.com/ja-vazquez/Python_compendium/blob/master/Twython_API.ipynb): 
 Getting tweets with hashtag (i.e. Data).
@@ -36,7 +36,7 @@ Getting tweets with hashtag (i.e. Data).
 
 ### Working with data 
 
-* [Pandas](https://github.com/ja-vazquez/Python_compendium/blob/master/Pandas.ipynb) 
+* [Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Pandas.ipynb) 
 * [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb): Basic reading/writing
 csv files, and plotting with pandas.
 * [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
@@ -46,11 +46,12 @@ csv files, and plotting with pandas.
 
 ### Databases
 
+* [Interacting with databases](https://github.com/ja-vazquez/Python_compendium/blob/master/Interacting_with_databases.ipynb): First employees table in sqlite3.
 * x - [SQLite in Python](http://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html)
 * x - [SQLite](http://zetcode.com/db/sqlitepythontutorial/)
 * x - [SQLzoo](http://sqlzoo.net/wiki/SQL_Tutorial)
 * x - [SQLschool](https://sqlschool.modeanalytics.com/)
-
+* X - [Pyhton MySQL](http://www.mysqltutorial.org/python-mysql/)
 
 ### Machine Learning
 
@@ -58,16 +59,24 @@ csv files, and plotting with pandas.
 
 ###Visualizations
 
-* [Basics of Matplotlib](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualizing_data.ipynb):
+* [Basics of Matplotlib](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualizing_Data.ipynb):
 A general intro of Matplotlib.
 * [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb):
 	Map of NY Unemployment.
 * x - Plotly 
 * x - D3
+* x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
+* x - [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html)
 
 ### MapReduce
 
 * x - AWS
+
+### Flask
+
+* [Web App](http://code.tutsplus.com/tutorials/creating-a-web-app-from-scratch-using-python-flask-and-mysql-part-3--cms-23120)
+* [Turorial](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates)
+
 
 ----
 ------
