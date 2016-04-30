@@ -55,3 +55,5 @@ pd.options.display.max_rows = 10
 pd.set_option('display.width', 5000) 
 
 pd.set_option('display.max_columns', 60)
+
+pd.set_option('display.mpl_style', 'default')

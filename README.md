@@ -1,12 +1,12 @@
 # The Python compendium
 
-This folder contains notes and examples  collected through many nights of 
+This folder contains several scripts, notes and examples collected through many nights of 
 coding (hopefully they'll be useful in future references). 
 **N.B.** highly encouraged to recycle and make use of them in any possible way.
 
-Most the content may be found spread around the web, but 
-the bibliography I used, and would like to recommend, 
-is displayed below.
+Most the content may be found spread around the web or throughout books, but 
+the bibliography I used, and possibly where all the info is coming from, 
+is displayed on the bottom of the page.
 
 ------
 ### Python
@@ -59,8 +59,8 @@ csv files, and plotting with pandas.
 
 ###Visualizations
 
-* [Basics of Matplotlib](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualizing_Data.ipynb):
-A general intro of Matplotlib.
+* [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualizing_Data.ipynb):
+General Matplotlib intro, and some examples with pandas.
 * [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb):
 	Map of NY Unemployment.
 * x - Plotly 
@@ -68,9 +68,13 @@ A general intro of Matplotlib.
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
 * x - [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html)
 
+
+
 ### MapReduce
 
 * x - AWS
+
+
 
 ### Flask
 
