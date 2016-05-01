@@ -46,27 +46,25 @@ csv files, and plotting with pandas.
 
 ### Databases
 
-* [Interacting with databases](https://github.com/ja-vazquez/Python_compendium/blob/master/Interacting_with_databases.ipynb): First employees table in sqlite3.
-* x - [SQLite in Python](http://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html)
-* x - [SQLite](http://zetcode.com/db/sqlitepythontutorial/)
-* x - [SQLzoo](http://sqlzoo.net/wiki/SQL_Tutorial)
-* x - [SQLschool](https://sqlschool.modeanalytics.com/)
-* X - [Pyhton MySQL](http://www.mysqltutorial.org/python-mysql/)
-
-### Machine Learning
-
-* x -
+* [Interacting with databases](https://github.com/ja-vazquez/Python_compendium/blob/master/Interacting_with_databases.ipynb): First employees-table in sqlite3.
 
 ###Visualizations
 
 * [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualizing_Data.ipynb):
 General Matplotlib intro, and some examples with pandas.
+* [Pandas and Basemap](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Pandas_Basemap.ipynb):
+Visualizing maps.
 * [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb):
 	Map of NY Unemployment.
 * x - Plotly 
 * x - D3
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
 * x - [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html)
+
+### Machine Learning
+
+* x -
+
 
 
 
@@ -80,7 +78,7 @@ General Matplotlib intro, and some examples with pandas.
 
 * [Web App](http://code.tutsplus.com/tutorials/creating-a-web-app-from-scratch-using-python-flask-and-mysql-part-3--cms-23120)
 * [Turorial](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates)
-
+* [Flack-SqLAlchemy](http://flask-sqlalchemy.pocoo.org/2.1/)
 
 ----
 ------
@@ -92,8 +90,6 @@ General Matplotlib intro, and some examples with pandas.
 * [IPython tutorial](https://ipython.org/ipython-doc/2/interactive/tutorial.html)
 * [Python for Data Analysis](http://www.amazon.com/Python-Data-Analysis-Wrangling-IPython/dp/1449319793)
 
-
-------
 
 
 ### Data scraping 
@@ -119,22 +115,33 @@ SciPy is a Python-based ecosystem of open-source software for mathematics, scien
 * [Statsmodels](http://statsmodels.sourceforge.net/devel/index.html):
 Provides classes and functions for the estimation of many different statistical models.
 
-----
+### Databases
+
+* x - [SQLite in Python](http://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html)
+* x - [Zetcode](http://zetcode.com/)
+* x - [SQLzoo](http://sqlzoo.net/wiki/SQL_Tutorial)
+* x - [SQLschool](https://sqlschool.modeanalytics.com/)
+* X - [Pyhton MySQL](http://www.mysqltutorial.org/python-mysql/)
+* X - [RDB](https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about)
+* X - [RDB2](https://www.udacity.com/course/intro-to-relational-databases--ud197)
+* X - [SQLAlchemy](http://www.sqlalchemy.org/library.html#tutorials)
+* X - [Tuturial SQLAlchemy](http://pythoncentral.io/introductory-tutorial-python-sqlalchemy/)
 
 ### Visualizations
 
-* [Matplotlib](http://matplotlib.org/)
+* [Matplotlib](http://matplotlib.org/): python 2D plotting library.
 * [Seaborn](http://stanford.edu/~mwaskom/software/seaborn/):
-Produce prettier visualizations.
+It provides a high-level interface for drawing attractive statistical graphics.
+* [Basemap](http://basemaptutorial.readthedocs.io/en/latest/index.html): Great tool for creating maps using python in a simple way.
 * [Bokeh](http://bokeh.pydata.org/en/latest/):
 Brings D3- style visualization into Python.
 * [D3.js](http://d3js.org/):
 Sophisticated interactive visualizations for the web (however not for python).
+* [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
 * [ggplot](http://ggplot.yhathq.com/):
 Python port of the popular R library *ggplot2*.
 
 
-----
 
 ### APIs
 * [Python for beginners](http://www.pythonforbeginners.com/api/list-of-python-apis)
