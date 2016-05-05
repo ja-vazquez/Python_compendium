@@ -3,8 +3,9 @@
 This folder contains several scripts, notes and examples collected through many nights of 
 coding (hopefully they'll be useful in future references). 
 **N.B.** highly encouraged to recycle and make use of them in any possible way.
+More elaborated examples may be found in the astro/cosmo folders. 
 
-Most the content may be found spread around the web or throughout books, but 
+The majority of the content may be found spread around the web or throughout books, but 
 the bibliography I used, and possibly where all the info is coming from, 
 is displayed on the bottom of the page.
 
