@@ -45,11 +45,6 @@ csv files, and plotting with pandas.
 * [IPython Notebook & Pandas](https://github.com/ja-vazquez/Python_compendium/blob/master/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
 
 
-
-### Databases
-
-* [Interacting with databases](https://github.com/ja-vazquez/Python_compendium/blob/master/Interacting_with_databases.ipynb): Employees-table in sqlite3.
-
 ###Visualizations
 
 * [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualizing_Data.ipynb):
@@ -59,9 +54,14 @@ Visualizing maps.
 * [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb):
 	Map of NY Unemployment.
 * x - Plotly 
-* x - D3
+* x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
 * x - [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html)
+
+### Databases
+
+* [Interacting with databases](https://github.com/ja-vazquez/Python_compendium/blob/master/Interacting_with_databases.ipynb): Employees-table in sqlite3.
+
 
 ### Machine Learning
 
@@ -139,10 +139,9 @@ It provides a high-level interface for drawing attractive statistical graphics.
 Brings D3- style visualization into Python.
 * [D3.js](http://d3js.org/):
 Sophisticated interactive visualizations for the web (however not for python).
-* [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
 * [ggplot](http://ggplot.yhathq.com/):
 Python port of the popular R library *ggplot2*.
-
+* [Chaco and Mayavi](http://code.enthought.com/projects/chaco/): It works well for interactive data visualization and exploration (2D and 3D).
 
 
 ### APIs
@@ -154,6 +153,10 @@ Python port of the popular R library *ggplot2*.
 GeoJSON is a format for encoding a variety of geographic data structures.
 * [REST](http://rest.elkstein.org/2008/02/real-rest-examples.html):
 REST is an architecture style for designing networked applications.
+
+### Miscellaneous
+* [Enaml](http://nucleic.github.io/enaml/docs/): For creating professional quality user interfaces with minimal effort.
+* [PyQwt](http://pyqwt.sourceforge.net/): It provides a widget to plot 2-dimensional data.
 
 
 ----
