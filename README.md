@@ -70,11 +70,11 @@ Visualizing maps.
 
 
 
-### MapReduce
+### Parallel Computing
 
+
+* [MPI with IPython](https://github.com/ipython/ipyparallel)
 * x - AWS
-
-
 
 ### Flask
 
