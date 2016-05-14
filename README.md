@@ -18,7 +18,7 @@ is displayed on the bottom of the page.
 (partial, map, reduce, filter, zip, decorators, etc).
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/iPython.ipynb):
 (magic commands, debugger, profiling).
-* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Numpy.ipynb): (Numerical Python)
+* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Numpy.ipynb) and [Numpy II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Numpy_II.ipynb)  (Numerical Python)
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb):
 (Transforming Code into Beautiful, Idiomatic Python).
 
