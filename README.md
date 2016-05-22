@@ -44,6 +44,11 @@ csv files, and plotting with pandas.
 * [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
 * [IPython Notebook & Pandas](https://github.com/ja-vazquez/Python_compendium/blob/master/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
 
+### Databases
+
+* [Interacting with databases (sqlite3)](https://github.com/ja-vazquez/Python_compendium/blob/master/Interacting_with_databases.ipynb): Employees-table.
+
+
 
 ###Visualizations
 
@@ -58,15 +63,14 @@ Visualizing maps.
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
 * x - [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html)
 
-### Databases
-
-* [Interacting with databases](https://github.com/ja-vazquez/Python_compendium/blob/master/Interacting_with_databases.ipynb): Employees-table in sqlite3.
 
 
-### Machine Learning
 
-* x -
+### Machine Learning, Stats and other magic tricks
 
+* [Inverse problems](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/inverse_problems.ipynb): Linear Regression, Gradient Descent
+* [Sparcity](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/sparcity.ipynb): FFT, Denoising functions
+* [Wavelets](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/wavelets.ipynb): Discrete Fourier Transform, Multiresolution Analysis
 
 
 
