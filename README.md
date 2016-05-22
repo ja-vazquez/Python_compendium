@@ -58,10 +58,10 @@ General Matplotlib intro, and some examples with pandas.
 Visualizing maps.
 * [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb):
 	Map of NY Unemployment.
-* x - Plotly 
+* [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.	 
 * x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
-* x - [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html)
+* x - Plotly
 
 
 
