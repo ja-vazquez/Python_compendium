@@ -86,6 +86,10 @@ Visualizing maps.
 * [Turorial](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates)
 * [Flack-SqLAlchemy](http://flask-sqlalchemy.pocoo.org/2.1/)
 
+### R
+
+* [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS
+
 ----
 ------
 ------
