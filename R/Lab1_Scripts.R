@@ -24,6 +24,7 @@
 
 example(sd)
 
+#define vectors
 vec1 <- c(1,9,3,-10,pi); vec1
 
 vec2 <- 1:50; vec2
@@ -42,16 +43,19 @@ tail(vec2, 1)
 (vec2+vec3)^2
 vec2-10
 
+#Mathematical functions
 exp(1)
 sqrt(16)
 log10(100)
 log(100)
 cos(2*pi)
 
+#comparing vectors
 a <- c(1,2); b <- c(1,3)
 a==b
 identical(a,b)
 
+#Boolean functions
 a <- c(TRUE,TRUE,FALSE,FALSE)
 b <- c(TRUE,FALSE,TRUE,FALSE)
 !a
@@ -59,25 +63,37 @@ a & b
 a | b
 xor(a,b)
 
-na.vec <- c(1:3,NA,5:7)
+#dealing with missing data
+na.vec <- c(1:3,NA,5:7,NaN)
 3*na.vec
+
+#to eliminate NA, use na.rm
+mean(na.vec, na.rm=T)
 
 0/0
 Inf-Inf
 
+#Matrices
 tmp <- 1:4
 mat1 <- matrix(tmp,nrow=2,ncol=2)
 
+#Maths with matrices
 mat1 + mat1
 mat1 %*% mat1
+#and element-wise
+mat1 * mat1
+
+#stats
 t(mat1)
 det(mat1)
 solve(mat1)
 
+# to save some memory, vectorize matrices
 vec4 <- c(mat1)
 object.size(mat1)
 object.size(vec4)
 
+# Data frames, like in pandas!
 x <- 1:10
 y <- pi+1i*x #i lets us work with complex numbers.
 z <- letters[1:10]
@@ -87,12 +103,15 @@ tmp.frame
 list1 <- list(V1=vec1,V2=vec2,M1=mat1)
 list1
 
+# access to the list
 list1$M1
 
+#element-wise 
 lapply(list1,FUN=sum)
 
 sapply(list1,FUN=sum)
 
+#defining functions
 ratio <- function(x,y) x/y
 
 ratio(3,6)
@@ -101,7 +120,7 @@ ratio(3,6)
 ######## R Workspace Basics
 ######################################################################
 
-getwd() #Note: We will not all have the same 
+getwd() 
 #working directory
 
 #Don't run
@@ -115,9 +134,13 @@ library(car)
 
 help(package="car")
 
+
 ######################################################################
 ######## Probability Distributions
 ######################################################################
+
+
+?"Distributions"
 
 dnorm(4,mean=0,sd=3)
 pnorm(4,mean=0,sd=3)
@@ -127,10 +150,12 @@ qnorm(seq(0.1,0.9,by=0.1),mean=0,sd=3)
 x <- rnorm(10,mean=0,sd=3)
 x
 
+#fix the seed
 set.seed(100)
 x <- rnorm(10,mean=0,sd=3)
 x
 
+#simple plot of density
 xdens <- seq(0,5,0.02)
 plot(xdens,dexp(xdens,rate=0.5),type='l',ylim=c(0,1.5), 
      xlab='x',ylab='Exponential p.d.f.',lty=1)
@@ -146,28 +171,42 @@ legend("topright",legend=c(expression(lambda==0.5),expression(lambda==1.0),
 install.packages("astrodatR")
 library(astrodatR)
 
+#Hipparchos stars
 data(HIP)
 
 ######## Numerical Summaries
 
+# description of the data
 dim(HIP)
 names(HIP) 
 HIP[1,]
+#also with $ sign to access columns
+HIP$RA
+
+class(HIP[,1])
+class(HIP$RA)
+
+
 HIP[1:20,7]
 sum(HIP[,3])
 
+#get some stats
 for(i in 1:ncol(HIP)){
   print(c(max(HIP[,i]),min(HIP[,i]), 
           median(HIP[,i]),mad(HIP[,i]))) 
 }
+
+# for rows use 1 : apply(HIP,1,max)
 apply(HIP,2,max) 
 apply(HIP,2,min) 
 apply(HIP,2,median) 
 apply(HIP,2,mad)
 
+# how many and where are NA
 sum(is.na(HIP[,9]))
 which(is.na(HIP[,9]))
 
+# omit NA and run same loop
 y <- na.omit(HIP)
 for(i in 1:ncol(y)) {
   print(c(max(y[,i]),min(y[,i]), 
@@ -182,6 +221,7 @@ for(i in 1:ncol(HIP)) {
 sort(HIP[1:10,3])
 HIP[order(HIP[1:10,3]),]
 
+#work on column names
 names(HIP)
 attach(HIP)
 
@@ -192,14 +232,17 @@ summary(B.V)
 
 dotchart(B.V)
 
+#plotting histogram
 hist(B.V,prob=T)
 d <- density(B.V,na.rm=T)
 lines(d,col=2,lwd=2,lty=2)
 
 stem(sample(B.V,100))
 
+
 boxplot(HIP[,c(4,6,7,9)])
 
+#box plots on diff windows
 par(mfrow=c(2,2))
 for(i in c(4,6,7,9)) 
   boxplot(HIP[,i],main=names(HIP)[i])
@@ -227,11 +270,13 @@ plot(Vmag,B.V,pch=".")
 plot(RA,Dec,pch=".")
 rect(50,0,100,25,border=2)
 
+# Make a zoom
 filter1 <- (RA>50 & RA<100 & Dec>0 & Dec<25)
 
 plot(pmRA[filter1],pmDE[filter1],pch=20)
 rect(0,-150,200,50,border=2)
 
+# Big matrix plots for everything 
 plot(pmRA[filter1],pmDE[filter1],pch=20,xlim=c(0,200),
      ylim=c(-150,50))
 rect(90,-60,130,-10,border=2)
@@ -241,14 +286,17 @@ filter  <-  filter1 & filter2
 
 pairs(HIP[filter,-c(3,5)],pch=20)
 
+# drop the weird obervation for e_Plx
 filter <- filter & (e_Plx<5)
 pairs(HIP[filter,-c(3,5)],pch=20)
 
 sum(filter)
 
+# plot read giants
 plot(Vmag,B.V,pch=c(46,20)[1+filter],col=1+filter,
      xlim=range(Vmag[filter]),ylim=range(B.V[filter]))
 
+#3D plots
 install.packages("rgl")
 library(rgl)
 
@@ -264,6 +312,7 @@ plot(Vmag,B.V,pch=19)
 out.loess <- loess(B.V~Vmag,data=tmp.V)
 lines(out.loess$x,out.loess$fitted,col=2,lwd=4)
 
+#Using ggplot2
 install.packages("ggplot2")
 library(ggplot2)
 
@@ -307,6 +356,7 @@ par(mfrow=c(1,2))
 plot(ecdf(KGC_MWG))
 plot(ecdf(KGC_M31))
 
+#Kolmogorov-Smirnov test
 ks.test(KGC_MWG,KGC_M31)
 
 ######## t-test
