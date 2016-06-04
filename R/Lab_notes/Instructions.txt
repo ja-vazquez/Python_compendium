@@ -1,0 +1,11 @@
+To obtain the same preferences in RStudio that I am using, do the following:
+
+(1) Follow "Tools -> Global Options..."
+(2) Click on "Pane Options", which gives you the layout for the four quadrants in the RStudio window
+(3) Select "Viewer" for the upper right-hand quadrant (Quadrant I)
+(4) Ensure "Files", "Plots", "Packages", and "Help" are selected for the lower right-hand quadrant (Quadrant IV); these should be selected by default
+(5) We can't open a live HTML file within an RStudio session, so go to "File -> Open File..." and open the R Markdown (.Rmd) file for the respective lab
+(6) Click the down arrow next to "Knit HTML"; check "View in Pane"
+(7) Click "Knit HTML"; you should now (locally) have the HTML file that is available on the Summer School's website
+
+

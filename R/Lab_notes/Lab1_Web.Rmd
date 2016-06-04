@@ -1,0 +1,721 @@
+---
+title: 'Astrostatistics R Tutorial: Lab 1'
+author: "Derek Young (derek.young@uky.edu)"
+date: "May 31, 2016"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    toc: yes
+fontsize: 12pt
+bibliography: Rbib.bib
+---
+
+<body style="background-color: rgb(255, 248, 229);">
+
+# Introduction to R
+
+R is a free and powerful software programming language and software environment for statistical computing and graphics. Statisticians, data miners, and scientists use R for data analysis and developing statistical software.  It is an implementation of the S programming language, which was developed at Bell Labs in the late 1970's.  The majority of source code for R is written in C; however, programmers can call functions, libraries, and subroutines from numerous other programming languages, including C/C++, FORTRAN, and Python.  
+
+In these labs, we will provide you with a crash-course in R.  We will provide you with the foundations to start developing and applying the methods you will learn throughout the summer school.  **During these labs, you are strongly encouraged to ask questions!**  Fluency with R will, of course, come with practice.  But many R users (myself included) believe that the language is quite intuitive and, thus, is an easier programming language to learn.  
+
+Before moving on to the labs, I want to acknowledge that some of the examples come from David Hunter's previous astrostatistics labs and the text by @astro.  While I use some material from these sources, I do not include direct citations to them within the labs.  I also want to acknowledge Gabe Caceres for performing a quality check on these labs in the past, which resulted in a number of improvements.
+
+To begin, you must first download and install R for your OS from the Comprehensive R Archive Network (CRAN) located at http://cran.r-project.org/.  If you are using Windows, then you will want to look for a blue R icon on your desktop.  If you are using Mac or Linux/Unix, then simply open a terminal window and type `R`. 
+
+The `>` is the R command prompt, from where we will be entering our commands, sourcing files, and loading packages.  As long as you have successfully downloaded and opened R, let's get started!
+
+
+## R Syntax
+
+Throughout the labs, we will introduce various aspects of R syntax as it becomes necessary.  However, it will be helpful to establish some of the basics that will occur frequently throughout the labs.
+
+When you open the R script in RStudio, you will be able to run the lines of R code within the RStudio session.
+
+Provided you have this file (or the supplemental R script file I provided) open on your computer, you will be able to copy and paste all code directly into R.  For example
+```{r eval=FALSE}
+   #Highlight this line and click "Run" at the top of the RStudio window.
+```
+When you press enter, nothing will happen.  That is because R reads any text following the `#` symbol as a comment.  So as you build, test, and debug code, the `#` symbol becomes crucial for commenting out sections of code.
+
+All functions in R as well as in any add-on packages have help files associated with them.  To access the help file for a particular function, simply type `?` followed by the function name.  For example, to pull up the help file for the standard deviation function `sd`, simply type
+```{r eval=FALSE}
+   ?sd #You can also type ?"sd"
+```
+ Usually quotation marks are only necessary when pulling up the help files for mathematical symbols or functions that begin with a period.  If the author of the function has done a proper job documenting the function, then they should have included a minimum working example demonstrating the utility of the function.  This can be run directly in R by using the `example` function.  For example:
+```{r eval=FALSE}
+   example(sd)
+```
+ Also, it is a good time to point out that R is case-sensitive.
+
+Vectors in R can be defined numerous ways.  The most common way to define a vector using a set of numbers is with the `c` function:
+```{r eval=FALSE}
+   vec1 <- c(1,9,3,-10,pi); vec1
+```
+ There are also useful, efficient ways to define vectors consisting of long strings of numbers:
+```{r eval=FALSE}
+   vec2 <- 1:50; vec2
+   vec3 <- seq(from=-2*pi,to=2*pi,length=50); vec3
+```
+ We can also extract a particular element (or set of elements) from a vector based on its index:
+```{r eval=FALSE}
+   vec2[3]
+   vec3[4:7]
+   vec3[c(1,4,9)]
+```
+Arithmetic in R is straightforward.  Common operators are: `+` for addition, `-` for subtraction, `*` for multiplication, `/` for division, `%/%` for integer division,  `%%` for modular arithmetic, and `^` for exponentiation.  For example:
+```{r eval=FALSE}
+   (vec2+vec3)^2
+```
+ Or, you can perform an operation using a scalar quantity, which will be applied to each element in the vector:
+```{r eval=FALSE}
+   vec2-10
+```
+
+Some common built-in functions are `exp` for the exponential function, `sqrt` for square root, `log10` for base-10 logarithms, `log` for natural logarithms, and `cos` for cosine. For example
+```{r eval=FALSE}
+   exp(1)
+   sqrt(16)
+   log10(100)
+   log(100)
+   cos(2*pi)
+```
+
+Comparisons are made using `<` (less than), `>` (greater than), `<=` (less than or equal to), `>=` (greater than or equal to), and `==` (equal to).  For example, testing if `a` is greater than or equal to `b` is performed with the syntax `a >= b`.  To test whether `a` and `b` are exactly equal and return a TRUE/FALSE value (for instance, in an `if` statement), use the command `identical(a,b)` rather than `a==b`.  Compare the following two ways of comparing the vectors `a` and `b`:
+```{r eval=FALSE}
+   a <- c(1,2); b <- c(1,3)
+   a==b
+   identical(a,b)
+```
+ Also note that in the above example, `all(a==b)` is equivalent to the expression `identical(a,b)`.  Moreover, `a==b` performs no assignment, but rather is only a logical test.
+
+R also has other logical operators such as `&` (AND), `|` (OR), `!` (NOT). There is also an `xor` (EXCLUSIVE OR) function. Each of these four functions performs elementwise comparisons in much the same way as arithmetic operators:
+```{r eval=FALSE}
+   a <- c(TRUE,TRUE,FALSE,FALSE)
+   b <- c(TRUE,FALSE,TRUE,FALSE)
+   !a
+   a & b
+   a | b
+   xor(a,b)
+```
+However, when `and` and `or`  are used in programming, say in `if` statements, generally the `&&` and `||` forms are preferable. These longer forms of `and` and `or` evaluate left to right, examining only the first element of each vector, and evaluation terminates when a result is determined.
+
+Missing data is usually entered with `NA`, meaning "not available."  For example:
+```{r eval=FALSE}
+   na.vec <- c(1:3,NA,5:7)
+   3*na.vec
+```
+ Different functions in R handle `NA` values, with some having an explicit `na.rm` option, which tells the function how to handle these values.  There is also `NaN`, which means "not a number."  This will be returned when you have an indeterminate form, like
+```{r eval=FALSE}
+   0/0
+   Inf-Inf
+```
+
+Matrices are easy to define and handle within R.
+```{r eval=FALSE}
+   tmp <- 1:4
+   mat1 <- matrix(tmp,nrow=2,ncol=2)
+```
+ Matrix operations are easily handled as well.  Some functions include matrix multiplication (`%*%`), transpose (`t`), determinant (`det`), and matrix inversion (`solve`).  Note that some operations we already defined (e.g., addition) are applied the same way when dealing with matrices.
+```{r eval=FALSE}
+   mat1 + mat1
+   mat1 %*% mat1
+   t(mat1)
+   det(mat1)
+   solve(mat1)
+```
+ Note that for efficient programming, one should be aware that R allocates more memory to a matrix than a simple vector with the same number of objects.  To circumvent this, one can convert objects like matrices to vectors by vectorizing the matrix.  For example:
+```{r eval=FALSE}
+   vec4 <- c(mat1)
+   object.size(mat1)
+   object.size(vec4)
+```
+Closely related to matrices are data frames.  If we have vectors belonging to different classes (e.g., numeric, character, etc.) these can all occur in a data frame.
+```{r eval=FALSE}
+   x <- 1:10
+   y <- pi+1i*x #i lets us work with complex numbers.
+   z <- letters[1:10]
+   tmp.frame <- data.frame(x,y,z)
+   tmp.frame
+```
+
+
+One more way to work with a collection of objects (and there are many more) is to define a list.  Elements of lists can consist of vectors, matrices, or a combination of such objects. Moreover, the objects in the list need not be of the same size.  Using some of the objects we defined above, let us create our first list:
+```{r eval=FALSE}
+   list1 <- list(V1=vec1,V2=vec2,M1=mat1)
+   list1
+```
+ In the above, we gave each item a name so that we can easily extract it from the list:
+```{r eval=FALSE}
+   list1$M1
+```
+
+We can also perform operations and apply functions to lists, but it is a bit more complicated.  For example, if we wanted to sum every element within a list, then we could use the `lapply` function as follows:
+```{r eval=FALSE}
+   lapply(list1,FUN=sum)
+```
+ So the `lapply` function applied the `sum` function to each element in `list1` and then returned a list of the same length, but with the summations as the elements.  Another function to use is `sapply`.  `sapply` behaves similarly, but attempts to force the output to a vector or matrix.  For our example, we get a vector:
+```{r eval=FALSE}
+   sapply(list1,FUN=sum)
+```
+
+Finally, one of the most important aspects of R is the ability to incorporate user-written functions.  If you dig into any R code, you will see the numerous functions that comprise the respective code.  Objects in the function are local to that function and will not impact anything else in your session.  As an example, let us create a simple function called `ratio`:
+```{r eval=FALSE}
+   ratio <- function(x,y) x/y
+```
+ `function` provides the base mechanism for defining a new function (see `?"function"`).  The arguments `x` and `y` are the inputs that we specified as necessary for the function to evaluate.  Let's now run our first function:
+```{r eval=FALSE}
+   ratio(3,6)
+```
+
+
+## R Workspace Basics
+
+The workspace is your current R working environment.  It includes any user-defined objects, such as vectors, matrices, lists, and functions. At the end of an R session, you can save an image of the current workspace.  Your working directory can be found by typing the following:
+```{r eval=FALSE}
+   getwd()
+```
+ You can change the working directory using the `setwd` function.
+
+If you want to save everything you defined in your working environment, then simply type 
+```{r eval=FALSE}
+   save.image("Foo.RData")
+```
+ where `Foo` is the name you wish to assign to the R workspace.  
+
+You can close R by either typing `q()` at the command prompt or simply closing the active window.  When you restart R, make sure your working directory is set to the directory where `Foo.RData` is saved.  Finally, type 
+```{r eval=FALSE}
+   load("Foo.RData")
+```
+ You can type `ls()`, which will list all of the objects saved in that workspace.  At the end of each lab, you might wish to do this so you can refer back to all of the work we have done.  Note that you can also save only certain objects.  Type `?save` to learn more.
+
+R is typically run interactively, like we have been doing so far.  However, you can also save R scripts and run them later using the `source` command.  Moreover, when you start running programs on larger datasets or need to run simulations, then R can be run in batch mode.
+
+A big part of R's popularity and utility is the packages contributed by scientists all across the world.  An R package is a collection of functions and/or datasets that are neatly standardized according to CRAN's policies.  As of April 15, 2015, CRAN has listed that 6533 packages are available.  Chances are if you are looking for a particular statistical procedure, someone has already written a package that, at the very least, will prevent you from having to code a program from scratch.  
+
+The core packages are what come installed and you can see these packages by typing `search()`.  Add-on packages can be obtained from the CRAN repository, which is, again, found at http://cran.r-project.org/.  There are various ways to get the package loaded into R, but basically you start off by first finding your package of interest, then download it (typically as a .tar.gz file), and then install it.  You only need to install the package once.  Also, many packages depend on other packages, so you will want to ensure that all dependencies are loaded as well.  
+
+Let us try installing the `car` (companion to applied regression) package [@fox], which will be used in Lab 2:
+```{r eval=FALSE}
+   install.packages("car")
+```
+```{r eval=FALSE}
+   library(car)
+```
+ You can also specify where you would like to install the package using the `lib` argument in `install.packages`.  Consequently, you would have to point R to that directory when loading the package, which would require the `lib.loc` argument in `library`.  The default path where R packages are automatically downloaded can be accessed by `.libPaths()` (see `?.libPaths()` for more information). 
+
+Depending on your version of R, you may get a warning message stating that the package you are loading was built under a newer version of R.  This typically will not cause problems unless you are using a version of R that is significantly older than the version that the package was built under.  However, be aware that this could restrict certain capabilities of that package.
+
+Finally, You can then see all of the available functions and datasets in the package by typing
+```{r eval=FALSE}
+   help(package="car")
+```
+Note that the `help` function can also be used to pull up the documentation on functions and datasets.  For example, you can type `help(help)` instead of `?"help"`.
+
+
+## CRAN Task Views
+
+CRAN Task Views are a helpful organization of add-on packages in R.  These webpages are maintained by volunteers who have expertise in a particular area (e.g., Bayesian analysis, spatial statistics, or high performance computing).  The maintainers provide a list of relevant packages as well as some annotated guidance regarding functions in the packages.  CRAN Task Views is located at http://cran.r-project.org/web/views/
+
+For example, the "Cluster" view provides a brief summary of packages relevant to cluster analysis and analysis of finite mixture models.  Some of the sub-topics under this view include hierarchical clustering, model-based clustering, and cluster-wise regression.  
+
+While CRAN Task Views can help you decide upon which package(s) you can use for your analysis, you might be interested in automatically installing all of the packages listed under a particular view.  To do this, you need to first install the `ctv` package:
+```{r eval=FALSE}
+   install.packages("ctv")
+   library("ctv")
+```
+Then, you can install or update all packages under a particular view by running the respective lines:
+```{r eval=FALSE}
+   install.views("task_view_title")
+   update.views("task_view_title")
+```
+In the above, you would replace `task_view_title` with the name of the view that you are interested; e.g., `Cluster`. Do not try installing any task views now as this does take some time!
+
+
+# Probability Distributions
+
+Most distributions available in R have four associated functions. Each distribution has a root name; e.g., the root name for the normal (or Gaussian) distribution is `norm` and the root name for the binomial distribution is `binom`. Type `?"Distributions"` for a list of standard distributions pre-loaded in R.  You can also pull-up the help file for each distribution simply by its name; e.g., `?"Normal"` and `?"Binomial"`.  These help files will tell you what parameters need to be specified in order to do the calculation.  Note that parameterizations of certain distributions are not always the same as the way they are sometimes defined in the literature.  One such example is the negative binomial distribution, which has a number of possible different parameterizations.
+
+The root for each distribution is prefixed by one of the following four letters, depending on what it is you wish to calculate:
+
+* `d` for "density"; the probability density function (pdf) or probability mass function (pmf) for continuous or discrete distributions, respectively
+* `p` for "probability"; the cumulative distribution function (cdf)
+* `q` for "quantile"; the inverse of the cdf
+* `r` for "random"; random variable generation of the specified distribution 
+
+Almost all distributions have the above functions; however, some exceptions are the Tukey Studentized range distribution (`?"Tukey"`) and many multivariate distributions.
+
+Let $X$ be our random variable of interest (either continuous or discrete).  Then the pmf (pdf) is
+$$
+f_X(x) = \begin{cases} 
+\textrm{P}\{X=x\} &\mbox{if } X \mbox{ is discrete} \\
+\frac{d}{dx}F_X(x) & \mbox{if } X \mbox{ is continuous}, \end{cases}
+$$
+where
+$$
+F_X(x) = \begin{cases} 
+\sum_{t=0}^{x}\textrm{P}\{X=t\} &\mbox{if } X \mbox{ is discrete} \\
+\int_{-\infty}^{x}f_X(t)dt & \mbox{if } X \mbox{ is continuous} \end{cases}
+$$
+is the cumulative distribution function.  For example, the density and cdf of $x=4$, where $X\sim\mathcal{N}(0,3)$, are
+```{r eval=FALSE}
+   dnorm(4,mean=0,sd=3)
+   pnorm(4,mean=0,sd=3)
+```
+Suppose we wanted to know the deciles of the same distribution:
+```{r eval=FALSE}
+   qnorm(seq(0.1,0.9,by=0.1),mean=0,sd=3)
+```
+Notice that the deciles are symmetric about 0, given the symmetry of the normal distribution.  Finally, to randomly generate, say, 10 values from this distribution, do the following:
+```{r eval=FALSE}
+   x <- rnorm(10,mean=0,sd=3)
+   x
+```
+Do your random variates match mine or your neighbors?  They will not since R sets a seed based on the current time.  We manually set a seed (`?set.seed`) as follows:
+```{r eval=FALSE}
+   set.seed(100)
+   x <- rnorm(10,mean=0,sd=3)
+   x
+```
+Now we should match!  For simulations or to yield reproducible code, you should always start with setting a seed.
+
+Finally, let us illustrate a figure with three different exponential pdfs plotted together:
+```{r eval=FALSE}
+   xdens <- seq(0,5,0.02)
+   plot(xdens,dexp(xdens,rate=0.5),type='l',ylim=c(0,1.5), 
+        xlab='x',ylab='Exponential p.d.f.',lty=1)
+   lines(xdens,dexp(xdens,rate=1),type='l',lty=2,col=2)
+   lines(xdens,dexp(xdens,rate=1.5),type='l',lty=3,col=3)
+   legend("topright",legend=c(expression(lambda==0.5),
+                              expression(lambda==1.0),
+                              expression(lambda==1.5)),col=1:3,lty=1:3)
+```
+
+Depending on the platform and particular plot you are producing, you might have to hit "return" at the R prompt.
+
+We have established the basics of R, so let us start looking at real astronomy data!
+
+# Descriptive Statistics \& Exploratory Data Analysis
+
+For the labs, we will often use the Hipparcos dataset, which is a multivariate tabular dataset of stars observed with the European Space Agency's Hipparcos satellite during the 1990s.  It is a table with 9 columns and 2719 rows giving Hipparcos stars lying between 40 and 50 parsecs from the Sun. The dataset was acquired using the Centre des Donn&eacute;es astronomiques de Strasbourg's (CDS's) Vizier Catalogue Service as follows:
+
+* In Web browser, go to http://vizier.u-strasbg.fr/viz-bin/VizieR?-source=I/239/hip_main
+* Set Max Entries to 9999, Output layout ASCII table
+* Remove "Compute r" and "Compute Position" buttons
+* Set parallax constraint "20 .. 25" to gives stars between 40 and 50 pc
+* Retrieve 9 properties: HIP, V, RA, Dec, Plx, pmRA, pmDE, e\_Plx, and B-V
+* Submit Query
+* Use ASCII editor to trim header to one line with variable names
+* Trim trailer
+* Save ASCII file on disk for ingestion into R
+
+We use a cleaned-up version of the Hipparcos dataset described above, which is available in the `astrodatR` package [@astrodatR].  First, install and load this package:
+```{r eval=FALSE}
+   install.packages("astrodatR")
+```
+```{r eval=FALSE}
+   library(astrodatR)
+```
+Now load the Hipparcos dataset:
+```{r eval=FALSE}
+   data("HIP")
+```
+
+
+## Numerical Summaries
+
+The following commands list the dimensions of the dataset and print the variable names from the single-line header.  Then we list the first row, the first 20 rows for the 7th column, and the sum of the 3rd column. 
+```{r eval=FALSE}
+   dim(HIP)
+   names(HIP) 
+   HIP[1,]
+   HIP[1:20,7]
+   sum(HIP[,3])
+```
+Note that even punctuation marks such as the colon have help entries, which may be accessed using `help(":")`.
+
+Next, we list the maximum, minimum, median, and median absolute deviation (similar to standard deviation) of each column.  First we do this using a for-loop, which is a slow process in R.  Inside the loop, `print` is a generic command that prints the contents of an object. After the inefficient but intuitively clear approach using a for-loop, we then do the same job in a more efficient fashion using the `apply` command.  Here the "2" refers to columns in the x array; a "1" would refer to rows.
+```{r eval=FALSE}
+   for(i in 1:ncol(HIP)){
+      print(c(max(HIP[,i]),min(HIP[,i]), 
+              median(HIP[,i]),mad(HIP[,i]))) 
+   }
+   apply(HIP,2,max) 
+   apply(HIP,2,min) 
+   apply(HIP,2,median) 
+   apply(HIP,2,mad)
+```
+The curly braces \{\} in the for-loop above are optional because there is only a single command inside. Notice that the output gives only `NA` for the last column's statistics. This is because a few values in this column are missing. We can tell how many are missing and which rows they come from as follows:
+```{r eval=FALSE}
+   sum(is.na(HIP[,9]))
+   which(is.na(HIP[,9]))
+```
+There are a couple of ways to deal with the `NA` problem. One is to repeat all of the above calculations on a new R object consisting of only those rows containing no `NA`s:
+```{r eval=FALSE}
+   y <- na.omit(HIP)
+   for(i in 1:ncol(y)) {
+      print(c(max(y[,i]),min(y[,i]), 
+              median(y[,i]),mad(y[,i]))) 
+   }
+```
+Another possibility is to use the `na.rm` (remove `NA`) option of the summary functions. This solution gives slightly different answers from the the solution above; can you see why?
+```{r eval=FALSE}
+   for(i in 1:ncol(HIP)) {
+      print(c(max(HIP[,i],na.rm=T),min(HIP[,i],na.rm=T), 
+              median(HIP[,i],na.rm=T),mad(HIP[,i],na.rm=T))) 
+   }
+```
+
+A vector can be sorted using the Shellsort or Quicksort algorithms; `rank` returns the order of values in a numeric vector; and `order` returns a vector of indices that will sort a vector. The last of these functions, `order`, is often the most useful of the three, because it allows one to reorder all of the rows of a matrix according to one of the columns:
+```{r eval=FALSE}
+   sort(HIP[1:10,3])
+   HIP[order(HIP[1:10,3]),]
+```
+Each of the above lines gives the sorted values of the first ten entries of the third column, but the second line reorders each of the ten rows in this order. Note that neither of these commands actually alters the value of `x`, but we could reassign `x` to equal its sorted values if desired.
+
+We can automatically create temporary variables with the names from our dataset (these variables are not saved as part of the R session, and they are superseded by any other R objects of the same names).
+```{r eval=FALSE}
+   names(HIP)
+   attach(HIP)
+```
+We can now obtain, say, individual summaries of the variables:
+```{r eval=FALSE}
+   summary(Vmag)
+   summary(B.V)
+```
+
+
+## Basic Data Visualization
+
+Next, we summarize some of this information graphically using a simple yet sometimes effective visualization tool called a dotplot or dotchart, which lets us view all observations of a quantitative variable simultaneously:
+```{r eval=FALSE}
+   dotchart(B.V)
+```
+
+The shape of the distribution of the `B.V` variable may be viewed using a traditional histogram. If we use the `prob=TRUE` option for the histogram so that the vertical axis is on the probability scale (i.e., the histogram has total area 1), then a so-called kernel density estimate, or histogram smoother, can be overlaid:
+```{r eval=FALSE}
+   hist(B.V,prob=T)
+   d <- density(B.V,na.rm=T)
+   lines(d,col=2,lwd=2,lty=2)
+```
+
+We will return to kernel density estimation in Section \ref{nonp}. For now, it is important to remember that even though histograms and density estimates are drawn in two-dimensional space, they are intrinsically univariate analysis techniques here. We are only studying the single variable `B.V` in this example.  You can check the help file for the `par` function (`"?par"`) to see what the `col`, `lwd`, and `lty` options accomplish in the `lines` function above.
+
+A simplistic histogram-like object for small datasets, which gives both the shape of a distribution and displays each observation, is called a stem-and-leaf plot. It is easy to create by hand, but R will create a text version:
+```{r eval=FALSE}
+   stem(sample(B.V,100))
+```
+
+The sample command was used above to obtain a random sample of 100, without replacement, from the `B.V` vector.
+
+Finally, we consider box-and-whisker plots (or boxplots) for the four variables `Vmag`, `pmRA`, `pmDE`, and `B.V` (the last variable used to be B-V, or B minus V, but R does not allow certain characters). These are the $4^{\textrm{th}}$, $6^{\textrm{th}}$, $7^{\textrm{th}}$, and $9^{\textrm{th}}$ columns of `HIP`, respectively.
+```{r eval=FALSE}
+   boxplot(HIP[,c(4,6,7,9)])
+```
+
+Our first attempt above looks pretty bad due to the different scales of the variables, so we construct an array of four single-variable plots:
+```{r eval=FALSE}
+   par(mfrow=c(2,2))
+   for(i in c(4,6,7,9)) 
+      boxplot(HIP[,i],main=names(HIP)[i])
+```
+
+Note that if running the above in RStudio, you might have to manually adjust your plotting window or else an error about the figure margins will be produced.
+
+The boxplot command does more than produce plots; it also returns output that can be more closely examined. Below, we produce boxplots and save the output:
+```{r eval=FALSE}
+   par(mfrow=c(1,1))
+   b <- boxplot(HIP[,c(4,6,7,9)])
+   names(b)
+```
+
+Please see `?"boxplot"` to understand all of the contents. 
+
+Finally, suppose we wish to see all of the outliers in the `pmRA` variable, which is the second of the four variables in the current boxplot:
+```{r eval=FALSE}
+   b$names[2]
+   b$out[b$group==2]
+```
+
+So far, we have considered one-dimensional plotting technique. We may perform a slightly more sophisticated analysis using boxplots to get a glimpse at some bivariate structure. Let us examine the values of `Vmag`, with objects broken into categories according to the `B.V` variable:
+```{r eval=FALSE}
+   boxplot(Vmag~cut(B.V,breaks=(-1:6)/2),
+           notch=T,varwidth=T,las=1,tcl=.5,
+           xlab=expression("B minus V"),
+           ylab=expression("V magnitude"),
+           main="Can you find the red giants?",
+           cex=1,cex.lab=1.4,cex.axis=.8,cex.main=1)
+   axis(2,labels=F,at=0:12,tcl=-.25)
+   axis(4,at=3*(0:4))
+```
+
+The notches in the boxes, produced using `notch=T`, can be used to test for differences in the medians (see `?"boxplot.stats"` for details). With `varwidth=T`, the box widths are proportional to the square roots of the sample sizes. The `cex` options all give scaling factors, relative to default: `cex` is for plotting text and symbols, `cex.axis` is for axis annotation, `cex.lab` is for the x and y labels, and `cex.main` is for main titles. The two axis commands are used to add an axis to the current plot. The first such command above adds smaller tick marks at all integers, whereas the second one adds the axis on the right. 
+
+The boxplots in the plot above are telling us something about the bivariate relationship between the two variables. Yet it is probably easier to grasp this relationship by producing a scatter plot.
+```{r eval=FALSE}
+   plot(Vmag,B.V)
+```
+
+The above plot looks too busy because of the default plotting character, so let's use a different one:
+```{r eval=FALSE}
+   plot(Vmag,B.V,pch=".")
+```
+
+Let's now use exploratory scatterplots to locate the Hyades stars. This open cluster should be concentrated both in the sky coordinates `RA` and `Dec`, and also in the proper motion variables `pm_RA` and `pm_DE`. We start by noticing a concentration of stars in the `RA` distribution and we construct a rectangle around the cluster of stars with `RA` between 50 and 100 and with `Dec` between 0 and 25:
+```{r eval=FALSE}
+   plot(RA,Dec,pch=".")
+   rect(50,0,100,25,border=2)
+```
+
+Let's construct a logical (`TRUE/FALSE`) variable that will select only those stars in the appropriate rectangle:
+```{r eval=FALSE}
+   filter1 <- (RA>50 & RA<100 & Dec>0 & Dec<25)
+```
+
+Next, we select in the proper motions\footnote{As our cuts through the data are parallel to the axes, this variable-by-variable classification approach is sometimes called Classification and Regression Trees or CART, a very common multivariate classification procedure.}.
+```{r eval=FALSE}
+   plot(pmRA[filter1],pmDE[filter1],pch=20)
+   rect(0,-150,200,50,border=2)
+```
+
+Let's replot after zooming in on the rectangle shown in red.
+```{r eval=FALSE}
+   plot(pmRA[filter1],pmDE[filter1],pch=20,xlim=c(0,200),
+        ylim=c(-150,50))
+   rect(90,-60,130,-10,border=2)
+   filter2 <- (pmRA>90 & pmRA<130 & pmDE>-60 & pmDE< -10) 
+              # Space in 'pmDE< -10' is necessary!
+   filter  <-  filter1 & filter2
+```
+
+Let's have a final look at the stars we have identified using the `pairs` command to produce all bivariate plots for pairs of variables. We'll exclude the third and fifth columns; i.e., the HIP identifying number and the parallax, which is known to lie in a narrow band by construction.
+```{r eval=FALSE}
+   pairs(HIP[filter,-c(3,5)],pch=20)
+```
+
+Notice that indexing a matrix or vector using negative integers has the effect of excluding the corresponding entries.
+
+We see that there is one outlying star in the `e_Plx` variable, indicating that its measurements are not reliable. We exclude this point:
+```{r eval=FALSE}
+   filter <- filter & (e_Plx<5)
+   pairs(HIP[filter,-c(3,5)],pch=20)
+```
+
+How many stars have we identified? The `filter` variable, a vector of `TRUE` and `FALSE`, may be summed to reveal the number of `TRUE`s (summation causes R to coerce the logical values to 0's and 1's).
+```{r eval=FALSE}
+   sum(filter)
+```
+
+As a final look at these data, let's consider the plot of `Vmag` versus `B.V`, but make the 92 Hyades stars we just identified look bigger (`pch=20` instead of `46`) and color them red (`col=2` instead of `1`). This shows the Zero Age Main Sequence, plus four red giants, with great precision.
+```{r eval=FALSE}
+   plot(Vmag,B.V,pch=c(46,20)[1+filter],col=1+filter,
+        xlim=range(Vmag[filter]),ylim=range(B.V[filter]))
+```
+
+R also has some good packages for producing 3D graphics.  Let us install the `rgl` package [@rgl], which is a 3D visualization device system for R:
+```{r eval=FALSE}
+   install.packages("rgl")
+```
+```{r eval=FALSE}
+   library(rgl)
+```
+
+Let us briefly visualize a galaxy redshift survey of the Shapley Supercluster using `rgl`:
+```{r eval=FALSE}
+   data("Shapley_galaxy")
+   attach(Shapley_galaxy)
+```
+```{r eval=FALSE}
+   rgl.open()
+   rgl.points(scale(R.A.),scale(Dec.),scale(Vel))
+   rgl.bbox()
+```
+
+The figure constructed using the above is interactive.  You can zoom in and out as well as rotate the figure.  
+
+Let us next produce a plot of `B.V` versus `Vmag` with a LOESS curve overlayed.  LOESS is tyically understood to stand for LOcal regrESSion and is a very popular nonparametric regression routine, especially for data visualization purposes.  You will be learning more about LOESS later.  But for now, let us plot `B.V` versus `Vmag`, estimate the LOESS curve with the default smoothing parameters, and then overlay the predicted curve on the data.  Note that we must order the data according to the x-variable first!
+```{r eval=FALSE}
+   tmp.V <- data.frame(Vmag,B.V)[!is.na(B.V),]
+   tmp.V <- tmp.V[order(tmp.V[,1]),]
+   plot(Vmag,B.V,pch=19)
+   out.loess <- loess(B.V~Vmag,data=tmp.V)
+   lines(out.loess$x,out.loess$fitted,col=2,lwd=4)
+```
+
+Finally, I will make a note of one more advanced graphical package available in R.  The `ggplot2` package [@ggplot2] is an implementation of the grammar of graphics discussed by @wilk.  A grammar of graphics is a framework that allows us to concisely describe and manipulate the components of a graphic.  The framework is similar to a mathematical equation.  For example, suppose $x$ and $y$ are two graphical methods, each of which are made of various semantic components such as scales, aesthetics, and layers. Then, $x+y$ results in $y$ being overlayed on $x$.  
+
+`ggplot2` is becoming the standard graphical package used in the literature, especially given its greater flexibility in how graphics are handled.  First, let us load the package:
+```{r eval=FALSE}
+   install.packages("ggplot2")
+```
+```{r eval=FALSE}
+   library(ggplot2)
+```
+
+First we plot the data, which is controlled by adding `geom_point()` to the `ggplot` object that we first define, which we call `z`:
+```{r eval=FALSE}
+   z <- ggplot(tmp.V, aes(Vmag,B.V))
+   z+geom_point()
+```
+
+We then add the next layer, which is the LOESS curve and is controlled through `stat_smooth`:
+```{r eval=FALSE}
+   z+geom_point()+stat_smooth(method="loess",size=1.4,fill="grey50",
+                              alpha=0.5,level=0.99,colour="red")
+```
+
+
+# Statistical Inference
+
+Statistical inference helps one reach conclusions about the population based on what is observed in their sample.  There are many aspects of statistical inference that you may have already learned about, such as point estimation using maximum likelihood, confidence intervals, resampling methods, hypothesis testing, and Bayesian inference.  In this section, we will only briefly illustrate a few testing procedures.
+
+## Normality Testing
+
+
+We first proceed with tests of normality on the Milky Way Galaxy sample and the M 31 globular cluster K magnitudes.  We read in both datasets as follows:
+```{r eval=FALSE}
+   data("GlobClus_mag")
+   GC_MWG <- subset(GlobClus_mag,Sample=="MWG",select=2:3)
+   GC_M31 <- subset(GlobClus_mag,Sample=="M31",select=2:3)
+   KGC_MWG <- GC_MWG[,2]  
+   KGC_M31 <- GC_M31[,2]-24.44
+   kseq <- seq(-15.0,-5.0,0.25)
+```
+Next, let us fit a normal distribution to each dataset:
+```{r eval=FALSE}
+   library(MASS)
+   par(mfrow=c(1,2))
+   hist(KGC_MWG,breaks=kseq,ylim=c(0,10),main='Milky Way', 
+        xlab='K mag',ylab='N',col=gray(0.5))
+   normfit_MWG <- fitdistr(KGC_MWG,'normal')
+   normfit_MWG 
+   lines(kseq,dnorm(kseq,mean=normfit_MWG$estimate[[1]], 
+         sd=normfit_MWG$estimate[[2]]) * normfit_MWG$n*0.25,lwd=2)
+   hist(KGC_M31,breaks=kseq,ylim=c(0,50),main='M 31',
+        xlab='K mag',ylab='N',col=gray(0.5))
+   normfit_M31 <- fitdistr(KGC_M31,'normal') 
+   normfit_M31
+   lines(kseq,dnorm(kseq,mean=normfit_M31$estimate[[1]], 
+         sd=normfit_M31$estimate[[2]]) * normfit_M31$n*0.25, 
+         lwd=2)
+```
+
+Which of the two looks more ``normal" to you?  Well, let us perform the Shapiro-Wilk test for normality:
+```{r eval=FALSE}
+   shapiro.test(KGC_MWG)
+   shapiro.test(KGC_M31)
+```
+Based on these results, the Milky Way Galaxy data is consistent with a normal distribution, whereas the M 31 globular cluster dataset is not.
+
+Suppose we want to compare the two distributions of the Milky Way Galaxy and the M 31 globular cluster K magnitudes.  We can first start by constructing the empirical (cumulative) distribution function, or EDF.  The EDF is, by definition, the cumulative distribution function for the discrete distribution represented by the sample itself -- that is, the distribution that puts mass $1/n$ on each of the $n$ sample points. We may graph the EDF using the ecdf function:
+```{r eval=FALSE}
+   par(mfrow=c(1,2))
+   plot(ecdf(KGC_MWG))
+   plot(ecdf(KGC_M31))
+```
+
+While it is generally very difficult to interpret the EDF directly, it is possible to compare an EDF to a theoretical cumulative distribution function or to another EDF.  Comparing both EDFs yields:
+```{r eval=FALSE}
+   ks.test(KGC_MWG,KGC_M31)
+```
+Thus, they are significantly different according to the Kolmogorov-Smirnov test.
+
+
+## $t$-test
+
+Recall from earlier that we used exploratory techniques to identify 92 stars from the Hipparcos dataset that are associated with the Hyades. We did this based on the values of right ascension, declination, principal motion of right ascension, and principal motion of declination. We then excluded one additional star with a large error of parallax measurement.  Next we will compare these Hyades stars with the remaining stars in the Hipparcos dataset on the basis of the color (`B.V`) variable. That is, we are comparing the groups in the boxplot below:
+```{r eval=FALSE}
+   color <- B.V
+   par(mfrow=c(1,1))
+   boxplot(color~filter,notch=T)
+```
+
+For ease of notation, we define vectors `H` and `nH` (for "Hyades" and "not Hyades") that contain the data values for the two groups.
+```{r eval=FALSE}
+   H <- color[filter]
+   nH <- color[!filter & !is.na(color)]
+```
+In the definition of `nH` above, we needed to exclude the `NA` values.
+
+A two-sample $t$-test may now be performed with a single line:
+```{r eval=FALSE}
+   t.test(H,nH)
+```
+Because it is instructive and quite easy, we may obtain the same results without resorting to the `t.test` function. First, we calculate the variances of the sample means for each group:
+```{r eval=FALSE}
+   v1 <- var(H)/92
+   v2 <- var(nH)/2586
+   c(var(H),var(nH))
+```
+The $t$ statistic is based on the standardized difference between the two sample means. Because the two samples are assumed independent, the variance of this difference equals the sum of the individual variances (i.e., `v1+v2`). Nearly always in a two-sample $t$-test, we wish to test the null hypothesis that the true difference in means equals zero. Thus, standardizing the difference in means involves subtracting zero and then dividing by the square root of the variance:
+```{r eval=FALSE}
+   tstat <- (mean(H)-mean(nH))/sqrt(v1+v2)
+   tstat
+```
+
+To test the null hypothesis, this $t$ statistic is compared to a $t$ distribution. In a Welch test, we assume that the variances of the two populations are not necessarily equal, and the degrees of freedom of the $t$ distribution are computed using the so-called Satterthwaite approximation:
+```{r eval=FALSE}
+   sw.v <- (v1+v2)^2 / (v1^2/91+v2^2/2585); sw.v
+```
+The two-sided $p$-value may now be determined by using the cumulative distribution function of the $t$ distribution, which is given by the `pt` function:
+```{r eval=FALSE}
+   2*pt(tstat,sw.v)
+```
+
+Incidentally, one of the assumptions of the $t$-test, namely that each of the two underlying populations is normally distributed, is almost certainly not true in this example. However, because of the central limit theorem, the $t$-test is robust against violations of this assumption; even if the populations are not roughly normally distributed, the sample means are.
+
+In this particular example, the Welch test is probably not necessary, since the sample variances are so close that an assumption of equal variances is warranted. Thus, we might conduct a slightly more restrictive $t$-test that assumes equal population variances. Without going into the details here, we merely present the R output:
+```{r eval=FALSE}
+   t.test(H,nH,var.equal=T)
+```
+
+## Chi-Squared Tests for Categorical Data
+
+We can also perform tests on categorical variables.  Let us begin with looking at a boxplot where we create a categorical variable based roughly on the quartiles of the `B.V` variable:
+```{r eval=FALSE}
+   bvcat <- cut(color,breaks=c(-Inf,.5,.75,1,Inf))
+   boxplot(Vmag~bvcat,varwidth=T,
+           ylim=c(max(Vmag),min(Vmag)), 
+           xlab=expression("B minus V"),
+           ylab=expression("V magnitude"), 
+           cex.lab=1.4,cex.axis=.8)
+```
+
+We have created, albeit artificially, a second categorical variable (`filter`, the Hyades indicator, is the first). Here is a summary of the dataset based only on these two variables:
+```{r eval=FALSE}
+   table(bvcat,filter)
+```
+Note that the `Vmag` variable is irrelevant in the table above.
+
+To perform a chi-squared test of the null hypothesis that the true population proportions falling in the four categories are the same for both the Hyades and non-Hyades stars, use the `chisq.test` function:
+```{r eval=FALSE}
+   chisq.test(bvcat,filter)
+```
+Since we already know these two groups differ with respect to the `B.V` variable, the result of this test is not too surprising. But it does give a qualitatively different way to compare these two distributions than simply comparing their means.
+
+The $p$-value produced above is based on the fact that the chi-squared statistic is approximately distributed like a true chi-squared distribution (on 3 degrees of freedom, in this case) if the null hypothesis is true. However, it is possible to obtain exact $p$-values, if one wishes to calculate the chi-squared statistic for all possible tables of counts with the same row and column sums as the given table. Since this is rarely practical computationally, the exact $p$-value may be approximated using a Monte Carlo method (just as we did earlier for the permutation test). Such a method is implemented in the `chisq.test` function:
+```{r eval=FALSE}
+   chisq.test(bvcat,filter,sim=T,B=50000)
+```
+The two different $p$-values we just generated are numerically similar but based on entirely different mathematics. The difference may be summed up as follows: The first method produces the exact value of an approximate $p$-value, whereas the second method produces an approximation to the exact $p$-value!
+
+The test above is called a chi-squared test of homogeneity. If we observe only one sample, but we wish to test whether the categories occur in some pre-specified proportions, a similar test (and the same R function) may be applied. In this case, the test is called a chi-squared test of goodness-of-fit. 
+
+
+**Reminder:** If you wish to save your work, first double-check your working directory with `getwd()` and then save your work using `save.image()`. 
+
+
+# Exercise
+
+**Let us work with an asteroid density dataset consisting of $n=27$ asteroids.  A full description of these data is found at http://astrostatistics.psu.edu/datasets/asteroid_dens.html and a link on that page directs you to the data. We typically read data from websites into R using the `read.table` or `read.fwf` as follows:
+```{r eval=FALSE}
+   #Don't run
+   #tmp.data <- read.table(file="http://file_location/file_name",...)
+   #tmp.data <- read.fwf(file="http://file_location/file_name",...)
+```
+In the above, the ellipsis `...` pertains to numerous other arguments you can specify based on the complexity of the original data file.  For this exercise, begin by reading these data into R using the `read.fwf` function.  Look at the help file for `read.fwf` (`?read.fwf`) to see the differences in the arguments compared to those in the help file for `read.table` (`?read.table`).  Note that there is a preamble to this file that you will need to skip over, which is controlled with the `skip` argument. (Hint: The four fixed-width fields have lengths of 6, 12, 4, and 5, respectively.)  Run the Shapiro-Wilk test on both the asteroid density values (call this X1) and the natural logarithm of the density values (call this X2).  Set `par(mfrow=c(1,2))` and first construct a histogram for X1 and overlay the estimated normal density curve. Next, construct a histogram for X2 and overlay the estimated normal density curve.**   
+
+
+<font size="5">**References**</font>
+

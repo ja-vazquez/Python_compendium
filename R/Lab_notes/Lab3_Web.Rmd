@@ -1,0 +1,822 @@
+---
+title: 'Astrostatistics R Tutorial: Lab 3'
+author: "Derek Young (derek.young@uky.edu)"
+date: "June 2, 2016"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    toc: yes
+fontsize: 12pt
+bibliography: Rbib.bib
+---
+
+<body style="background-color: rgb(255, 248, 229);">
+
+# Multivariate Analysis
+
+So far, all of the analyses we have seen in the labs have been, essentially, univariate in nature.  We will now turn to some examples of conducting multivariate analyses; i.e., where the quantity of interest is multidimensional.  Fortunately, R has a number of standard multivariate tools in the base packages, with many more available through add-on packages.  
+
+## Generating Multivariate Normal Data
+
+Before we proceed with formal multivariate analysis, it is helpful to demonstrate random generation of multivariate normal vectors.  While there are some creative ways you can do this without the use of an add-on package, we will forego such coding and simply utilize the `mvtnorm` package [@genz]:
+```{r eval=FALSE}
+   install.packages("mvtnorm")
+```
+```{r eval=FALSE}
+   library(mvtnorm)
+```
+
+Consider the following mean vector and variance-covariance matrix for a tetravariate normal distribution:
+$$
+\boldsymbol{\mu}=\left(
+\begin{array}{c}
+1.0\\
+0.0\\
+3.0\\
+-2.0\\
+\end{array}
+\right) \ \ \ \ \textrm{and} \ \ \ \ \boldsymbol{\Sigma}= \left( \begin{array}{cccc}
+2.0 & -1.0 & 0.5 & 0.5 \\
+-1.0 & 2.0 & 0.5 & 0.5 \\
+0.5 & 0.5 & 2.0 & -1.0 \\
+0.5 & 0.5 & -1.0 & 2.0 \end{array} \right).
+$$
+To generate $n=100$ random multivariate normal variates, we use the `mvtnorm` function:
+```{r eval=FALSE}
+   mu <- c(1,0,3,-2)
+   Sigma <- rbind(c(2,-1,0.5,0.5),c(-1,2,0.5,0.5),
+                  c(0.5,0.5,2,-1),c(0.5,0.5,-1,2))
+   rho <- cov2cor(Sigma)
+   rho
+   set.seed(100)
+   X <- rmvnorm(100,mean=mu,sigma=Sigma)
+``` 
+
+In the above, `X` is a $100\times 4$ matrix.  So each row is a random variate.  The `cov2cor` function efficiently scales a variance-covariance matrix into the corresponding correlation matrix.
+
+To compute the sample mean and sample variance-covariance matrix from your sample, perform the following:
+```{r eval=FALSE}
+   m <- apply(X,2,mean); m
+   S <- var(X); S
+   r <- cor(X); r
+```
+
+In the above, the `var` and `cor` functions calculate the variance-covariance matrix and correlation matrix, respectively, between the columns.  We could have also simply applied the `cov2cor` function to `S` to get the sample correlation matrix.  Now, let us see how far off our individual samples were from their respective population parameters:
+```{r eval=FALSE}
+   m-mu
+   S-Sigma
+   r-rho
+```
+
+## Principal Components Analysis \& Multivariate Data Visualization
+
+
+We can also demonstrate the singular value decomposition (SVD) of our data simulated above. As you have learned, the SVD is an important factorization of multivariate data for principal components analysis (PCA).  PCA is a procedure that uses orthogonal transformations to convert a set of (possibly correlated) variables into a set of linearly uncorrelated variables, which we call the principal components (PCs).  We will use the SVD results to do PCA on our generated data.  We will then conclude with doing a PCA on an astronomy dataset.
+
+In PCA, we wish to reduce the number of variables under investigation. The method is to find the "best" linear combinations of all existing variables. To understand what is "best", consider the 4 quantitative measurements we generated. Each row may be considered to be a point in 4-dimensional Euclidean space. Thus, the entire dataset consists of a cloud of 100 4-dimensional points. The "best" linear combination here will be the single vector in 4-space parallel to which the variance of these 100 points is the greatest. The "second-best" will be the single vector orthogonal to the first along which the variance is the greatest, and so on.
+
+Now, as a reminder, let $\textbf{X}$ be an $n\times p$ matrix of our data.  Then the SVD of $\textbf{X}$ is
+$$
+\textbf{X}=\textbf{U}\textbf{D}\textbf{V}^{\textrm{T}},
+$$
+where $\textbf{U}$ is an $n\times n$ matrix, the columns of which are orthogonal unit vectors of length $n$, $\textbf{V}$ is a $p\times p$ matrix, the columns of which are orthogonal unit vectors of length $p$, and $\textbf{D}$ is an $n\times p$ rectangular diagonal matrix, such that the diagonal values are called the singular values of $\textbf{X}$.  We can get these values as follows:
+```{r eval=FALSE}
+   SVD <- svd(X)
+   names(SVD)
+   U <- SVD$u
+   V <- SVD$v
+   D <- diag(SVD$d)
+```
+
+Orthogonality of $\textbf{U}$ and $\textbf{V}$ and the fact that the SVD worked can easily be checked:
+```{r eval=FALSE}
+   t(U)%*%U
+   t(V)%*%V
+   max(abs(X-U%*%D%*%t(V)))
+```
+
+The difference above is 0, even though the value you get will be very small.  This simply reflects the numerical precision of R's calculation.
+
+To obtain the PCs scores, we must first center each column of our data matrix. To do this, we'll use the `sweep` function:
+```{r eval=FALSE}
+   X.cent <- sweep(X,2,apply(X,2,mean))
+```
+
+If this worked, then the mean of each column of centered matrix will equal zero:
+```{r eval=FALSE}
+   apply(X.cent,2,mean)
+```
+
+Success!  Now, let us redo the SVD on `X.cent`:
+```{r eval=FALSE}
+   SVD <- svd(X.cent)
+   U <- SVD$u
+   V <- SVD$v
+   D <- diag(SVD$d)   
+```
+To obtain the PC scores (i.e., the new variables defined as linear combinations of the original four variables) for each observation, we merely multiply `U` by `D`:
+```{r eval=FALSE}
+   pcscores <- U %*% D
+   plot(pcscores[,1:2],pch=19)
+```
+
+Each of the first two PCs that we plotted above is a linear combination of the original four variables. To find out what these linear combinations are, we may examine the `V` matrix. Remember, if we multiply the PC scores by `t(V)`, we obtain the original centered dataset. 
+
+Now let us turn to the SDSS quasar dataset, which is described at http://www.astrostatistics.psu.edu/datasets/SDSS_quasar.html:
+```{r eval=FALSE}
+   loc <- "http://astrostatistics.psu.edu/datasets/"
+   quasars <- read.table(paste(loc,"SDSS_quasar.dat",sep=""),
+                         header=T)
+   dim(quasars)
+```
+We want to get rid of the missing values. However, in this case missing values create more havoc than usual due to the fact that we will be working with covariance matrices. Thus, we will eliminate all rows with missing values:
+```{r eval=FALSE}
+   quas <- quasars
+   quas[quas==0 | quas==-1 | quas==-9] <- NA
+   quas <- na.omit(quas)
+   dim(quas)
+```
+This leaves us with a much smaller dataset, but for purposes of illustration it will serve well. 
+
+Let us take a look at the data using a matrix plot of the `_mag` variables as well as calculate the correlations:
+```{r eval=FALSE}
+   ind <- c(seq(5,13,2),17,19,21)
+   pairs(quas[,ind],pch=19,cex=0.5)
+   quas.cors <- cor(as.matrix(quas[,ind]))
+   quas.cors
+```
+
+The correlations agree with the strong correlations we visualize in the matrix plot.  If you want to look at all of the variables on a single plot, then we can use a parallel coordinates plot:
+```{r eval=FALSE}
+   library(MASS)
+   parcoord(quas[,-1])
+```
+
+Note that the first column of the subsetted data is the SDSS designation of the object.
+
+We will calculate the PCs in R using two distinct approaches. One approach is to use the `princomp` function. Another is to obtain the same results from scratch using an eigenvalue decomposition. We will use the former approach for analysis and interpretation; the latter approach is presented only to help you understand how the method works mathematically.
+
+To create a single object containing all the PCs information you will need, type
+```{r eval=FALSE}
+   pc <- princomp(quas[,-1])
+```
+Note that we omit the first column from the analysis since it is not a quantitative measurement. Let's see what kind of information is carried in `pc`.
+```{r eval=FALSE}
+   names(pc)
+   ?princomp
+```
+
+Before explaining what each of these things means, let's briefly show how to obtain the important bits, namely `pc$sdev` and `pc$loadings`, from scratch using an eigenvalue/eigenvector decomposition of the sample covariance matrix. The square roots of the eigenvalues give `pc$sdev` and the matrix of normalized eigenvectors gives `pc$loadings`. [Note, however, that a normalized eigenvector is still a normalized eigenvector if multiplied by -1; therefore, some of the columns of the eigenvector matrix differ from the corresponding columns of `pc$loadings` by a sign change.]  In other words, it is possible to reconstruct all of the information in `pc` by using
+```{r eval=FALSE}
+   s <- cov(quas[,-1])
+   es <- eigen(s)
+```
+One may compare `sqrt(es$val)` with `pc$sdev` and `es$vec` with `pc$load` to verify that they are the same except for sign changes in some columns of `pc$load`.
+
+If one invokes the `princomp` command with `cor=TRUE`, then the eigen decomposition is performed on the correlation matrix rather than the covariance matrix. This is obtained via 
+```{r eval=FALSE}
+   cor(quas[,-1])
+```
+Which method is more appropriate in this case? To answer this question, let's examine the standard deviations of the columns of `quas`:
+```{r eval=FALSE}
+   apply(quas[,-1],2,sd)
+```
+Note that the variation of the `R.A` and `Dec.` columns is far larger than that of any other column. Thus, we should not be surprised if these two columns dominate the first two PCs. In fact, since these two columns together with `z` give position of the object, we might want to extract them from the PCA altogether, retaining them unchanged in the reduced dataset. However, we could essentially put all variables on an equal footing in terms of variability by using the correlation rather than the covariance (this is equivalent to standardizing each of the variables to have standard deviation equal to 1 before performing the PCA). In the following development, we use essentially the first approach.
+
+The two most important pieces of information in a PCA are the variances explained (eigenvalues) and variable loadings (eigenvectors). The former may be viewed graphically using a screeplot:
+```{r eval=FALSE}
+   screeplot(pc)
+```
+
+In the above plot, we see that the variance of the first two PCs dwarfs the others. To see what this means, we must look at the loadings for these first two PCs:
+```{r eval=FALSE}
+   loadings(pc)
+```
+
+This last command prints a lot of information. Scroll up to see the loadings of components 1 and 2, with any loadings less than 0.1 in absolute value suppressed as unimportant. In reality, the loadings for the first PC are a vector of real numbers, scaled so that the sum of their squares equals 1. Each element in the vector gives the relative weight of the corresponding variable.
+
+To see all of the loadings for the first PC (and only those), type
+```{r eval=FALSE}
+   pc$load[,1]
+```
+
+We may conclude from the output above that the first PC consists essentially of nothing other than `R.A` (recall that the standard deviation of `R.A` was much larger than that of the other variables, so this result is really not surprising).  It is also unsurprising to see that the second PC consists almost entirely of `Dec.`:
+```{r eval=FALSE}
+   pc$load[,2]
+```
+These two PCs together comprise over 99.8\% of the total variance of these variables, which makes it difficult to see easily the effect of the remaining PCs. As explained earlier, one way to deal with the problem of variables on vastly different scales is by analyzing the correlation matrix rather than the covariance matrix. However, in this case, the two variables causing the trouble are easy to identify; thus, we'll proceed by performing a new PCA on the remaining columns of `quas` after `R.A` and `Dec.` are removed:
+```{r eval=FALSE}
+   pc2 <- princomp(quas[,-(1:3)])
+   screeplot(pc2)
+```
+
+In the new screeplot, we see three or four PCs with relatively large variance, one to four principal components with moderate variance, and the rest with relatively small variance. Let's see what the variable loadings for these first five PCs are:
+```{r eval=FALSE}
+   loadings(pc2)
+```
+Again, it is necessary to scroll up to see the important output.
+
+Examining these loadings, the first PC is somewhat difficult to interpret, but the second is basically an average of all the `_mag` variables, which we did a correlation analysis on earlier. Notably, the three variables (`u_mag`, `g_mag`, `r_mag`) always occur with roughly the same weights in the first few PCs, indicating that we may replace these three with a single variable equal to their mean. The same is true of (`i_mag`, `z_mag`) and (`J_mag`, `H_mag`, `K_mag`). We could thus reduce these 8 variables to 3.
+
+Another approach is to analyze only the PC scores themselves, which are contained in `pc$scores`. This $279\times 22$ matrix contains exactly the same information as the original dataset, but the axes have been rotated so that the first axis is the most important in explaining information, followed by the second, etc. Based on our analysis, only 5 or 6 of these PCs should be very variable.
+```{r eval=FALSE}
+   pairs(pc2$scores[,1:6],pch=".")
+```
+
+The drawback to the above plots, of course, is that many of them are difficult to interpret.
+
+A biplot for a PCA is a way of seeing both the PC scores and the factor loadings simultaneously.
+```{r eval=FALSE}
+   biplot(pc2,choices=1:2,arrow.len=0,cex=.5)
+```
+
+In summary, PCs provides an objective way to decide, based on data alone, how to reduce the dimensionality of a dataset to ease interpretability. However, substantive astronomical knowledge should be at least as important as such considerations (e.g., if `M_i` is known to be important, then maybe it should be kept regardless of what PCA says.)
+
+
+
+## Hotelling's $T^2$
+
+
+A multivariate analysis to the $t$-test is where we test whether or not our mean vector $\boldsymbol{\mu}$ is equal to some hypothesized mean vector $\boldsymbol{\mu}_{0}$.  Namely, we test the following:
+$$
+\begin{aligned}
+H_{0}&:\boldsymbol{\mu}=\boldsymbol{\mu}_{0} \\
+H_{A}&:\boldsymbol{\mu}\neq \boldsymbol{\mu}_{0}
+\end{aligned}
+$$
+In the univariate setting, the test statistic is a $t$ statistic.  In the multivariate setting, the test statistic for the above hypothesis is the Hotelling's $T^2$ statistic in honor of Harold Hotelling, who was a pioneer of multivariate analysis as well as economic theory.  Hotelling's $T^2$ is defined as
+$$
+T^2=n(\bar{\textbf{X}}-\boldsymbol{\mu}_{0})^{\textrm{T}}\textbf{S}^{-1}(\bar{\textbf{X}}-\boldsymbol{\mu}_{0}),
+$$
+where $\bar{\textbf{X}}$ is the sample mean vector and $\textbf{S}$ is the sample variance-covariance matrix.  Moreover,
+$$
+T^2\sim\frac{(n-1)p}{(n-p)}F_{p,n-p}.
+$$
+
+Unfortunately, R does not have Hotelling's $T^2$ as part of the base packages, but we can easily do the calculation.  Let us define
+```{r eval=FALSE}
+   T.2 <- function(X,mu0){
+        n <- nrow(X)
+        p <- ncol(X)
+        D <- matrix((apply(X,2,mean)-mu0),ncol=1)
+        S <- var(X)
+        T2 <- t(D)%*%solve(S)%*%D
+        p.value <- pf((n-p)*T2/((n-1)*p),df1=p,df2=n-p,
+                      lower.tail=FALSE) 
+        out <- list("T-Squared"=T2,"p.value"=p.value)
+        out
+   }
+```
+Suppose we wish to test that the mean vector pertaining to the `_mag` variables from the quasar dataset is 
+$$
+\boldsymbol{\mu}_{0}=(17,17,17,17,17,15,15,15)^{\textrm{T}}.
+$$
+When we look at the sample mean vector, this might be a reasonable hypothesis:
+```{r eval=FALSE}
+   mag.X <- quas[,ind]
+   apply(mag.X,2,mean)
+```
+Applying our `T.2` function, we get:
+```{r eval=FALSE}
+   mu0 <- c(17,17,17,17,17,15,15,15)
+   T.2(mag.X,mu0)
+```
+However, we get a low $p$-value, indicating that one or more of the elements of our hypothesized mean vector falls outside of the general scatter of the data.  Since we are dealing with a decent sample size (i.e., $n=279$), the test will  have good statistical power for detecting differences.  
+
+
+## Multivariate Multiple Linear Regression
+
+
+In Lab 1, we were introduced to simple linear regression; i.e., a regression with a univariate response and one predictor.  We were also informally introduced to multiple linear regression through polynomial regression; i.e., the "multiple" means we have more than one predictor.  Now we will explore multivariate regression, which means that the response is multidimensional.
+
+Suppose we are interested in building regression models where we treat brightness in the u (ultraviolet) band and brightness in the g (green) band as responses.  These are `u_mag` and `g_mag`, respectively.  Suppose we want to look at each variable's relationship with redshift (`z`), brightness in the r (red) band (`r_mag`), brightness in the i (more red) band (`i_mag`), and brightness in the z (even more red) band (`z_mag`).  We could look at individual multiple regression models for the two responses as follows:
+```{r eval=FALSE}
+   out <- lm(cbind(u_mag,g_mag)~z+r_mag+
+             i_mag+z_mag,data=quas)
+   summary(out)
+``` 
+The above produces summary output for each of the fitted multiple linear regression models.  As we can see, each predictor is significant for both models.  However, note that there is also strong correlation between `u_mag` and `g_mag`:
+```{r eval=FALSE}
+   cor.test(quas$u_mag,quas$g_mag)
+```
+To best account for this correlation, we should cast our modeling effort into a multivariate regression framework.  To do this, we will run a multivariate analysis of variance (MANOVA) on our regression models and assess the significance of the variables in a bivariate framework:
+```{r eval=FALSE}
+   m.out <- manova(out)
+   summary(m.out,test="Pillai")
+```
+Notice that all of the variables have $p$-values well less than 0.05 and, hence, are significant for our bivariate regression model.  Also note the option of `test="Pillai"`, which is the default test of significance ran for the MANOVA.  This is called the Pillai's trace.  Three other options available are Wilks' lambda, the Hotelling-Lawley trace, and Roy's greatest root.  Regardless of which test we run, we obtain identical results for each predictor (which will not always be the case for a given dataset):
+```{r eval=FALSE}
+   summary(m.out,test="Wilks")
+   summary(m.out,test="Hotelling-Lawley")
+   summary(m.out,test="Roy")
+```
+
+
+
+# Nonparametrics
+
+Throughout the labs, we have been exposed to some nonparametrics.  For example, we illustrated LOESS curves, discussed the Kolmogorov-Smirnov test for normality, and demonstrated nonparametric bootstrapping.  Now, we will look at a couple of nonparametric applications with an emphasis on visualization.
+
+
+
+## Kernel Density Estimators
+
+
+Let us extract the redshift measurement (`z`) from the *full* quasar dataset.  We will begin by producing a histogram and a quantile plot:
+```{r eval=FALSE}
+   z <- quasars$z
+   par(mfrow=c(1,2))
+   hist(z,breaks="scott",main="",xlab="Redshift",col="black")
+   plot(quantile(z,seq(1,100,1)/100,na.rm=T),pch=20,cex=0.5, 
+        xlab="Percentile",ylab="Redshift")
+   par(mfrow=c(1,1))
+```
+
+The `par(mfrow=c(nr,nc))` function sets up the subsequent figures in a `nr` by `nc` array.  
+
+Recall that for *iid* random variables $X_1,\ldots,X_n$, a kernel estimator with constant bandwidth $h$ has the form
+$$
+\hat{f}(x,h)=\frac{1}{n}\sum_{i=1}^{n}K\left(\frac{x-X_i}{h}\right),
+$$
+where the kernel function $K$ is normalized to unity.  There are MANY different kernels one can choose, such as the Gaussian kernel, the Epenichikov kernel, and Tukey's biweight kernel.  There are also various ways of determining $h$, such as through cross-validation, adaptively, or using a rule-of-thumb.  Usually, the shape of the kernel density is affected more by the choice of bandwidth than the choice of kernel.  Let us fit a kernel density estimator to the redshift variable with a Gaussian kernel and Tukey's biweight kernel.  Let us also use Silverman's rule-of-thumb bandwidth calculation as well as a fixed bandwidth of 0.2:
+```{r eval=FALSE}
+   par(mfrow=c(1,2))
+   plot(density(z,kernel="gaussian",bw=bw.nrd(z)),
+                main="Gaussian Kernel",xlab="Redshift",
+                lwd=2)
+   lines(density(z,kernel="gaussian",bw=0.2),lty=2,col=2,
+         lwd=2)
+   legend("topright",legend=c("Silverman's Rule","0.2"),
+          title="Bandwidth Type",bty="n",lty=1:2,col=1:2,
+          text.col=1:2)
+   plot(density(z,kernel="biweight",bw=bw.nrd(z)),
+                main="Tukey's Biweight Kernel",xlab="Redshift",
+                lwd=2)
+   lines(density(z,kernel="biweight",bw=0.2),lty=2,col=2,
+         lwd=2)
+   legend("topright",legend=c("Silverman's Rule","0.2"),
+          title="Bandwidth Type",bty="n",lty=1:2,col=1:2,
+          text.col=1:2)
+```
+
+As you can see, the choice of kernel yields little change on the overall look of the estimator.  However, the different bandwidths produce noticeably different results.
+
+
+## Nonparametric Regression
+
+There are many nonparametric (or semiparametric) regression techniques at our disposal, of which we will look at three.  First is one of the oldest estimators used for nonparametric regression.  Consider the *iid* bivariate data $(X_1,Y_1),\ldots,(X_n,Y_n)$.  The Nadaraya-Watson estimator is given by
+$$
+\hat{Y}_{NW}(x)=\frac{\sum_{i=1}^{n}Y_iK\left(\frac{x-X_i}{h}\right)}{\sum_{i=1}^{n}K\left(\frac{x-X_i}{h}\right)},
+$$
+which is just a local weighted average of the response variable using a specified kernel function and bandwidth.  
+
+Second is LOESS, which is a local regression technique we have briefly mentioned in the labs.  LOESS is often understood to stand for "LOcal regrESSion."  LOESS requires the user to define a span of the predictor values (think of this as a moving window).  Then, a polynomial regression model is fit to the data that falls within that span, hence the "local" terminology.  The smaller the span, the more noise you will essentially be modeling.  Moreover, the denser your data, the better the local model fits since LOESS depends on the local data structure.  This is true of any smoothing technique.
+
+LOESS is also closely related to LOWESS, which means "LOcally WEighted Scatterplot Smoothing".  For all intensive purposes, LOESS and LOWESS are used interchangeably.  If used in different contexts, LOWESS is understood to be a robust version of LOESS such that each smoothed value relies on a weighted linear least squares regression over the span.
+
+Finally, another common nonparametric regression technique is smoothing splines.  A smoothing spline is a smooth polynomial function that is piecewise-defined.  There is a high degree of smoothness at the locations where the polynomial segments connect, which are called knots.  Perhaps the most commonly used splines are cubic splines; i.e., they have order 3.  
+
+Let us begin by plotting the $r-i$ versus redshift relationship:
+```{r eval=FALSE}
+   r_i <- quasars$r_mag-quasars$i_mag
+   par(mfrow=c(1,1))
+   plot(z,r_i,pch=19,cex=.7,xlab="Redshift",ylab="r-i")
+``` 
+
+The above can be improved upon, especially since we don't get a good sense of how dense the data are in certain regions. We will do so by converting the scatterplot into a gray-scale image using a two-dimensional averaged shifted histogram estimator with the `ash` package [@ash]:
+```{r eval=FALSE}
+   install.packages("ash")
+```
+```{r eval=FALSE}
+   library(ash)
+```
+
+Let us now produce the contour plot using the `ash2` function:
+```{r eval=FALSE}
+   nbin <- c(500, 500) 
+   ab <- matrix(c(0.0,-0.5,5.5,2),2,2)
+   bins <- bin2(cbind(z,r_i),ab,nbin)
+   f <- ash2(bins,c(5,5)); attributes(f)
+   f$z <- log10(f$z)
+   image(f$x,f$y,f$z,col=gray(seq(0.5,0.2,by=-0.02)), 
+         zlim=c(-2.0,0.2),main='',xlab="Redshift",ylab="r-i")
+   contour(f$x,f$y,f$z,levels=c(-1.0,-0.5,0.3,0.5),add=T,
+           col=1,labcex=1.5)
+```
+
+For plotting the Nadaraya-Watson estimator, we will need to use the `np` package [@np]:
+```{r eval=FALSE}
+   install.packages("np")
+```
+```{r eval=FALSE}
+   library(np)
+```
+We can now plot the three different nonparametric regression estimates discussed above.  Note that the Nadaraya-Watson estimator is very slow to be calculated, so we simply estimate it on a subset of the values that span the range of `z1`.
+```{r eval=FALSE}
+   image(f$x,f$y,f$z,col=gray(seq(0.5,0.2,by=-0.02)), 
+         zlim=c(-2.0,0.2),main='',xlab="Redshift",ylab="r-i")
+   contour(f$x,f$y,f$z,levels=c(-1.0,-0.5,0.3,0.5),add=T,
+           col=1,labcex=1.5)
+   z1 <- sort(z)
+   r_i1 <- r_i[order(z)]
+   #LOESS Fit
+   fit1 <- loess(r_i1~z1,span=0.1)
+   lines(z1,predict(fit1),lwd=2,col=2)
+   #Smoothing Spline
+   fit2 <- smooth.spline(z1,r_i1,nknots=100)
+   lines(fit2,lwd=2,col=3)
+   #Nadaraya-Watson Estimator
+   tmp.ind <- round(seq(1,length(z1),len=1000))
+   bw <- npregbw(r_i1[tmp.ind]~z1[tmp.ind],regtype='lc',
+                 bwtype='fixed',bandwidth.compute=F,bws=0.1)
+   fit3 <- npreg(bws=bw,gradients=FALSE)
+   lines(z1[tmp.ind],fitted(fit3),lwd=2,col=4)
+   legend("topleft",bty="n",text.col=2:4,
+          legend=c("LOESS","Spline","N-W"))
+```
+
+What are some of the differences you see between the fits?  Why?  Where do the fits seem to best agree? 
+
+
+# Likelihood Calculations \& EM Algorithms
+
+## Maximum Likelihood Estimation
+
+
+Maximum likelihood estimation is, perhaps, the most common approach for estimating the parameters of a statistical model.  A maximum likelihood estimate (MLE) determines the set of values for the model parameter(s) that maximize the likelihood for the data we observed.  More formally, suppose the multivariate vectors $\textbf{X}_1,\ldots,\textbf{X}_n$ have joint density
+$$
+f_{\boldsymbol{\theta}}(\textbf{X}_1,\ldots,\textbf{X}_n)=f(\textbf{X}_1,\ldots,\textbf{X}_n;\boldsymbol{\theta}),
+$$
+which is characterized by the parameter vector $\boldsymbol{\theta}\subset\boldsymbol{\Theta}$.  Then, for observed values of the random vectors $\textbf{X}_1=\textbf{x}_1,\ldots,\textbf{X}_n=\textbf{x}_n$ (i.e., our data), the likelihood function is:
+$$
+\mathcal{L}(\boldsymbol{\theta};\textbf{x}_1,\ldots,\textbf{x}_n)=f(\textbf{x}_1,\ldots,\textbf{x}_n;\boldsymbol{\theta}).
+$$
+While the likelihood and joint density are equal to one another, the interpretation here is what matters.  The joint density is a function of *the data given the parameters* while the likelihood is a function of the *parameters given the data*.  With the latter, we can optimize with respect to the parameters and, thus, obtain the MLE:
+$$
+\hat{\boldsymbol{\theta}}_{mle}=\operatorname*{arg\,max}_{\boldsymbol{\theta}\subset\boldsymbol{\Theta}} \mathcal{L}(\boldsymbol{\theta};\textbf{x}_1,\ldots,\textbf{x}_n).
+$$
+
+As an example of maximum likelihood estimation for univariate distributions, let us return to the reduced quasars dataset and look at the distribution of the redshift variable:
+```{r eval=FALSE}
+   z.red <- quas[,4]
+   hist(z.red,prob=T,main="Redshift",xlab="Redshift Value")
+```  
+
+Clearly, the data are right-skewed.  From experience, some possible distributions to consider are the exponential, lognormal, gamma, and Weibull distributions.  After a bit of exploring, the lognormal appears to be a good fit.  So we will proceed with obtaining the MLE for the lognormal distribution.
+
+A random variable $X$ has a lognormal distribution with shape parameter $\sigma>0$ and log-scale parameter $\mu\in\mathbb{R}$ (written $X\sim\mathcal{N}(\mu,\sigma)$) with probability density function
+$$
+f(x,\mu,\sigma)=\frac{1}{x\sigma\sqrt{2\pi}}e^{-\frac{(\ln(x)-\mu)^2}{2\sigma^2}}, \ \ x>0.
+$$
+We can find the MLE in closed-form, but let us demonstrate how to compute it using the `mle` function.  
+```{r eval=FALSE}
+   library(stats4) #A standard package
+   lnorm.ll <- function(meanlog,sdlog){
+       -sum(dlnorm(z.red,meanlog,sdlog,log=T))
+   }
+   out <- mle(lnorm.ll,start=list(meanlog=-1,sdlog=1),
+              lower=c(-Inf,0.001),upper=c(100,100),
+              method="L-BFGS-B")
+   summary(out)
+```
+
+The `mle` function calls the `optim` function (see `?"optim"`), which performs optimization using various methods, including Nelder-Mead, quasi-Newton, conjugate-gradient, or box-constrained algorithms - this is specified by the `method` argument.  The `start` argument is used to specify starting values for the optimization.  When specifying a box-constrained algorithm as we have done, then `upper` and `lower` are used to specify the constraints.  
+
+Now, let us plot the estimated density curve:
+```{r eval=FALSE}
+   hist(z.red,prob=T,main="Redshift",xlab="Redshift Value")
+   x.seq <- seq(0,3,len=100)
+   lines(x.seq,dlnorm(x.seq,coef(out)[1],coef(out)[2]),col=2)
+```
+
+As you can see, the fit is quite good.  
+
+In the summary from above, we were also able to get the estimated standard errors for the MLEs.  In this particular case, we can check the accuracy of all the estimates by calculating the closed-form solutions.  Using the fact that if $X$ is lognormally distributed, then $\ln(X)$ is normally distributed, we can show that the MLEs of $\mu$ and $\sigma^2$ are
+$$
+\begin{aligned}
+\hat{\mu}&=\frac{\sum_{i=1}^{n}\ln(x_{i})}{n} \\
+\hat{\sigma}&=\sqrt{\frac{\sum_{i=1}^{n}(\ln(x_{i})-\hat{\mu})^2}{n}}. 
+\end{aligned}
+$$
+Moreover, the observed Fisher information matrix is
+$$
+\mathcal{I}(\hat{\mu},\hat{\sigma})=\left( \begin{array}{cc}
+1/\hat{\sigma}^2 & 0 \\
+0 & 2/\hat{\sigma}^2 \end{array} \right).
+$$
+The diagonal of $n[\mathcal{I}(\hat{\mu},\hat{\sigma}^2)]^{-1/2}$ then gives the corresponding standard errors of $\hat{\mu}$ and $\hat{\sigma}^2$.  Using these formulas, we can compare with the results from the optimization function we wrote:
+```{r eval=FALSE}
+   n <- length(z.red)
+   mu.hat <- mean(log(z.red))
+   s2.hat <- mean((log(z.red)-mu.hat)^2)
+   cbind(c(mu.hat,sqrt(s2.hat)),
+         c(sqrt(s2.hat/n),
+         sqrt(s2.hat/(2*n))))
+   summary(out)
+```
+
+We can also perform a nonparametric bootstrap for the estimates, which gets us close to the estimates we obtained above:
+```{r eval=FALSE}
+   set.seed(100)
+   coef.bs <- NULL
+   for(i in 1:1000){
+   x.bs <- sample(z.red,n,replace=T)
+   lnorm.ll <- function(meanlog,sdlog){
+       -sum(dlnorm(x.bs,meanlog,sdlog,log=T))
+        }
+   out.bs <- mle(lnorm.ll,start=list(meanlog=-1,sdlog=1),
+                 lower=c(-Inf,0.001),upper=c(100,100),
+                 method="L-BFGS-B")
+   coef.bs <- rbind(coef.bs,coef(out.bs))
+   }
+   mu.bs <- mean(coef.bs[,1])   
+   mu.bs.se <- sd(coef.bs[,1])
+   s.bs <- sqrt(mean(coef.bs[,2]^2))
+   s.bs.se <- sqrt(mean((coef.bs[,2]-s.bs)^2))
+   cbind(c(mu.bs,s.bs),c(mu.bs.se,s.bs.se))
+   summary(out)
+```
+
+Notice that we took the square root of the mean of the estimated variances and *not* simply the mean of the estimated standard deviations.  The latter approach would induce additional bias.
+
+
+## EM Algorithms
+
+Typically, the modeling paradigm under consideration is much more complicated than a simple univariate distribution.  Often times, no closed-form solution will be available to obtain the MLE.  Thus, we turn to numerical optimization.  One of the most popular and important classes of algorithms is Expectation-Maximization (EM) algorithms.  There are numerous different specific algorithms that can be called EM algorithms, but they all seek to iteratively maximize a likelihood function in a situation where the data may be thought of as incompletely observed.  The notion of "incompletely observed data" includes latent variables (i.e., variables not observed, but rather inferred based on other observed variables) as well as missing data problems (e.g., nonresponse on a survey or data omitted because of a measurement instrument malfunction).
+
+The name "EM algorithm" has its genesis in a seminal paper by @dlr. Many distinct algorithms published prior to 1977 were examples of EM algorithms, including the Lucy-Richardson algorithm for image deconvolution, which is well-known in astronomy. The major contribution of @dlr was to unify these algorithms and prove certain facts about them.  There is also the oft-cited text on EM algorithms by @mckrish.
+
+Let us formally define an EM algorithm.  Let $\textbf{X}$ be our random vector of observed data, $\textbf{Z}$ be a set of unobserved latent data (or missing values), and $\boldsymbol{\theta}\subset\boldsymbol{\Theta}$ be our parameter vector of interest.  Let $\mathcal{L}(\boldsymbol{\theta};\textbf{X})$ be our observed likelihood function.  We are interested in optimizing the complete likelihood function $\mathcal{L}_{c}(\boldsymbol{\theta};\textbf{X},\textbf{Z})$; however, this is unobservable since the $\textbf{Z}$ are unobserved (missing).  EM algorithms give us a basic recipe for optimizing the complete likelihood by replacing it with its conditional expectation given the unobserved data.  
+
+For iteration $t=0,1,2,\ldots$:
+
+\
+
+**Expectation-Step (E-Step)** *(Note that we formulate the EM algorithm in terms of the complete log-likelihood, which is how it is usually computed in practice.)*
+
+Calculate the following:
+$$
+Q(\boldsymbol{\theta};\boldsymbol{\theta}^{(t)})\triangleq\textrm{E}_{\textbf{Z}}[\ln\mathcal{L}_{c}(\boldsymbol{\theta};\textbf{X},\textbf{Z})|\textbf{X},\boldsymbol{\theta}^{(t)}].
+$$
+
+\
+
+
+**Maximization-Step (M-Step)**
+
+Find the parameter that maximizes the following:
+$$
+\boldsymbol{\theta}^{(t+1)}=\operatorname*{arg\,max}_{\boldsymbol{\theta}\subset\boldsymbol{\Theta}}Q(\boldsymbol{\theta};\boldsymbol{\theta}^{(t)}).
+$$
+Note that we use the convention that $t=0$ refers to the initial values specified by the user.
+
+One important property of a true EM algorithm is that it will always increase the observed log-likelihood at each iteration; i.e., $\mathcal{L}(\boldsymbol{\theta}^{(t+1)};\textbf{X})\geq\mathcal{L}(\boldsymbol{\theta}^{(t)};\textbf{X})$.  This is called the ascent property.
+
+Suppose we have bivariate normal data where some of the data is missing for the second dimension.  Let $m$ be the number of observed values and $n$ be the number of complete values.  Under such a framework, we can write-out explicit formulas for the MLEs:
+$$
+\begin{aligned}
+\hat{\mu}_{1}&=\sum_{j=1}^{n}x_{1j}/n \\
+\hat{\sigma}_{11}&=\sum_{j=1}^{n}(x_{1j}-\hat{\mu}_{1})^{2}/n \\
+\hat{\mu}_{2}&=\bar{x}_{2}+(s_{12}/s_{11})(\hat{\mu}_{1}-\bar{x}_{1}) \\
+\hat{\sigma}_{22}&=s_{22}+(s_{12}/s_{11})^{2}(\hat{\sigma}_{11}-s_{11})\\
+\hat{\sigma}_{12}&=n^{-1}\Biggl\{\left(\sum_{j=1}^{m}x_{1j}x_{2j}+\sum_{j^{*}=m+1}^{n}x_{1j^*}z_{2j^*}\right)  \\ &-n^{-1}\left(\left(\sum_{j=1}^{m}x_{1j}\right)\left(\sum_{j=1}^{m}x_{2j}\right)+\left(\sum_{j^*=m+1}^{n}x_{1j^*}\right)\left(\sum_{j^*=m+1}^{n}z_{2j^*}\right)\right)\Biggr\},
+\end{aligned}
+$$
+where for $j^{*}=(m+1),\ldots,n,$
+$$
+z_{2j^*}=\hat{\mu}_{2}+(\hat{\sigma}_{12}/\hat{\sigma}_{11})(x_{1j^*}-\hat{\mu}_{1})
+$$
+and for $i,h=1,2$,
+$$
+\begin{aligned}
+\bar{x}_{i}&=\sum_{j=1}^{m}x_{ij}\\
+s_{hi}&=\sum_{j=1}^{m}(x_{hj}-\bar{x}_h)(x_{ij}-\bar{x}_i)/m.
+\end{aligned}
+$$
+
+However, for illustrative purposes, let us construct an EM algorithm.
+The E-Step says that for $t=0,1,\ldots$ and $j^*=(m+1),\ldots,n$, 
+$$
+\begin{aligned}
+\textrm{E}_{\boldsymbol{\theta}^{(t)}}[Z_{2j^*}|X_{1j^*}]&=z_{2j^*}^{(t)}\\
+&=\mu_{2}^{(t)}+(\sigma_{12}^{(t)}/\sigma_{11}^{(t)})(x_{1j^*}-\mu_{1}^{(t)})
+\end{aligned}
+$$
+and
+$$
+\textrm{E}_{\boldsymbol{\theta}^{(t)}}[Z_{2j^*}^2|X_{1j^*}]=z_{2j^*}^{2(t)}+\sigma_{22}^{(t)}\left(1-\frac{\sigma_{12}^{2(t)}}{\sigma_{11}\sigma_{22}^{(t)}}\right)
+$$
+Then, the M-Step says that
+$$
+\begin{aligned}
+\mu_1&=T_1/n, \ \mu_2^{(t+1)}=T_2^{(t)}/n, \\
+\sigma_{11}&=(T_{11}-n^{-1}T_1^2)/n \\
+\sigma_{22}^{(t+1)}&=(T_{22}^{(t+1)}-n^{-1}T_2^{2(t+1)})/n \\
+\sigma_{12}^{(t+1)}&=(T_{12}^{(t+1)}-n^{-1}T_1 T_2^{(t+1)})/n,
+\end{aligned}
+$$
+where
+$$
+\begin{aligned}
+T_{1}&=\sum_{j=1}^{n}x_{1j}, \ T_{11}=\sum_{j=1}^{n}x_{1j}^2\\
+T_{2}^{(t)}&=\sum_{j=1}^{m}x_{2j}+\sum_{j^*=m+1}^{n}z_{2j^*}^{(t)}, \ T_{22}^{(t)}=\sum_{j=1}^{m}x_{2j}^2+\sum_{j^*=m+1}^{n}z_{2j^*}^{2(t)}\\
+T_{12}^{(t)}&=\sum_{j=1}^{m}x_{1j}x_{2j}+\sum_{j^*=m+1}^{n}x_{1j^*}z_{2j^*}^{(t)}.
+\end{aligned}
+$$
+Note in the above that quantities free of $z_{2j^*}^{(t)}$ do not need updating.  The mathematical details for the above can be found in Section 2.2.1 of @mckrish.
+
+
+Let us return to the quasars dataset and look at only the first 50 observations from the full dataset.  We will analyze the `u_mag` and `z` variables as a bivariate normal dataset.  Moreover, let us artificially "lose" the last two `z` observations in order to demonstrate the above EM algorithm:
+```{r eval=FALSE}
+   X.miss <- quasars[1:50,5]
+   Y.miss <- c(quasars[1:48,4],NA,NA)
+   plot(X.miss,Y.miss,pch=19,xlab="u_mag",ylab="z")
+```
+
+Let us compute the closed-form MLEs:
+```{r eval=FALSE}
+   n <- length(X.miss)
+   m <- sum(!is.na(Y.miss))
+   mu.1 <- mean(X.miss)
+   sigma.11 <- mean((X.miss-mu.1)^2)
+   s.12 <- sum((X.miss[1:m]-mean(X.miss))*
+           (Y.miss[1:m]-mean(Y.miss[1:m],na.rm=T)))/m
+   s.11 <- sum((X.miss[1:m]-mean(X.miss))*
+           (X.miss[1:m]-mean(X.miss[1:m])))/m
+   s.22 <- sum((Y.miss[1:m]-mean(Y.miss,na.rm=T))*
+           (Y.miss[1:m]-mean(Y.miss[1:m],na.rm=T)))/m
+   beta.hat <- s.12/s.11
+   mu.2 <- mean(Y.miss[1:m],na.rm=T)+beta.hat*
+           (mu.1-mean(X.miss[1:m]))
+   sigma.22 <- s.22 + beta.hat^2*(sigma.11-s.11)
+   z.2j <- mu.2+(s.12/s.11)*(X.miss[(m+1):n]-mu.1)
+   sigma.12 <- (sum(X.miss*c(Y.miss[1:m],z.2j))-
+               (sum(X.miss)*sum(c(Y.miss[1:m],z.2j)))/n)/n
+   mu <- c(mu.1,mu.2)
+   Sigma <- matrix(c(s.11,s.12,s.12,s.22),nrow=2)
+   ll <- sum(mvtnorm::dmvnorm(cbind(X.miss,Y.miss)[-c((m+1):n),],
+                              mean=mu,sigma=Sigma,log=TRUE))
+   MLE_cf <- c(mu.1,mu.2,sigma.11,sigma.12,sigma.22,ll)
+   MLE_cf
+```
+
+Now let us and plot the bivariate normal contours:
+```{r eval=FALSE}
+   X <- seq(17,22.25,len=50)
+   Y <- seq(0,2.75,len=50)
+   Z <- outer(X,Y,FUN=function(x,y,...){
+           apply(cbind(x,y),1,mvtnorm::dmvnorm,...)
+        },mean=mu,sigma=Sigma)
+   filled.contour(X,Y,Z,main="Bivariate Normal Density", 
+                  color.palette=topo.colors,
+                  plot.axes={ axis(1); axis(2); 
+	                points(X.miss,Y.miss,pch=19,col=2) })
+```
+
+To implement our EM algorithm, we must first propose initial values and also initialize the empty vector `MLE_EM` to keep track of our iterations:
+```{r eval=FALSE}
+   mu.1 <- 19.5
+   mu.2 <- 2.5
+   s.11 <- s.22 <- 1
+   s.12 <- 0.5
+   MLE_EM <- NULL
+```
+Next, let us run the following a few times:
+```{r eval=FALSE}
+   #Run the following 4 times
+   for(i in 1:4){
+   z.2j <- mu.2+(s.12/s.11)*(X.miss[(m+1):n]-mu.1)
+   z.2j.2 <- z.2j^2+s.22*(1-(s.12/sqrt(s.11*s.22))^2)
+   T1 <- sum(X.miss)
+   T2 <- sum(c(Y.miss[1:m],z.2j))
+   T11 <- sum(X.miss*X.miss)
+   T22 <- sum(c(Y.miss[1:m]^2,z.2j.2))
+   T12 <- sum(X.miss*c(Y.miss[1:m],z.2j))
+   T2.2 <- sum(c(Y.miss[1:m]^2,z.2j.2))
+   mu.1 <- T1/n; mu.2 <- T2/n
+   s.11 <- (T11-T1^2/n)/n 
+   s.22 <- (T22-T2^2/n)/n 
+   s.12 <- (T12-(T1*T2)/n)/n 
+   mu <- c(mu.1,mu.2)
+   Sigma <- matrix(c(s.11,s.12,s.12,s.22),nrow=2)
+   ll <- sum(mvtnorm::dmvnorm(cbind(X.miss,Y.miss)[-c((m+1):n),],
+                              mean=mu,sigma=Sigma,log=TRUE))
+   MLE_EM <- rbind(MLE_EM,c(mu.1,mu.2,s.11,s.12,s.22,ll))
+   MLE_EM
+   MLE_cf
+   X <- seq(17,22.25,len=50)
+   Y <- seq(0,2.75,len=50)
+   Z <- outer(X,Y,FUN=function(x,y,...){
+           apply(cbind(x,y),1,mvtnorm::dmvnorm,...)
+        }, mean=mu, sigma=Sigma)
+   filled.contour(X,Y,Z,main="Bivariate Normal Density", 
+                  color.palette=topo.colors,
+	                plot.axes={ axis(1); axis(2); 
+	                points(X.miss,Y.miss,pch=19,col=2) })
+   }
+```
+
+As you can see, essentially after 2 iterations the algorithm has converged and the contour plot has not changed.  Take a look at the log-likelihood, which demonstrates that the ascent property has been preserved:
+```{r eval=FALSE}
+   plot(MLE_EM[,6],type="b",pch=19,xlab="Iteration",
+        ylab="Log-Likelihood")
+```
+
+Try rerunning the above with different starting values.  Of course, if you try very absurd (or unlucky) starting values, then you might get a poor solution or even cause the program to crash!
+
+
+## Mixture of Normals
+
+
+EM algorithms are, perhaps, applied most frequently to mixture data, where we try to estimate a mixture model.  Finite mixture models are statistical models used to represent the presence of subpopulations without requiring knowledge as to which subpopulation each observation belongs.  In a typical finite mixture model, $X_{1},\ldots,X_{n}$ are a simple random
+sample from a $k$-component mixture distribution in which
+$X_{i}$ has density
+$$
+    f(x_{i}|\boldsymbol{\psi})=\sum_{j=1}^{k}\lambda_{j}g(x_{i}|\boldsymbol{\theta}_{j}),
+$$
+where $k>1$ is a fixed integer (and assumed known for now), the
+$\lambda_{j}>0$ are the component mixing proportions which sum to
+unity, and $g(\cdot|\boldsymbol{\theta}_{j})$ is a distribution for subpopulation $j$ that is parameterized by the parameter vector $\boldsymbol{\theta}_{j}$. We will focus on a mixture of normals example.  A good reference on mixture models is @mcpeel.
+
+R has many packages that handle estimation of mixture models.  Each has its own set of algorithms and tools.  I am a bit partial to the `mixtools` package [@mixtools], especially since I spent a good number of my Ph.D. days developing it!  Let us start by installing `mixtools`:
+```{r eval=FALSE}
+   install.packages("mixtools")
+```
+```{r eval=FALSE}
+   library(mixtools)
+```
+
+We are going to analyze a quasar absorption line spectra dataset.  In particular, we will look at the normalized intensity of the quasar light for the 3-times-ionized silicon line Si IV 1394 for the $z=0.653411$ absorption system.  An explanation of these data can be found at http://astrostatistics.psu.edu/datasets/QSO_absorb.html.  Let's start by looking at a histogram of the data:
+```{r eval=FALSE}
+   Si_IV_1394 <- read.table(paste(loc,"QSO_absorb.txt",sep=""),
+                            skip=1,nrows=104)[,2]
+   hist(Si_IV_1394,xlab="Velocity (km/s)")
+```
+
+Clearly, these data look to have a multi-modal distribution.  We will proceed to fit mixtures of normals models with different numbers of components (say, $k=1,\ldots,5$) using the `normalmixEM` function.  Then, we will determine the number of components for our mixture model by using the BIC value.  However, we will not be able to use the `BIC` function in R, but will have to define a new function for our mixture structure:
+```{r eval=FALSE}
+   BIC.mix <- function(out) -2*out$loglik+log(length(out$x))*
+                 (length(unlist(out[2:4]))-1)
+   out1 <- list(x=Si_IV_1394,mu=mean(Si_IV_1394),
+                sigma=sd(Si_IV_1394),lambda=1,
+                loglik=sum(dnorm(Si_IV_1394,mean(Si_IV_1394),
+                sd(Si_IV_1394),log=TRUE)))
+   set.seed(100)
+   out2 <- normalmixEM(Si_IV_1394,k=2,verb=F,eps=1e-4,
+                       mu=c(0.6,0.9),sigma=c(0.07,0.07),maxit=5000)
+   out3 <- normalmixEM(Si_IV_1394,k=3,verb=F,eps=1e-4,
+                       maxit=5000)
+   out4 <- normalmixEM(Si_IV_1394,k=4,verb=F,eps=1e-4,
+                       maxit=5000)
+   out5 <- normalmixEM(Si_IV_1394,k=5,verb=F,eps=1e-4,
+                       maxit=5000)
+   All.BIC <- c(BIC.mix(out1),BIC.mix(out2),BIC.mix(out3),
+                BIC.mix(out4),BIC.mix(out5))
+   plot(All.BIC,type="b",xlab="# of Components",ylab="BIC")
+   which.min(All.BIC)
+```  
+
+Cleary, $k=2$ components appears to be the best fit for these data.  We can also look at plots of the log-likelihood profiles and the fitted component densities.
+```{r eval=FALSE}
+   par(mfrow=c(1,2))
+   plot(out2,density=T)
+   plot(out3,density=T)
+   plot(out4,density=T)
+   plot(out5,density=T)
+```
+
+Finally, one additional way to determine the number of components is to perform a parametric bootstrap for sequentially testing the following:
+$$
+\begin{aligned}
+H_{0}&:k=k_{0} \\
+H_{A}&:k=k_{0}+1.
+\end{aligned}
+$$
+This procedure for the mixture of normals setting was presented in @mc.  Basically, the procedure involves estimating the null distribution with the data, drawing a parametric bootstrap from that distribution, then computing the likelihood ratio test statistic for the above test for each bootstrap sample.  Then, we compute a bootstrap $p$-value for the likelihood ratio test statistic of the original dataset.  We do this sequentially for testing 1 vs. 2 components, 2 vs. 3 components, etc.  We stop once we fail to reject the null hypothesis (i.e., obtain a large bootstrap $p$-value).  Fortunately, the `boot.comp` function in `mixtools` does this for us.  We will run the procedure for `B=30` bootstraps for illustrative purposes, but ideally, you would want to run such a procedure for at least `B=500` iterations.
+```{r eval=FALSE}
+   set.seed(100)
+   boot.comp(Si_IV_1394,max.comp=5,mix.type="normalmix",
+             maxit=5000,B=30,epsilon=1e-4)
+```
+
+Clearly, this procedure also selected 2 components.
+
+In the `boot.comp` function, `max.comp=5` means that we will test (at most) 5 components.  If we obtain a large value for one of the intermediate tests, then the algorithm will terminate.  We specify `mix.type="normalmix"` since this function can be applied to other mixture models.  `maxit` is the maximum number of iterations that we will allow the EM algorithm to run, `B` is the number of parametric bootstrap samples that we will draw, and `epsilon` is the difference between the observed log-likelihoods that we will use as a stopping criterion for our algorithm.  
+
+
+# Exercise
+
+**Let us analyze a dataset of the $r$-band distribution of Sloan quasars. To save you time, simply use the following code:**
+```{r eval=FALSE}
+   loc <- "http://astrostatistics.psu.edu/MSMA/datasets/"
+   SDSS_qso <- read.table(paste(loc,"SDSS_17K.dat",sep=""),
+                          header=T)
+   qso_r <- SDSS_qso[,5]
+```
+**Begin by constructing a histogram of the data.  Use the option `breaks=1000` to obtain a more-detailed histogram.  Overlay the normal density curve.  Next, use the `normalmixEM` algorithm to fit $k$-component mixture models for $k\in\{2,3,4,5\}$.  Try fitting each model from multiple starting values.  Look at the final log-likelihood to determine which fit you should keep.  After you determine the final fit for each of these, use the `BIC.mix` function we defined above to determine the appropriate number of components. Remember, we select the model that has the smallest BIC value.**
+
+
+
+<font size="5">**References**</font>

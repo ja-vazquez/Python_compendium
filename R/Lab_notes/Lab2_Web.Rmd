@@ -1,0 +1,525 @@
+---
+title: 'Astrostatistics R Tutorial: Lab 2'
+author: "Derek Young (derek.young@uky.edu)"
+date: "June 1, 2016"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    toc: yes
+fontsize: 12pt
+bibliography: Rbib.bib
+---
+
+<body style="background-color: rgb(255, 248, 229);">
+
+# Regression
+
+While you have not yet had a formal lecture on regression, I am assuming that many of you are familiar with the basic motivation of running a regression analysis.  In particular, regression models are a broad class of models characterizing the relationship between a dependent variable (response) $Y$ and one or more independent variables (predictors) $\mathbf{X}$.  Note that $\mathbf{X}$ is bold-faced to denote a vector of values from different predictors.  If only one predictor is measured, then we are in a "simple" setting and we write $X$.  Similarly, if we have multiple response variables, then we write $\mathbf{Y}$, which is a multivariate regression setting.  Regardless, the basic regression model (with univariate response and multiple predictors) is given by
+$$
+\textrm{E}[Y|\mathbf{X}]=f(\mathbf{X},\boldsymbol{\beta})+\epsilon,
+$$
+where $\boldsymbol{\beta}$ is a vector of parameters (typically regression coefficients), $f(\cdot)$ is some well-defined function (e.g., a linear function), and $\epsilon$ is a random error term.  For example, the simple linear regression model has the form
+$$
+Y=\beta_0+\beta_{1}X+\epsilon.
+$$
+
+Specifying statistical models like regression models is quite easy in R.  An R formula is written as `"y ~ model"`, where `"y"` will be the response variable and `"model"` will be all of the predictors that are to be included in the model. See the table below for more syntax.  We will spend most of this section discussing the linear model framework, hence we will be using the `lm` function.  But we will end with a demonstration of nonlinear regression modeling using the `nls` function.  Each of these functions will create output that is of a certain class; e.g., of class `"lm"` or `"nls"`.  The class of an object in R can help to determine how it is treated by functions such as `print` and `summary`.
+
+
+Generic Syntax  | Description
+------------- | -------------
+`y ~ x`  | Simple regression model with one response and one predictor.
+`y ~ x - 1`  | Does not estimate the intercept term.  Can also be accomplished 
+ \ | with `y ~ x + 0`.
+`y ~ .`  |  Include all columns (other than `y`) in the specified `data.frame` 
+ \ | as predictors.
+`y ~ x + x^2`  |  Include a quadratic term.  Obviously, higher-order polynomials can 
+ \ | be constructed similarly.
+`y ~ x:z`  |  Compute the interaction term between `x` and `z`.
+`y ~ x*z`  |  Include the main effects of `x` and `z` and their interaction term.  
+ \ | It is the same as `y ~ x + z + x:z`.
+`log10(y) ~ log10(x)`  |  Model a loglinear relationship.
+`y ~ I(x + z)`	 |  `I()` means "as is" and it tells R to perform that operation first 
+ \ | before estimating the model.  This example is a simple regression 
+ \ | model where a new predictor of `x + z` is created.
+
+
+
+## Simple Linear Regression
+
+In Lab 1, we used exploratory techniques to identify 92 stars from the Hipparcos dataset that are associated with the Hyades. We did this based on the values of right ascension, declination, principal motion of right ascension, and principal motion of declination. We then excluded one additional star with a large error of parallax measurement:
+```{r eval=FALSE}
+   library(astrodatR)
+   data(HIP)
+   attach(HIP)
+   filter1 <- (RA>50 & RA<100 & Dec>0 & Dec<25)
+   filter2 <- (pmRA>90 & pmRA<130 & pmDE>-60 & pmDE< -10) 
+   filter  <- filter1 & filter2 & (e_Plx<5) 
+   sum(filter)
+```
+Here is a quick example of linear regression relating `B.V` to `logL`, where `logL` is the luminosity, defined to be (15 - `Vmag` - 5 log(`Plx`)) / 2.5. However, we'll use only the main-sequence Hyades to fit this model -- note that the regression line passes exactly through the point (xbar, ybar):
+```{r eval=FALSE}
+   mainseqhyades <- filter & (Vmag>4 | B.V<0.2)
+   logL <- (15-Vmag-5 * log10(Plx)) / 2.5
+   x <- logL[mainseqhyades]
+   y <- B.V[mainseqhyades]
+   plot(x,y)
+   regline <- lm(y~x)   
+   abline(regline,lwd=2,col=2)
+   summary(regline)
+   points(mean(x),mean(y),col=3,pch=20,cex=3)
+```
+
+Here is a regression of `y` on exp(-`x`/4):
+```{r eval=FALSE}
+   plot(x,y)
+   newx <- exp(-x/4)
+   regline2 <- lm(y~newx)
+   xseq <- seq(min(x),max(x),len=250)
+   lines(xseq,regline2$coef%*%rbind(1,exp(-xseq/4)),
+         lwd=2,col=3)
+```
+
+Let's now switch to a new dataset, one that comes from NASA's Swift satellite. This dataset is described at http://www.astrostatistics.psu.edu/datasets/GRB_afterglow.html. The statistical problem at hand is modeling the X-ray afterglow of gamma-ray bursts. First, read in the dataset:
+```{r eval=FALSE}
+   loc <- "http://astrostatistics.psu.edu/datasets/"
+   grb <- read.table(paste(loc,"GRB_afterglow.dat",sep=""), 
+                     header=T,skip=1)
+```
+In the above, I have used the `paste` function simply because the character string representing the file location is so long.  In practice, you would just specify the full link of the dataset as the first argument of `read.table`. We use the `skip=1` option since the raw file has some ancillary information entered on the first line.  We will focus on the first two columns, which are times and X-ray fluxes:
+```{r eval=FALSE}
+   plot(grb[,1:2],xlab="time",ylab="flux")
+```
+
+This plot is very hard to interpret because of the scales, so let's take the natural log of each variable:
+```{r eval=FALSE}
+   x <- log(grb[,1])
+   y <- log(grb[,2])
+   plot(x,y,xlab="log time",ylab="log flux")
+```
+
+The relationship looks roughly linear, which is also substantiated by a test of the correlation coefficient: 
+```{r eval=FALSE}
+   cor.test(x,y)
+```
+So let's try a linear model:
+```{r eval=FALSE}
+   plot(x,y,xlab="log time",ylab="log flux")
+   model1 <- lm(y~x)
+   abline(model1,col=2,lwd=2)
+   model1 #Same as print(model1)
+   summary(model1)
+```
+
+Notice the sigma-hat, R-squared, adjusted R-squared, and the standard errors of the beta-hats in the output from the `summary` function.
+
+There is a lot of information contained in model1 that is not displayed by `print` or `summary`:
+```{r eval=FALSE}
+   names(model1)
+```
+For instance, we will use the `model1$fitted.values` and `model1$residuals` information later when we look at some residuals plots.
+
+## Confidence Ellipses
+
+Notice that the coefficient estimates are listed in a regression table, which is standard regression output for any software package. This table gives not only the estimates, but their standard errors as well, which enables us to determine whether the estimates are very different from zero. It is possible to give individual confidence intervals for both the intercept parameter and the slope parameter based on this information, but remember that a line really requires both a slope and an intercept. Since our goal is to estimate a line here, it would be better if we could somehow obtain a confidence "interval" for the lines themselves.
+
+By viewing a line as a single two-dimensional point in (intercept, slope) space, we set up a one-to-one correspondence between all (nonvertical) lines and all points in two-dimensional space. It is possible to obtain a two-dimensional confidence ellipse for the (intercept, slope) points, which may then be mapped back into the set of lines to see what it looks like.  Performing all the calculations necessary to do this is somewhat tedious, but fortunately, they are available in the `car` package.  In Lab 1, we already installed this package, so let us load it:
+```{r eval=FALSE}
+   library(car)
+```
+
+With the `car` package loaded, we can construct a 95\% confidence ellipse for the (intercept,slope) pairs:
+```{r eval=FALSE}
+   confidenceEllipse(model1)
+```
+
+Remember that each point on the boundary or in the interior of this ellipse represents a line. If we were to plot all of these lines on the original scatterplot, the region they described would be a 95\% confidence band for the true regression line. Myself and David Hunter wrote a simple function to draw the borders of this band on a scatterplot. You can see this function at http://sites.stat.psu.edu/~dhunter/R/confidence.band.r; to read it into R, use the source function:
+```{r eval=FALSE}
+   source(paste("http://sites.stat.psu.edu/~dhunter/R/",
+                "confidence.band.r",sep=""))
+   confidence.band(model1)
+```
+
+In this dataset, the confidence band is so narrow that it is hard to see. However, the borders of the band are not straight. You can see the curvature much better when there are fewer points or more variation, as in:
+```{r eval=FALSE}
+   set.seed(100)
+   tmpx <- 1:10
+   tmpy <- 1:10+rnorm(10) #Add random Gaussian noise
+   confidence.band(lm(tmpy~tmpx))
+```
+
+Also note that increasing the sample size increases the precision of the estimated line, thus narrowing the confidence band. Compare the previous plot with the one obtained by replicating `tmpx` and `tmpy` 25 times each:
+```{r eval=FALSE}
+   tmpx25 <- rep(tmpx,25)
+   tmpy25 <- rep(tmpy,25)
+   confidence.band(lm(tmpy25~tmpx25))
+```
+
+A related phenomenon is illustrated if we are given a value of the predictor and asked to predict the response. Two types of intervals are commonly reported in this case: a prediction interval for an individual observation with that predictor value, and a confidence interval for the mean of all individuals with that predictor value. [NOTE: A third type of interval is a "tolerance interval," which provides bounds that capture a specified proportion of the sampled population at a given confidence level.  Many tolerance interval calculations are available in the `tolerance` package by @tolerance.] For a given confidence level, the former is always wider than the latter because it accounts for not only the uncertainty in estimating the true line but also the individual variation around the true line. This phenomenon may be illustrated as follows. Again, we use a toy dataset here because the effect is harder to observe on our astronomical dataset. As usual, 95\% is the default confidence level.
+```{r eval=FALSE}
+   confidence.band(lm(tmpy~tmpx))
+   PI <- predict(lm(tmpy~tmpx),data.frame(tmpx=7), 
+                 interval="prediction")
+   text(c(7,7,7),as.numeric(PI),"P",col=4)
+   CI <- predict(lm(tmpy~tmpx),data.frame(tmpx=7), 
+                 interval="confidence")
+   text(c(7,7,7),as.numeric(CI),"C",col=5)
+```
+
+## Polynomial Regression
+
+Because there appears to be a bit of a bend in the scatterplot, let's try fitting a quadratic curve instead of a linear curve. We already alluded how to handle this earlier.  Fitting a quadratic curve is still considered linear regression since the response `y` is a linear combination of `1`, `x`, and `x^2`.
+```{r eval=FALSE}
+   plot(x,y,xlab="log time",ylab="log flux")
+   model2 <- lm(y~x+I(x^2))
+   summary(model2)
+```
+
+Here is how to find the estimates of beta using the closed-form solution:
+```{r eval=FALSE}
+   X <- cbind(1, x, x^2) #Create nx3 X matrix
+   solve(t(X) %*% X) %*% t(X) %*% y #Compare to earlier output
+```
+
+Plotting the quadratic curve is not a simple matter of using the `abline` function. To obtain the plot, we'll first create a sequence of `x` values, then apply the linear combination implied by the regression model using matrix multiplication:
+```{r eval=FALSE}
+   plot(x,y,xlab="log time",ylab="log flux")
+   abline(model1,col=2,lwd=2)
+   xx <- seq(min(x),max(x),len=200)
+   yy <- model2$coef %*% rbind(1,xx,xx^2)
+   lines(xx,yy,lwd=2,col=3)
+```
+
+## Some Regression Diagnostics
+
+Comparing the (red) linear fit with the (green) quadratic fit visually, it does appear that the latter looks slightly better. However, let's check some diagnostic residual plots for these two models. To do this, we'll use the `plot` command, which is being applied to an object of class `lm`.  `plot` recognizes that you are applying it to an object of class `lm` and, hence, implements the `plot.lm` function, which is an S3 method (see http://adv-r.had.co.nz/OO-essentials.html for a disucssion about the three primary object-oriented systems in R).  The present use of `plot` is capable of producing six different types of diagnostic plots. We will only consider two of the six: a plot of residuals versus fitted values and a normal quantile-quantile (Q-Q) plot.
+```{r eval=FALSE}
+   plot(model1,which=1:2)
+```
+
+Looking at the first plot, residuals vs. fitted, we immediately see a problem with `model1`. A "nice" residual plot should have residuals both above and below the zero line, with the vertical spread around the line roughly of the same magnitude no matter what the value on the horizontal axis. Furthermore, there should be no obvious curvature pattern. The red line is a LOESS (LOcal regrESSion) smoother produced to help discern any patterns (more on LOESS later), but this line is not necessary in the case of `model1` to see the clear pattern of negative residuals on the left, positive in the middle, and negative on the right. There is curvature here that the model missed!
+
+Pressing the return key to see the second plot reveals a normal quantile-quantile plot. The idea behind this plot is that it will make a random sample from a normal distribution look like a straight line. To the extent that the normal Q-Q plot does not look like a straight line, the assumption of normality of the residuals is suspicious. For `model1`, the clear S-shaped pattern indicates non-normality of the residuals.
+
+How do the same plots look for the quadratic fit?
+```{r eval=FALSE}
+   plot(model2,which=1:2)
+```
+
+These plots are much better-looking. There is a little bit of waviness in the residuals vs. fitted plot, but the pattern is nowhere near as obvious as it was before. And there appear to be several outliers among the residuals on the normal Q-Q plot, but the normality assumption looks much less suspect here.
+
+The residuals we have been using in the above plots are the ordinary residuals. However, it is important to keep in mind that even if all of the assumptions of the regression model are perfectly true (including the assumption that all errors have the same variance), the variances of the residuals are not equal. For this reason, it is better to use the Studentized residuals. Unfortunately, R reports the ordinary residuals by default and it is necessary to call another function to obtain the Studentized residuals. The good news is that in most datasets, residual plots using the Studentized residuals are essentially indistinguishable in shape from residual plots using the ordinary residuals, which means that we would come to the same conclusions regardless of which set of residuals we use.
+```{r eval=FALSE}
+   rstu <- rstudent(model2)
+   plot(model2$fit,rstu)
+```
+
+To see how similar the Studentized residuals are to a scaled version of the ordinary residuals (called the standardized residuals), we can depict both on the same plot:
+```{r eval=FALSE}
+   rsta <- rstandard(model2)
+   plot(model2$fit,rstu)
+   points(model2$fit,rsta,col=2,pch=3)
+```
+
+In addition to ordinary and Studentized residuals, there are numerous other quantities that can be used for regression diagnostics:
+```{r eval=FALSE}
+   ?"influence.measures"
+```
+
+Finally, let's check the variance inflation factors (VIFs) for the quadratic fit. It does not make sense to look at the VIFs for `model1`, which has only one term (try it and see what happens). So we'll start by examining `model2`.
+```{r eval=FALSE}
+   vif(model2)
+```
+
+The VIFs of more than 70 indicate a high degree of collinearity between the values of `x` and `x^2` (the two predictors). This is not surprising, since `x` has a range from about 5 to 13. In fact, it is easy to visualize the collinearity in a plot:
+```{r eval=FALSE}
+   plot(x,x^2) #Note the highly linear-looking plot
+```
+
+To correct the collinearity, we'll replace `x` and `x^2` by `(x-m)` and `(x-m)^2`, where `m` is the sample mean of `x`:
+```{r eval=FALSE}
+   centered.x <- x-mean(x)
+   model2.2 <- lm(y~centered.x+I(centered.x^2))
+```
+
+This new model has much lower VIFs, which means that we have greatly reduced the collinearity. However, the fit is exactly the same: It is still the best-fitting quadratic curve. We may demonstrate this by plotting both fits on the same set of axes:
+```{r eval=FALSE}
+   plot(x,y,xlab="log time",ylab="log flux")
+   yy2 <- model2.2$coef%*%rbind(1,xx-mean(x),(xx-mean(x))^2)
+   lines(xx,yy,lwd=2,col=2)
+   lines(xx,yy2,lwd=2,col=3,lty=2)
+```
+
+## Nonlinear Regression
+
+We end this section with a demonstration of nonlinear regression in R.  We examine the univariate radial brightness distributions of three elliptical galaxies: NGC 4472, NGC 4406, and NGC 4551.  These profiles are based on images obtained with NASA's Hubble Space Telescope.  In particular, we will fit S&eacute;rsic's generalized de Vaucouleurs law:
+$$
+\log_{10}I(r)=\log_{10}I_{e}+b_{n}[(r/r_{e})^{1/n}-1],
+$$
+where $r_{e}$ is the galaxy's effective radius, $b_{n}\simeq 0.868n-0.142$ for $0.5<n<16.5$, and the observed surface brightness profile is measured in units of
+$$
+\mu(r)=\mu_{0}-2.5\log_{10}I(r) \ \textrm{mag arcsec}^{-2}.
+$$
+Clearly the above is a nonlinear model in $r_{e}$ and $n$.
+
+We will now read in the three datasets and fit the model given above:
+```{r eval=FALSE}
+   data("ell_gal_profile")
+   NGC4472 <- subset(ell_gal_profile,galaxy=="NGC.4472",select=2:3)
+   NGC4406 <- subset(ell_gal_profile,galaxy=="NGC.4406",select=2:3)
+   NGC4551 <- subset(ell_gal_profile,galaxy=="NGC.4551",select=2:3)
+   ###NGC 4472
+   NGC4472.fit <- nls(surf_mag~-2.5*log10(I.e*
+                      10^(-(0.868*n-0.142)*((radius/r.e)^{1/n}-
+                      1)))+26,data=NGC4472,start=list(
+                      I.e=20.,r.e=120.,n=4.),model=T,trace=T)
+   plot(NGC4472.fit$model$radius,NGC4472.fit$model$surf_mag, 
+        pch=20,xlab="r  (arcsec)",ylab=expression(mu ~~ 
+        (mag/sq.arcsec)),ylim=c(16,28),cex.lab=1.5,cex.axis=1.5)
+   lines(NGC4472.fit$model$radius,fitted(NGC4472.fit))
+   ###NGC 4406
+   NGC4406.fit <- nls(surf_mag~-2.5*log10(I.e*
+                      10^(-(0.868*n-0.142)*((radius/r.e)^{1/n}-
+                      1)))+32,data=NGC4406,start=list(
+                      I.e=20.,r.e=120.,n=4.),model=T,trace=T)
+   points(NGC4406.fit$model$radius,NGC4406.fit$model$surf_mag,
+          pch=3,col=2)
+   lines(NGC4406.fit$model$radius,fitted(NGC4406.fit),col=2)
+   ###NGC 4551
+   NGC4551.fit <- nls(surf_mag~-2.5*log10(I.e*
+                      10^(-(0.868*n-0.142)*((radius/r.e)^{1/n}-
+                      1)))+26,data=NGC4551,start=list(
+                      I.e=20.,r.e=15.,n=4.),model=T,trace=T)
+   points(NGC4551.fit$model$radius,NGC4551.fit$model$surf_mag,
+          pch=5,col=3)
+   lines(NGC4551.fit$model$radius,fitted(NGC4551.fit),col=3)
+   legend(500,20,c("NGC 4472","NGC 4406","NGC 4551"), 
+          pch=c(20,3,5),col=1:3,text.col=1:3)
+```
+
+Clearly, the figure demonstrates the nonlinear pattern observed with these data.  Moreover, the fitted nonlinear regression curves appear to be a good fit.  Let us dig deeper into the results.
+```{r eval=FALSE}
+   summary(NGC4472.fit)
+   summary(NGC4406.fit)
+   summary(NGC4551.fit)
+```
+These results are formatted similar to the `lm` output we analyzed earlier.  For these three datasets, all of the predictor variables are highly statistically significant.  Let us also do a simple test of normality on the residuals:
+```{r eval=FALSE}
+   par(mfrow=c(1,3))
+   qqnorm(residuals(NGC4472.fit)/summary(NGC4472.fit)$sigma) 
+   abline(a=0,b=1)
+   shapiro.test(residuals(NGC4472.fit)/
+      summary(NGC4472.fit)$sigma)
+   qqnorm(residuals(NGC4406.fit)/summary(NGC4406.fit)$sigma) 
+   abline(a=0,b=1)
+   shapiro.test(residuals(NGC4406.fit)/
+      summary(NGC4406.fit)$sigma)
+   qqnorm(residuals(NGC4551.fit)/summary(NGC4551.fit)$sigma) 
+   abline(a=0,b=1)
+   shapiro.test(residuals(NGC4551.fit)/
+      summary(NGC4551.fit)$sigma)
+```
+The $p$-values for each test are quite high, thus indicating that the distribution of each set of residuals is consistent with a normal distribution.  However, there is still some autocorrelated behavior that occurs in the residuals, which indicates that such data could benefit from, say, including an autoregressive error structure.  While we will not be digressing further into time series, a good reference on the topic (with many examples in R) is @shum.
+
+# Bootstrapping
+
+While we have not formally dived into nonparametric statistics, we will make use of some of those techniques in this section.  As we will see, there are nonparametric and parametric bootstrapping procedures.  There is also a third approach, which is considered "semiparametric," but we will not discuss such techniques here.
+
+## Nonparametric Bootstrapping
+
+Let us return the Hipparcos dataset and, in particular, the log-luminosity for the 88 main sequence stars:
+```{r eval=FALSE}
+   x <- logL[mainseqhyades]
+   y <- B.V[mainseqhyades]
+   par(mfrow=c(1,1))
+   plot(x,y)
+   regline <- lm(y~x)   
+   abline(regline,lwd=2,col=2)
+```
+
+Let us proceed with a resistant regression procedure on these data.  More importantly, let us investigate how to obtain standard errors for estimates under this paradigm using bootstrapping.  Fortunately, there is a `boot` package in R, part of the base R distribution, that contains many functions relevant to bootstrapping.
+```{r eval=FALSE}
+   library(boot)
+   library(MASS)
+   mystat <- function(a,b){
+     lqs(a[b,2]~a[b,1])$coef}
+   set.seed(100)
+   model2B.2  <- boot(cbind(x,y),mystat,200)
+   names(model2B.2)
+```
+
+As explained in the help file, the `boot` function requires as input a function that accepts as arguments the whole dataset and an index that references an observation from that dataset. This is why we defined the `mystat` function above. To see the output that is similar to that obtained earlier for the `m2B` object, look in `m2B2$t`:
+```{r eval=FALSE}
+   cov(model2B.2$t)
+   sqrt(diag(cov(model2B.2$t)))
+```
+Compare with the output provided by `print.boot` and the plot produced by `plot.boot`:
+```{r eval=FALSE}
+   model2B.2
+   plot(model2B.2)
+```
+
+Another related function for producing bootstrap confidence intervals, is `boot.ci`.
+
+## Parametric Bootstrapping
+
+Sometimes, resampling is done from a theoretical distribution rather than from the original sample. For example, if simple linear regression is applied to the regression of `pmDE` on `Dec`:
+```{r eval=FALSE}
+   x <- Dec[filter]
+   y <- pmDE[filter]
+   plot(x,y,pch=20)
+   model1 <- lm(y ~ x)
+   abline(model1,lwd=2,col=2)
+```
+
+We then obtain a parametric estimate of the distribution of the residuals, namely, normal with mean zero and standard deviation estimated from the regression:
+```{r eval=FALSE}
+   summary(model1)
+```
+
+A parametric bootstrap scheme proceeds by simulating a new set of `pmDE` (or `y`) values using the model
+```{r eval=FALSE}
+   y <- 0.747-0.407*x+0.0649*rnorm(92)
+```
+
+Then, we refit a linear model using `y` as the new response, obtaining slightly different values of the regression coefficients. If this is repeated, we obtain an approximation of the joint distribution of the regression coefficients for this model.
+
+Naturally, the same approach could be tried with other regression methods, but careful thought should be given to the parametric model used to generate the new residuals. In the normal case discussed here, the parametric bootstrap is simple, but it is really not necessary because standard linear regression already gives a very good approximation to the joint distribution of the regression coefficients when errors are heteroscedastic and normal. One possible use of this method is in a model that assumes the absolute residuals are exponentially distributed, in which case a method like least absolute deviation regression is justified. You are encouraged to implement a parametric bootstrap using the `rq` function found in the `quantreg` package [@quantreg], but we will not do so here.
+
+Earlier we considered a $t$-test of the comparison between Hyades and non-Hyades in terms of color. This test is based on an asymptotic approximation of the null distribution of the $t$-statistic (i.e., the distribution of the $t$-statistic under the assumption that our model is the truth and the null hypothesis of equal population means is true). However, we can also simulate from the null distribution instead of relying an the asymptotic approximation. (NB: The approximation is only exact if both populations are exactly normally distributed.)
+```{r eval=FALSE}
+   H <- B.V[filter]
+   nH <- B.V[!filter & !is.na(B.V)]
+   tlist2 <- NULL
+   all <- c(H,nH)
+   set.seed(100)
+   for(i in 1:5000) {
+      s <- sample(2586,92) #Choose a sample
+      tlist2 <- c(tlist2,t.test(all[s],all[-s],
+                  var.eq=T)$stat) #Add t-stat to list
+   }
+```
+
+Let's look at two different ways of assessing whether the values in the `tlist2` vector appear to be a random sample from a standard normal distribution. The first is graphical, and the second uses the Kolmogorov-Smirnov test.
+```{r eval=FALSE}
+   plot(qnorm((2*(1:5000)-1)/10000),sort(tlist2))
+   abline(0,1,col=2)
+   ks.test(tlist2,"pnorm")
+```
+
+The graphical method does not show any major deviation from standard normality, but this graphical "test" is better able to detect departures from an overall normal shape than to detect, say, a shift of the mean away from zero. The following procedures illustrate this fact:
+```{r eval=FALSE}
+   plot(qnorm((2*(1:5000)-1)/10000),sort(tlist2)-mean(tlist2))
+   abline(0,1,col=2)
+   ks.test(tlist2-mean(tlist2),"pnorm")
+```
+
+The graphical plot shows no discernible difference from before, but we see a vast difference in the new $p$-value returned by the Kolmogorov-Smirnov test.  However, let us now consider the $p$-value returned by the last use of `ks.test` above. It is not quite valid because the theoretical null distribution against which we are testing depends upon an estimate (the mean) derived from the data. To get a more accurate $p$-value, we may use a bootstrap approach.
+
+First, obtain the Kolmogorov-Smirnov test statistic from the test above:
+```{r eval=FALSE}
+   obs.ksstat <- ks.test(tlist2-mean(tlist2),
+                         "pnorm")$stat
+```
+
+Now we'll generate a new bunch of these statistics under the null hypothesis that `tlist2` really represents a random sample from some normal distribution with variance 1 and unknown mean:
+```{r eval=FALSE}
+   random.ksstat <- NULL
+   for(i in 1:1000) {
+      x <- rnorm(5000)
+      random.ksstat <- c(random.ksstat,
+         ks.test(x,pnorm,mean=mean(x))$stat)
+   }
+```
+
+Now let's look at a histogram of the test statistics and estimate a $p$-value:
+```{r eval=FALSE}
+   hist(random.ksstat,nclass=40)
+   abline(v=obs.ksstat,lty=2,col=2)
+   mean(random.ksstat>=obs.ksstat)
+```
+
+Note that the approximate $p$-value above is smaller than the original $p$-value reported by `newkstest`, though it is still not small enough to provide strong evidence that the `tlist2` sample is not normal with unit variance.
+
+The bootstrap procedure above relied on multiple resamples with replacement. Since these samples were drawn from a theoretical population (in this case, a normal distribution with parameters that might be determined by the data), it is considered a parametric bootstrap procedure.  In a nonparametric bootstrap procedure, the resamples are taken from the empirical distribution of the data (that is, from a distribution that places mass $1/n$ on each of the $n$ observed values). 
+
+# Model Selection
+
+Two hallmarks (among others) of a good model are parsimony and goodness-of-fit.  We have investigated various goodness-of-fit measures thus far in the labs.  However, we have not discussed parsimony (i.e., model simplicity), which we aim to achieve using model selection procedures.  There are many different model selection procedures that can be employed, such as bootstrapping the likelihood ratio test statistic, $R^{2}$ measures, and information criteria.  We will demonstrate the latter two here, while the bootstrapping approach will be demonstrated later.
+
+## AIC and BIC
+
+Let us revisit the Hipparcos dataset:
+```{r eval=FALSE}
+   x <- logL[mainseqhyades]
+   y <- B.V[mainseqhyades]
+   plot(x,y)
+```
+
+We will fit various polynomial models and compare the AIC and BIC values for these fits and higher-order fits. Without getting too deeply into details, the idea behind these information criteria is that we know models with more parameters should achieve a higher maximized log-likelihood than the model with fewer parameters. However, it may be that the additional increase in the log-likelihood statistic achieved with more parameters is not worth adding the additional parameters. We may test whether it is worth adding the additional parameters by penalizing the log-likeilhood by subtracting some positive multiple of the number of parameters. In practice, for technical reasons we take -2 times the log-likelihood, add a positive multiple of the number of parameters, and look for the smallest resulting value. For AIC, the positive multiple is 2; for BIC, it is the natural log of $n$, the number of observations. Remember that R is case-sensitive, so `"AIC"` and `"BIC"` must be all capital letters. 
+
+Let us fit all the way up to a $6^{\textrm{th}}$-order polynomial.  Remember that `I()` means "as is" and it tells R to perform that operation first before estimating the model. 
+```{r eval=FALSE}
+   model1 <- lm(y~x)
+   model2 <- lm(y~x+I(x^2))
+   model3 <- lm(y~x+I(x^2)+I(x^3))
+   model4 <- lm(y~x+I(x^2)+I(x^3)+I(x^4))
+   model5 <- lm(y~x+I(x^2)+I(x^3)+I(x^4)+I(x^5))
+   model6 <- lm(y~x+I(x^2)+I(x^3)+I(x^4)+I(x^5)+I(x^6))
+```
+
+Next, let us calculate and plot the AIC and BIC values for each of these fits.
+```{r eval=FALSE}
+   library(stats4) #Necessary for the BIC function
+   AIC.m <- c(AIC(model1),AIC(model2),AIC(model3),
+              AIC(model4),AIC(model5),AIC(model6))
+   BIC.m <- c(BIC(model1),BIC(model2),BIC(model3),
+              BIC(model4),BIC(model5),BIC(model6))
+   plot(1:6,AIC.m,ylim=c(-280,-220),pch=19,xlab="Order",
+        ylab="AIC/BIC Value")
+   lines(1:6,AIC.m)
+   points(1:6,BIC.m,pch=21,col=2)
+   lines(1:6,BIC.m,col=2)
+   legend("topright",legend=c("AIC","BIC"),col=1:2,
+          text.col=1:2,pch=c(19,21))
+   which.min(AIC.m)
+   which.min(BIC.m)
+```
+
+The model selected by AIC is the $5^{\textrm{th}}$-order polynomial, however, BIC selects the quadratic fit.  The quadratic fit is likely due to the uptick that occurs near the higher `x` values.  AIC is known to occasionally overfit, meaning that it sometimes favors models with more parameters than it should have. The BIC uses a larger penalty than AIC, and it is often more consistent with selecting better models.
+
+## $R^2$ and Adjusted-$R^2$
+
+An alternative measure that is sometimes used is the adjusted-$R^{2}$; however, it also tends to overfit.  Below we extract both the $R^{2}$ and adjusted-$R^{2}$ values.  Does the increase in $R^{2}$ values make sense?  Why?
+```{r eval=FALSE}
+   r.sq <- c(summary(model1)[[8]],summary(model2)[[8]],
+             summary(model3)[[8]],summary(model4)[[8]],
+             summary(model5)[[8]],summary(model6)[[8]])
+   adj.r.sq <- c(summary(model1)[[9]],summary(model2)[[9]],
+                 summary(model3)[[9]],summary(model4)[[9]],
+                 summary(model5)[[9]],summary(model6)[[9]])
+   r.sq
+   adj.r.sq
+   which.max(r.sq)
+   which.max(adj.r.sq)
+```
+
+# Exercise
+
+**Let us return to the X-ray afterglow of gamma-ray bursts data.  Consider fitting the simple linear regression model with a changepoint ($k$), which looks like:**
+$$
+Y=\beta _{0}+\beta_{1}X+\beta_{2}(X-k)I\{X>k\}+\epsilon,
+$$
+**where $I\{\cdot\}$ is the indicator
+function such that**
+$$
+I\{X>k\}=\left\{\begin{array}{ll}
+1, & \hbox{if $X>k$;} \\
+0, & \hbox{otherwise.}
+\end{array} \right.
+$$
+**Using the `lm` function, perform the following: (i) fit the simple linear regression model (which we did earlier), (ii) fit the simple linear regression model with the changepoint $k=7$, and (iii) fit the simple linear regression model with the changepoint $k=8.5$.  Plot the estimated regression lines from all three fits on the same plot.  Finally, compute the BIC for the three fits to see which is the "best."**
+
+<font size="5">**References**</font>
