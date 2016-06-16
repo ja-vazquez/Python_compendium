@@ -44,7 +44,7 @@ csv files, and plotting with pandas.
 * [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
 * [IPython Notebook & Pandas](https://github.com/ja-vazquez/Python_compendium/blob/master/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
 
-### Databases
+### SQL
 
 * [Interacting with databases (sqlite3)](https://github.com/ja-vazquez/Python_compendium/blob/master/Interacting_with_databases.ipynb): Employees-table.
 
