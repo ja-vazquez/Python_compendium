@@ -137,6 +137,10 @@ Provides classes and functions for the estimation of many different statistical 
 * X - [SQLAlchemy](http://www.sqlalchemy.org/library.html#tutorials)
 * X - [Tuturial SQLAlchemy](http://pythoncentral.io/introductory-tutorial-python-sqlalchemy/)
 
+### R
+
+* X - [New York City R conference](http://www.rstats.nyc/2016)
+
 ### Visualizations
 
 * [Matplotlib](http://matplotlib.org/): python 2D plotting library.
