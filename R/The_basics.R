@@ -1,6 +1,6 @@
 ######################################################################
 ######## R Syntax
-######################################################################
+
 
 #Highlight this line and click "Run" at the top of the RStudio window.
 
@@ -8,6 +8,7 @@
 ?sd #You can also type ?"sd"
 
 example(sd)
+
 
 ########### Vectors
 vec1 <- c(1,9,3,-10,pi); vec1
@@ -62,6 +63,7 @@ mean(na.vec, na.rm=T)
 0/0
 Inf-Inf
 
+########################################################
 ########## Matrices
 tmp <- 1:4
 mat1 <- matrix(tmp, nrow=2, ncol=2)
@@ -76,7 +78,7 @@ mat1 %*% mat1
 #and element-wise
 mat1 * mat1
 
-
+########################################################
 ########## Stats
 
 #transpose
@@ -89,7 +91,7 @@ vec4 <- c(mat1)
 object.size(mat1)
 object.size(vec4)
 
-
+########################################################
 ########## Data frames 
 #like in pandas!
 
@@ -99,6 +101,7 @@ z <- letters[1:10]
 tmp.frame <- data.frame(x,y,z)
 tmp.frame
 
+########################################################
 ########## Lists
 list1 <- list(V1=vec1, V2=vec2, M1=mat1)
 list1
@@ -119,6 +122,7 @@ ratio <- function(x,y) x**2/y
 ratio(3,6)
 
 
+################################################################
 ######## R Workspace Basics
 
 getwd() 
@@ -134,3 +138,39 @@ install.packages("car")
 library(car)
 
 help(package="car")
+
+
+######################################################################
+######## Probability Distributions
+
+
+
+?"Distributions"
+
+#dnorm gives the density, pnorm gives the distribution function, 
+#qnorm gives the quantile function, and rnorm generates random deviates.
+
+dnorm(4,mean=0,sd=3)
+pnorm(4,mean=0,sd=3)
+
+qnorm(seq(0.1,0.9,by=0.1), mean=0, sd=3)
+
+x <- rnorm(10, mean=0, sd=3)
+x
+
+#fix the seed
+set.seed(100)
+x <- rnorm(10,mean=0,sd=3)
+x
+
+
+#simple plot of density
+# Exponential Distribution
+xdens <- seq(0,5,0.02)
+plot(xdens,dexp(xdens,rate=0.5),type='l',ylim=c(0,1.5), 
+     xlab='x',ylab='Exponential p.d.f.',lty=1)
+lines(xdens,dexp(xdens,rate=1),type='l',lty=2,col=2)
+lines(xdens,dexp(xdens,rate=1.5),type='l',lty=3,col=3)
+legend("topright",legend=c(expression(lambda==0.5),expression(lambda==1.0),
+                           expression(lambda==1.5)),col=1:3,lty=1:3)
+

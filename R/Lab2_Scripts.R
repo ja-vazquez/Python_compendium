@@ -43,6 +43,7 @@ regline <- lm(y~x)
 abline(regline,lwd=2,col=2)
 summary(regline)
 
+
 #get the value of y at x=1
 predict(regline, newdata = data.frame(x=1))
 #names
@@ -61,7 +62,7 @@ lines(xseq,regline2$coef%*%rbind(1,exp(-xseq/4)),
       lwd=2,col=3)
 
 
-# read data from website
+# Read GRB data from website
 loc <- "http://astrostatistics.psu.edu/datasets/"
 grb <- read.table(paste(loc,"GRB_afterglow.dat",sep=""), 
                   header=T,skip=1)
@@ -83,6 +84,7 @@ summary(model1)
 
 names(model1)
 
+######################################################################
 ######## Confidence Ellipses
 
 install.packages("car")
@@ -90,6 +92,9 @@ library(car)
 
 #Ellipses around mean values
 confidenceEllipse(model1)
+
+######################################################################
+##Confidence bands
 
 #confidence intervals within the line
 source(paste("http://www.stat.psu.edu/~dhunter/R/",
@@ -116,11 +121,14 @@ CI <- predict(lm(tmpy~tmpx),data.frame(tmpx=7),
               interval="confidence")
 text(c(7,7,7),as.numeric(CI),"C",col=5)
 
+######################################################################
 ######## Polynomial Regression
 
 plot(x,y,xlab="log time",ylab="log flux")
 model2 <- lm(y~x+I(x^2))
 summary(model2)
+
+# Fit a polinomial form 
 
 X <- cbind(1, x, x^2) #Create nx3 X matrix
 #beta = (X^T X^-1) X^T Y
