@@ -76,3 +76,69 @@ HAVING count(e.emp_id) > 2;
 
 
 
+########################################################################
+
+#The ORDER BY clause
+#The order by clause is the mechanism for sorting your result set
+#using either raw column data or expressions based on column data
+
+
+SELECT open_emp_id, product_cd
+	FROM account
+	ORDER BY open_emp_id, product_cd;
+
+
+
+#Ascending versus Descending sort order
+
+SELECT account_id, product_cd, open_date, avail_balance
+	FROM account
+	ORDER BY avail_balance DESC;
+
+
+
+#Sorting via Expressions
+#Right : sort by the  last three digits
+
+SELECT cust_id, cust_type_cd, city, state, fed_id
+FROM customer
+ORDER BY RIGHT(fed_id, 3);
+
+
+#Sorting via numeric Placeholders
+# by column order
+
+SELECT emp_id, title, start_date, fname, lname
+FROM employee
+ORDER BY 2, 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
