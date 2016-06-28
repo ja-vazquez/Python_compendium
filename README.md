@@ -5,6 +5,12 @@ coding (hopefully they'll be useful in future references).
 **N.B.** highly encouraged to recycle and make use of them in any possible way.
 More elaborated examples may be found in the astro/cosmo folders. 
 
+As you can see below, Python is the dominant language, however
+due to the popularity of R, I have added some standard notes, visualizations
+and basic statistic examples.
+There are also couple of SQL examples, based on SQLite and MYSQL. 
+
+
 The majority of the content may be found spread around the web or throughout books, but 
 the bibliography I used, and possibly where all the info is coming from, 
 is displayed on the bottom of the page.
@@ -46,23 +52,23 @@ csv files, and plotting with pandas.
 
 ### SQL
 
-* [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): Employees-table.
+* [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): IPython notebook for connecting python with SQLite.
 * [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
 [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
 [Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
 [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql) -
-[Extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql)
+[Extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql). Basic scripts to write SQL language. 
 * [MySQL tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
 [Countries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_countries.sql) - 
-[Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql)
+[Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql). Some tables to practice over examples.
 
 ###Visualizations
 
-* [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualizing_Data.ipynb):
+* [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Visualizing_Data.ipynb):
 General Matplotlib intro, and some examples with pandas.
-* [Pandas and Basemap](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Pandas_Basemap.ipynb):
+* [Pandas and Basemap](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Pandas_Basemap.ipynb):
 Visualizing maps.
-* [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Bokeh_examples.ipynb):
+* [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Bokeh_examples.ipynb):
 	Map of NY Unemployment.
 * [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.	 
 * x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
