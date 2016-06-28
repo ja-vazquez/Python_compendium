@@ -46,15 +46,15 @@ csv files, and plotting with pandas.
 
 ### SQL
 
-* [Interacting with databases (sqlite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): Employees-table.
+* [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): Employees-table.
 * [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
 [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
 [Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
 [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql) -
 [Extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql)
-* [MySQL tables](https://github.com/ja-vazquez/Python_compendium/tree/master/SQL/TSQL_Examples.sql) - 
-[Countries](https://github.com/ja-vazquez/Python_compendium/tree/master/SQL/TSQL_countries.sql) - 
-[Person](https://github.com/ja-vazquez/Python_compendium/tree/master/SQL/TSQL_person.sql)
+* [MySQL tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
+[Countries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_countries.sql) - 
+[Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql)
 
 ###Visualizations
 
