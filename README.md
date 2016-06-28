@@ -14,39 +14,39 @@ is displayed on the bottom of the page.
 
 * [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/The_basics.ipynb):
 (lists, tuples, dictionaries, loops, etc).
-* [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_not_so_basics.ipynb): 
+* [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/The_not_so_basics.ipynb): 
 (partial, map, reduce, filter, zip, decorators, etc).
-* [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/iPython.ipynb):
+* [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/iPython.ipynb):
 (magic commands, debugger, profiling).
-* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Numpy.ipynb) and [Numpy II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Numpy_II.ipynb)  (Numerical Python)
-* [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Idiomatic_Python.ipynb):
+* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Numpy.ipynb) and [Numpy II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy_II.ipynb)  (Numerical Python)
+* [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Idiomatic_Python.ipynb):
 (Transforming Code into Beautiful, Idiomatic Python).
 
 
 ### Getting data
 
 
-* [Scraping the web](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scraping_the_web.ipynb): (Beatiful Soup, requests)
+* [Scraping the web](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Scraping_the_web.ipynb): (Beatiful Soup, requests)
 	- O'Reilly Media: Plotting books published over the 'data' subject.
 	- Yellow Pages: Get info for Coffee shops in NYC.
-* [Scraping the web II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scraping_the_web_II.ipynb): (Parse, urlopen)
+* [Scraping the web II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Scraping_the_web_II.ipynb): (Parse, urlopen)
 	- Yahoo's finance, Options.	 Long Island Rail Road (XML)
-* [Using Twython API](https://github.com/ja-vazquez/Python_compendium/blob/master/Twython_API.ipynb): 
+* [Using Twython API](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Twython_API.ipynb): 
 Getting tweets with hashtag (i.e. Data).
 
 
 ### Working with data 
 
-* [Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Pandas.ipynb) 
-* [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output.ipynb): Basic reading/writing
+* [Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Pandas.ipynb) 
+* [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Input_output.ipynb): Basic reading/writing
 csv files, and plotting with pandas.
-* [Writing and Reading files II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Input_output_II.ipynb): Working with JSON, HDF5, XLS
-* [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
-* [IPython Notebook & Pandas](https://github.com/ja-vazquez/Python_compendium/blob/master/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
+* [Writing and Reading files II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Input_output_II.ipynb): Working with JSON, HDF5, XLS
+* [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
+* [IPython Notebook & Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
 
 ### SQL
 
-* [Interacting with databases (sqlite3)](https://github.com/ja-vazquez/Python_compendium/blob/master/Interacting_with_databases.ipynb): Employees-table.
+* [Interacting with databases (sqlite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): Employees-table.
 
 
 
