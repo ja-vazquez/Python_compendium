@@ -15,6 +15,8 @@ The majority of the content may be found spread around the web or throughout boo
 the bibliography I used, and possibly where all the info is coming from, 
 is displayed on the bottom of the page.
 
+x - means that I haven't had a chance to spend a considerable amount of time in that particular topic.
+
 ------
 ### Python
 
@@ -24,7 +26,7 @@ is displayed on the bottom of the page.
 (partial, map, reduce, filter, zip, decorators, etc).
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/iPython.ipynb):
 (magic commands, debugger, profiling).
-* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy.ipynb) and [Numpy II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy_II.ipynb)  (Numerical Python)
+* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy.ipynb) and [Numpy II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy_II.ipynb)  (Numerical Python).
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Idiomatic_Python.ipynb):
 (Transforming Code into Beautiful, Idiomatic Python).
 
@@ -32,11 +34,11 @@ is displayed on the bottom of the page.
 ### Getting data
 
 
-* [Scraping the web](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Scraping_the_web.ipynb): (Beatiful Soup, requests)
+* [Scraping the web](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Scraping_the_web.ipynb): (Beatiful Soup, requests).
 	- O'Reilly Media: Plotting books published over the 'data' subject.
 	- Yellow Pages: Get info for Coffee shops in NYC.
-* [Scraping the web II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Scraping_the_web_II.ipynb): (Parse, urlopen)
-	- Yahoo's finance, Options.	 Long Island Rail Road (XML)
+* [Scraping the web II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Scraping_the_web_II.ipynb): (Parse, urlopen).
+	- Yahoo's finance, Options.	 Long Island Rail Road (XML).
 * [Using Twython API](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Twython_API.ipynb): 
 Getting tweets with hashtag (i.e. Data).
 
@@ -46,7 +48,7 @@ Getting tweets with hashtag (i.e. Data).
 * [Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Pandas.ipynb) 
 * [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Input_output.ipynb): Basic reading/writing
 csv files, and plotting with pandas.
-* [Writing and Reading files II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Input_output_II.ipynb): Working with JSON, HDF5, XLS
+* [Writing and Reading files II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Input_output_II.ipynb): Working with JSON, HDF5, XLS.
 * [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
 * [IPython Notebook & Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
 
@@ -73,34 +75,44 @@ Visualizing maps.
 * [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.	 
 * x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
-* x - Plotly
 
 
 
 
 ### Machine Learning, Stats and other magic tricks
 
-* [Inverse problems](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/inverse_problems.ipynb): Linear Regression, Gradient Descent
-* [Sparcity](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/sparcity.ipynb): FFT, Denoising functions
-* [Wavelets](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/wavelets.ipynb): Discrete Fourier Transform, Multiresolution Analysis
+* [Inverse problems](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/inverse_problems.ipynb): Linear Regression, Gradient Descent.
+* [Sparcity](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/sparcity.ipynb): FFT, Denoising functions.
+* [Wavelets](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/wavelets.ipynb): Discrete Fourier Transform, Multiresolution Analysis.
 
+
+### R
+
+* [R and other languages](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Compiled_C_F/other_lang.R): Working 	with C/C++/Fortran/Python.
+* [The basics](https://github.com/ja-vazquez/Python_compendium/blob/master/R/The_basics.R): Vectors, Matrices, Data Frames,
+	Stats, Probability Distributions.
+* [Descriptive Stats](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Descriptive_statistics.R): Descriptive
+	Statistics and Exploratory Analysis. Data Visualization. Statistical Inference.
+* [Regression](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Regression.R): Linear Regression, Confidence
+	Ellipses and Bands. Polynomial regression. Non-linear Regression.
+* [Bootstrapping](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Bootstrapping.R): Parametric and Nonparametric
+	Bootstrapping. 
+* [Model Selection](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Model_selection.R): AIC and BIC, R^2.
+* [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS
 
 
 ### Parallel Computing
 
 
-* [MPI with IPython](https://github.com/ipython/ipyparallel)
-* x - AWS
+* [MPI with IPython](https://github.com/ipython/ipyparallel) and 
+  [mpi4py](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/Mpi4y.ipynb) used to parallelize 
+  [The GM-Sampler](https://github.com/ja-vazquez/GM_Sampler/blob/master/GM/game.py).
+* [Example](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/GMSampler.ipynb) Here one of 
+	the outcomes that uses a unimodal Gaussian likelihood. 
 
-### Flask
 
-* [Web App](http://code.tutsplus.com/tutorials/creating-a-web-app-from-scratch-using-python-flask-and-mysql-part-3--cms-23120)
-* [Turorial](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates)
-* [Flack-SqLAlchemy](http://flask-sqlalchemy.pocoo.org/2.1/)
 
-### R
 
-* [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS
 
 ----
 ------
@@ -167,6 +179,11 @@ Sophisticated interactive visualizations for the web (however not for python).
 Python port of the popular R library *ggplot2*.
 * [Chaco and Mayavi](http://code.enthought.com/projects/chaco/): It works well for interactive data visualization and exploration (2D and 3D).
 
+### Flask
+
+* X - [Web App](http://code.tutsplus.com/tutorials/creating-a-web-app-from-scratch-using-python-flask-and-mysql-part-3--cms-23120)
+* X - [Tutorial](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates)
+* X - [Flack-SqLAlchemy](http://flask-sqlalchemy.pocoo.org/2.1/)
 
 ### APIs
 * [Python for beginners](http://www.pythonforbeginners.com/api/list-of-python-apis)
