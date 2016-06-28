@@ -6,7 +6,7 @@ coding (hopefully they'll be useful in future references).
 More elaborated examples may be found in the astro/cosmo folders. 
 
 As you can see below, Python is the dominant language, however
-due to the popularity of R, I have added some standard notes, visualizations
+due to the popularity of R I have added some standard notes, visualizations
 and basic statistic examples.
 There are also couple of SQL examples, based on SQLite and MYSQL. 
 
@@ -24,7 +24,7 @@ is displayed on the bottom of the page.
 (partial, map, reduce, filter, zip, decorators, etc).
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/iPython.ipynb):
 (magic commands, debugger, profiling).
-* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Numpy.ipynb) and [Numpy II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy_II.ipynb)  (Numerical Python)
+* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy.ipynb) and [Numpy II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy_II.ipynb)  (Numerical Python)
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Idiomatic_Python.ipynb):
 (Transforming Code into Beautiful, Idiomatic Python).
 
@@ -52,7 +52,7 @@ csv files, and plotting with pandas.
 
 ### SQL
 
-* [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): IPython notebook for connecting python with SQLite.
+* [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): IPython notebook and Pandas connecting with SQLite.
 * [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
 [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
 [Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
