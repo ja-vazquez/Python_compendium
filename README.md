@@ -12,7 +12,7 @@ is displayed on the bottom of the page.
 ------
 ### Python
 
-* [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_basics.ipynb):
+* [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/The_basics.ipynb):
 (lists, tuples, dictionaries, loops, etc).
 * [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/The_not_so_basics.ipynb): 
 (partial, map, reduce, filter, zip, decorators, etc).
