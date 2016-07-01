@@ -59,10 +59,14 @@ csv files, and plotting with pandas.
 [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
 [Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
 [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql) -
-[Extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql). Basic scripts to write SQL language. 
-* [MySQL tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
+[Extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql):	 Basic scripts to write SQL language. 
+* [MySQL Sets](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_sets.sql): Working 
+	with sets
+* [MySQL DBs](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
 [Countries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_countries.sql) - 
 [Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql). Some tables to practice over examples.
+
+
 
 ###Visualizations
 
