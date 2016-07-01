@@ -55,11 +55,11 @@ csv files, and plotting with pandas.
 ### SQL
 
 * [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): IPython notebook and Pandas connecting with SQLite.
-* [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
-[Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
+* [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql): Basic scripts to write SQL language. 
+* [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
 [Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
 [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql) -
-[Extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql):	 Basic scripts to write SQL language. 
+[Extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql): Some examples on a database.	 
 * [MySQL Sets](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_sets.sql): Working 
 	with sets
 * [MySQL DBs](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
