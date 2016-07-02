@@ -33,7 +33,6 @@ GRANT PRIVILEGES ON database.object TO 'username'@'hostname'
 SHOW tables;
 
 
-
 #or Creating a table
 CREATE TABLE classics(
 	author VARCHAR(128),
@@ -45,7 +44,6 @@ CREATE TABLE classics(
 
 # to look at the table definitions
 DESCRIBE classics;
-
 
 
 #The AUTO_INCREMENT data type
@@ -90,7 +88,7 @@ ALTER TABLE classics MODIFY year SMALLINT;
 ALTER TABLE classics ADD pages SMALLINT UNSIGNED;
 
 
-#Renaming a column
+#Renaming a column (type -> category)
 ALTER TABLE classics CHANGE type category VARCHAR(16);
 
 
@@ -119,6 +117,150 @@ SET street = '122 st',
 WHERE person_id=1;
 
 
-#Deleting data
-DELETE FROM person
-WHERE person_id =2 ;
+ALTER TABLE classics ADD isbn CHAR(13);
+UPDATE classics SET isbn='12345' WHERE year ='1876';
+UPDATE classics SET isbn='23456' WHERE year ='1811';
+UPDATE classics SET isbn='34567' WHERE year ='1856';
+UPDATE classics SET isbn='45678' WHERE year ='1841';
+
+
+
+########################################################################
+
+# Querying a MySQL Database
+
+#SELECT
+SELECT author, title FROM classics;
+SELECT title, isbn FROM classics;
+
+
+#SELECT COUNT
+#displays the number of rows in the table
+SELECT COUNT(*) c_all from classics;
+
+
+#SELECT DISTINCT
+INSERT INTO classics(author, title, category, year, isbn)
+VALUES('Charles Dickens', 'Little Dorrit', 'Fiction', '1857', '56789');
+
+SELECT author FROM classics;
+SELECT DISTINCT author FROM classics;
+
+
+#DELETE
+DELETE FROM classics WHERE title='Little Dorrit';
+
+
+#WHERE
+SELECT author, title FROM classics WHERE author='Mark Twain';
+SELECT author, title FROM classics WHERE isbn='12345';
+
+
+#LIKE
+SELECT author, title FROM classics WHERE author LIKE 'Charles%';
+SELECT author, title FROM classics WHERE title LIKE '%and%';
+
+
+
+#LIMIT (where should start the display, how many to return)
+SELECT author, title FROM classics LIMIT 3;
+SELECT author, title FROM classics LIMIT 1,2;
+SELECT author, title FROM classics LIMIT 3,1;
+
+
+#FULLTEXT
+#allows super-fast searches of entire columns of text
+ALTER TABLE classics ADD FULLTEXT(author,title);
+
+
+
+#MATCH AGAINST
+#It lets you enter multiple words in a search query
+#and check them against all words in the FULLTEXT
+
+SELECT author, title FROM classics
+WHERE MATCH(author, title) AGAINST ('curiosity shop');
+
+SELECT author, title FROM classics
+WHERE MATCH(author, title) AGAINST ('tom sawyer');
+
+
+
+#MATCH AGAINST ... IN Boolean mode
+# + must be included, - excluded
+
+SELECT author, title FROM classics
+WHERE MATCH(author, title)
+AGAINST('+charles -species' IN BOOLEAN MODE);
+
+
+
+#UPDATE SET
+UPDATE classics
+SET category='Classic Fiction'
+WHERE category='Classic Fictional';
+
+
+#ORDER BY
+SELECT author, title FROM classics ORDER BY author;
+SELECT author, title FROM classics ORDER BY title DESC;
+
+SELECT author, title, year FROM classics ORDER BY author ASC, year DESC;
+
+
+
+#GROUP BY
+SELECT category, COUNT(author) FROM classics GROUP BY category;
+
+
+
+
+########################################################################
+
+#Joining Tables
+
+CREATE TABLE customers(
+name VARCHAR(128),
+isbn VARCHAR(13),
+PRIMARY KEY (isbn)) ENGINE MyISAM;
+
+INSERT INTO customers(name, isbn) VALUES
+('Jose Bloggs', '12345'),
+('Mary Smith', '23456'),
+('Jack Wilson', '34567');
+
+SELECT * FROM customers;
+
+
+#Joining two tables into a single SELECT
+SELECT name,author, title FROM customers, classics
+WHERE customers.isbn = classics.isbn;
+
+
+#NATURAL JOIN
+#joins columns that have the same name
+SELECT name, author, title FROM customers NATURAL JOIN classics;
+
+
+#JOIN ON
+#to specify the column on which you want to join two tables
+SELECT name, author, title FROM customers
+JOIN classics ON customers.isbn = classics.isbn;
+
+
+
+#USING AS
+#to save some typing in long queries
+SELECT name, author, title
+FROM customers AS cust, classics AS class
+WHERE cust.isbn = class.isbn;
+
+
+
+
+#Using Logical Operators
+SELECT author, title FROM classics
+WHERE author LIKE 'Charles%' AND author LIKE '%Darwin';
+
+
+
