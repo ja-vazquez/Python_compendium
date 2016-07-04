@@ -264,3 +264,62 @@ WHERE author LIKE 'Charles%' AND author LIKE '%Darwin';
 
 
 
+########################################################################
+
+#TRANSACTION
+#In some applications, it is vitally important that a sequence of queries runs in the correct order and that
+#every singles query successfully completes.
+#you have to be using MySQL's InnoDB storage engine.
+
+
+CREATE TABLE accounts(
+number INT, balance FLOAT, PRIMARY KEY(number)
+) ENGINE InnoDB;
+
+DESCRIBE accounts;
+
+INSERT INTO accounts(number, balance) VALUES(12345, 1025.50);
+INSERT INTO accounts(number, balance) VALUES(67890, 140.50);
+
+
+
+#Transactions in MySQL start with either a BEGIN
+#or a START TRANSACTION statement.
+
+
+#BEGIN
+BEGIN;
+UPDATE accounts SET balance=balance + 25.11 WHERE number=12345;
+
+#COMMIT
+#When you are satisfied that a series of queries in a transaction has
+#successfully completed.
+
+COMMIT;
+SELECT * FROM accounts;
+
+
+#using ROLLBACK
+BEGIN;
+UPDATE accounts SET balance= balance - 250 WHERE number =12345;
+UPDATE accounts SET balance= balance + 250 WHERE number =67890;
+
+SELECT * FROM accounts;
+
+
+#Let s assume that something went wrong and you wish to undo this transaction
+
+ROLLBACK;
+SELECT * FROM accounts;
+
+
+#EXPLAIN
+#Using explain, you can get a snapshot of any query to find out whether you
+#could issue it in a better or more efficient way.
+
+
+EXPLAIN SELECT * FROM accounts WHERE number='12345';
+
+
+
+
