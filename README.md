@@ -21,16 +21,16 @@ x - means that I haven't had a chance to spend a considerable amount of time in 
 ### Python
 
 * [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/The_basics.ipynb): (lists, tuples, dictionaries, loops, etc).
-* [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/The_not_so_basics.ipynb):  (partial, map, reduce, filter, zip, decorators, etc).
+* [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/The_not_so_basics.ipynb): (partial, map, reduce, filter, zip, decorators, etc).
 * [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/iPython.ipynb): (magic commands, debugger, profiling).
-* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy.ipynb) and [Numpy II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy_II.ipynb)  (Numerical Python).
+* [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy.ipynb) and [Numpy II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy_II.ipynb): (Numerical Python).
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Idiomatic_Python.ipynb): (Transforming Code into Beautiful, Idiomatic Python).
 
     **Scicoder** 
     
 	* [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/IPython_Nb.ipynb) --  [Matplotlib](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Matplotlib.ipynb) -- [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Numpy.ipynb) -- [Advanced Pyhton](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Advanced_Python.ipynb).
-	* [Astropy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Astropy.ipynb) -- [Cython](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Cython.ipynb).
-	* Scipy: [Tour](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_bits_and_pieces.ipynb) -- [Integrate](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_integrate.ipynb) -- [Optimize](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_optimize.ipynb) -- [Optimize II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_optimize_solutions.ipynb). 
+	* Scipy : [Tour](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_bits_and_pieces.ipynb) -- [Integrate](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_integrate.ipynb) -- [Optimize](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_optimize.ipynb) -- [Optimize II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_optimize_solutions.ipynb).
+	* [Astropy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Astropy.ipynb) -- [Cython](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Cython.ipynb). 
 
 ### Getting data
 
@@ -38,7 +38,7 @@ x - means that I haven't had a chance to spend a considerable amount of time in 
 * [Scraping the web](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Scraping_the_web.ipynb): (Beatiful Soup, requests).
 	- O'Reilly Media: Plotting books published over the 'data' subject.
 	- Yellow Pages: Get info for Coffee shops in NYC.
-* [Scraping the web II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Scraping_the_web_II.ipynb): (Parse, urlopen).
+* [Scraping the web II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Scraping_the_web_II.ipynb): (Parse, urlopen). 
 	- Yahoo's finance, Options.	 Long Island Rail Road (XML).
 * [Using Twython API](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Twython_API.ipynb): 
 Getting tweets with hashtag (i.e. Data).
@@ -47,8 +47,7 @@ Getting tweets with hashtag (i.e. Data).
 ### Working with data 
 
 * [Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Pandas.ipynb) 
-* [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Input_output.ipynb): Basic reading/writing
-csv files, and plotting with pandas.
+* [Writing and Reading files](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Input_output.ipynb): Basic reading/writing csv files, and plotting with pandas.
 * [Writing and Reading files II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Input_output_II.ipynb): Working with JSON, HDF5, XLS.
 * [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
 * [IPython Notebook & Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
@@ -60,8 +59,7 @@ csv files, and plotting with pandas.
 * [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
 [Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
 [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql): Some examples on a database.	 
-* [MySQL Sets](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_sets.sql): Working 
-	with sets
+* [MySQL Sets](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_sets.sql): Working with sets.
 * [MySQL DBs](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
 [Countries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_countries.sql) - 
 [Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql). Some tables to practice over examples.
