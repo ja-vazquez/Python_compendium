@@ -30,6 +30,11 @@ x - means that I haven't had a chance to spend a considerable amount of time in 
 * [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Idiomatic_Python.ipynb):
 (Transforming Code into Beautiful, Idiomatic Python).
 
+    **Scicoder** 
+
+	* [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/IPython_Nb.ipynb) --  [Matplotlib](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Matplotlib.ipynb) -- [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Numpy.ipynb) -- [Advanced Pyhton](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Advanced_Python.ipynb).
+	* [Astropy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Astropy.ipynb) -- [Cython](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Cython.ipynb).
+	* Scipy: [Tour](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_bits_and_pieces.ipynb) -- [Integrate](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_integrate.ipynb) -- [Optimize](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_optimize.ipynb) -- [Optimize II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_optimize_solutions.ipynb). 
 
 ### Getting data
 
@@ -55,7 +60,7 @@ csv files, and plotting with pandas.
 ### SQL
 
 * [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): IPython notebook and Pandas connecting with SQLite.
-* [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - [Extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql): Basic scripts to write SQL language. 
+* [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - : Basic scripts to write SQL language. 
 * [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
 [Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
 [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql): Some examples on a database.	 
@@ -82,13 +87,6 @@ Visualizing maps.
 
 
 
-### Machine Learning, Stats and other magic tricks
-
-* [Inverse problems](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/inverse_problems.ipynb): Linear Regression, Gradient Descent.
-* [Sparcity](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/sparcity.ipynb): FFT, Denoising functions.
-* [Wavelets](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/wavelets.ipynb): Discrete Fourier Transform, Multiresolution Analysis.
-
-
 ### R
 
 * [R and other languages](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Compiled_C_F/other_lang.R): Working 	with C/C++/Fortran/Python.
@@ -102,6 +100,14 @@ Visualizing maps.
 	Bootstrapping. 
 * [Model Selection](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Model_selection.R): AIC and BIC, R^2.
 * [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS
+
+
+### Machine Learning, Stats and other magic tricks
+
+* [Inverse problems](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/inverse_problems.ipynb): Linear Regression, Gradient Descent.
+* [Sparcity](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/sparcity.ipynb): FFT, Denoising functions.
+* [Wavelets](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/wavelets.ipynb): Discrete Fourier Transform, Multiresolution Analysis.
+
 
 
 ### Parallel Computing
@@ -167,6 +173,7 @@ Provides classes and functions for the estimation of many different statistical 
 ### R
 
 * X - [New York City R conference](http://www.rstats.nyc/2016)
+* X - [R-tutor](http://www.r-tutor.com/r-introduction)
 
 ### Visualizations
 
