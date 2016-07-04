@@ -31,7 +31,6 @@ x - means that I haven't had a chance to spend a considerable amount of time in 
 (Transforming Code into Beautiful, Idiomatic Python).
 
     **Scicoder** 
-
 	* [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/IPython_Nb.ipynb) --  [Matplotlib](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Matplotlib.ipynb) -- [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Numpy.ipynb) -- [Advanced Pyhton](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Advanced_Python.ipynb).
 	* [Astropy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Astropy.ipynb) -- [Cython](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Cython.ipynb).
 	* Scipy: [Tour](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_bits_and_pieces.ipynb) -- [Integrate](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_integrate.ipynb) -- [Optimize](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_optimize.ipynb) -- [Optimize II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Scicoder/Scipy_optimize_solutions.ipynb). 
@@ -112,11 +111,11 @@ Visualizing maps.
 
 ### Parallel Computing
 
-
+* [Multiprocessing](https://github.com/ja-vazquez/Python_compendium/tree/master/multiprocessing). Plot a bunch of SDSS spectra in parallel via multiprocessing.
 * [MPI with IPython](https://github.com/ipython/ipyparallel) and 
   [mpi4py](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/Mpi4y.ipynb) used to parallelize 
   [The GM-Sampler](https://github.com/ja-vazquez/GM_Sampler/blob/master/GM/game.py).
-* [Example](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/GMSampler.ipynb) Here one of 
+* [Example](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/GMSampler.ipynb): one of 
 	the outcomes that uses a unimodal Gaussian likelihood. 
 
 
