@@ -20,15 +20,11 @@ x - means that I haven't had a chance to spend a considerable amount of time in 
 ------
 ### Python
 
-* [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/The_basics.ipynb):
-(lists, tuples, dictionaries, loops, etc).
-* [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/The_not_so_basics.ipynb): 
-(partial, map, reduce, filter, zip, decorators, etc).
-* [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/iPython.ipynb):
-(magic commands, debugger, profiling).
+* [The basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/The_basics.ipynb): (lists, tuples, dictionaries, loops, etc).
+* [The not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/The_not_so_basics.ipynb):  (partial, map, reduce, filter, zip, decorators, etc).
+* [iPython NB](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/iPython.ipynb): (magic commands, debugger, profiling).
 * [Numpy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy.ipynb) and [Numpy II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Numpy_II.ipynb)  (Numerical Python).
-* [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Idiomatic_Python.ipynb):
-(Transforming Code into Beautiful, Idiomatic Python).
+* [Idiomatic Python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Python/Idiomatic_Python.ipynb): (Transforming Code into Beautiful, Idiomatic Python).
 
     **Scicoder** 
     
