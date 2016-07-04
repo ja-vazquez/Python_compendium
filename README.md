@@ -1,4 +1,4 @@
-# The Python compendium
+# * The Python compendium
 
 This folder contains several scripts, notes and examples collected through many nights of 
 coding (hopefully they'll be useful in future references). 
@@ -15,7 +15,7 @@ The majority of the content may be found spread around the web or throughout boo
 the bibliography I used, and possibly where all the info is coming from, 
 is displayed on the bottom of the page.
 
-x - means that I haven't had a chance to spend a considerable amount of time in that particular topic.
+x - means that I haven't had a chance to spend a considerable amount of time in that particular topic, but I am about to.
 
 ------
 ### Python
@@ -55,7 +55,7 @@ Getting tweets with hashtag (i.e. Data).
 ### SQL
 
 * [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): IPython notebook and Pandas connecting with SQLite.
-* [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - : Basic scripts to write SQL language. 
+* [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_basic.sql) , [extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql)  : Basic scripts to write SQL language. 
 * [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
 [Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
 [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql): Some examples on a database.	 
@@ -83,7 +83,7 @@ Visualizing maps.
 
 ### R
 
-* [R and other languages](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Compiled_C_F/other_lang.R): Working 	with C/C++/Fortran/Python.
+* [Other languages into R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Compiled_C_F/other_lang.R): Working 	with C/C++/Fortran/Python.
 * [The basics](https://github.com/ja-vazquez/Python_compendium/blob/master/R/The_basics.R): Vectors, Matrices, Data Frames,
 	Stats, Probability Distributions.
 * [R Walkthrough](https://github.com/ja-vazquez/Python_compendium/blob/master/R/R_Walkthrough.pdf). From Scicoder Workshop.
@@ -100,7 +100,7 @@ Visualizing maps.
 ### Machine Learning, Stats and other magic tricks
 
 * [Inverse problems](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/inverse_problems.ipynb): Linear Regression, Gradient Descent.
-* [Sparcity](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/sparcity.ipynb): FFT, Denoising functions.
+* [Sparcity](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/sparsity.ipynb): FFT, Denoising functions.
 * [Wavelets](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/wavelets.ipynb): Discrete Fourier Transform, Multiresolution Analysis.
 
 
@@ -108,22 +108,30 @@ Visualizing maps.
 ### Parallel Computing
 
 * [Multiprocessing](https://github.com/ja-vazquez/Python_compendium/tree/master/multiprocessing). Plot a bunch of SDSS spectra in parallel via multiprocessing.
-* [MPI with IPython](https://github.com/ipython/ipyparallel) and 
-  [mpi4py](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/Mpi4y.ipynb) used to parallelize 
-  [The GM-Sampler](https://github.com/ja-vazquez/GM_Sampler/blob/master/GM/game.py).
-* [Example](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/GMSampler.ipynb): one of 
+* [The GM-Sampler](https://github.com/ja-vazquez/GM_Sampler/blob/master/GM/game.py)  parallelize with 
+  [mpi4py](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/Mpi4y.ipynb).  
+* [Example of GMSampler](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/GMSampler.ipynb): one of 
 	the outcomes that uses a unimodal Gaussian likelihood. 
-
-
-
 
 
 ----
 ------
+
+# * Conferences
+
+* [Pydata](http://pydata.org/)
+* [PyGotham](https://2016.pygotham.org/)
+* [Database Camp](http://www.database.camp/)
+* [Pycon](http://www.pycon.org/)
+
+----
 ------
 
 
-# Bibliography
+
+
+
+# * Bibliography
 
 * [IPython tutorial](https://ipython.org/ipython-doc/2/interactive/tutorial.html)
 * [Python for Data Analysis](http://www.amazon.com/Python-Data-Analysis-Wrangling-IPython/dp/1449319793)
@@ -152,6 +160,7 @@ Provides high-performance, easy-to-use data structures and data analysis tools.
 SciPy is a Python-based ecosystem of open-source software for mathematics, science, and engineering.
 * [Statsmodels](http://statsmodels.sourceforge.net/devel/index.html):
 Provides classes and functions for the estimation of many different statistical models.
+* [Scikit-learn](http://scikit-learn.org/stable/index.html): Machine Learning in Python
 
 ### Databases
 
@@ -178,17 +187,18 @@ It provides a high-level interface for drawing attractive statistical graphics.
 * [Basemap](http://basemaptutorial.readthedocs.io/en/latest/index.html): Great tool for creating maps using python in a simple way.
 * [Bokeh](http://bokeh.pydata.org/en/latest/):
 Brings D3- style visualization into Python.
-* [D3.js](http://d3js.org/):
+* [D3](http://d3js.org/):
 Sophisticated interactive visualizations for the web (however not for python).
 * [ggplot](http://ggplot.yhathq.com/):
 Python port of the popular R library *ggplot2*.
 * [Chaco and Mayavi](http://code.enthought.com/projects/chaco/): It works well for interactive data visualization and exploration (2D and 3D).
+* [Lightning](http://lightning-viz.org/): Provides API-based access to reproducible web visualizations.
 
 ### Flask
 
 * X - [Web App](http://code.tutsplus.com/tutorials/creating-a-web-app-from-scratch-using-python-flask-and-mysql-part-3--cms-23120)
 * X - [Tutorial](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates)
-* X - [Flack-SqLAlchemy](http://flask-sqlalchemy.pocoo.org/2.1/)
+* X - [Flask-SqLAlchemy](http://flask-sqlalchemy.pocoo.org/2.1/)
 
 ### APIs
 * [Python for beginners](http://www.pythonforbeginners.com/api/list-of-python-apis)
@@ -203,7 +213,17 @@ REST is an architecture style for designing networked applications.
 ### Miscellaneous
 * [Enaml](http://nucleic.github.io/enaml/docs/): For creating professional quality user interfaces with minimal effort.
 * [PyQwt](http://pyqwt.sourceforge.net/): It provides a widget to plot 2-dimensional data.
-
+* [MPI with IPython](https://github.com/ipython/ipyparallel)
+* [Astropy](http://www.astropy.org/)
 
 ----
 ----
+
+
+### * Websites worthwhile reading
+
+* [Machine Learning Projects](http://www.kdnuggets.com/2016/06/five-more-machine-learning-projects-cant-overlook.html#.V3KHYJWh9Sg.facebook): 5 Machine Learning Projects You Can No Longer Overlook.
+* [Data Science](http://p.migdal.pl/2016/03/15/data-science-intro-for-math-phys-background.html): Data science intro for math/phys background.
+
+------
+-----
