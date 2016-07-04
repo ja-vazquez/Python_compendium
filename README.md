@@ -86,6 +86,7 @@ Visualizing maps.
 * [R and other languages](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Compiled_C_F/other_lang.R): Working 	with C/C++/Fortran/Python.
 * [The basics](https://github.com/ja-vazquez/Python_compendium/blob/master/R/The_basics.R): Vectors, Matrices, Data Frames,
 	Stats, Probability Distributions.
+* [R Walkthrough](https://github.com/ja-vazquez/Python_compendium/blob/master/R/R_Walkthrough.pdf). From Scicoder Workshop.
 * [Descriptive Stats](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Descriptive_statistics.R): Descriptive
 	Statistics and Exploratory Analysis. Data Visualization. Statistical Inference.
 * [Regression](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Regression.R): Linear Regression, Confidence
