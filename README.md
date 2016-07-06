@@ -17,6 +17,9 @@ is displayed on the bottom of the page.
 
 x - means that I haven't had a chance to spend a considerable amount of time in that particular topic, but I am about to.
 
+Before starting, have a look of  [Git](http://rogerdudler.github.io/git-guide/): A simple guide for getting started with git and
+ [Git-SVN](http://git.or.cz/course/svn.html): Git - SVN Crash Course.
+
 ------
 ### Python
 
@@ -109,7 +112,7 @@ Visualizing maps.
 
 * [Multiprocessing](https://github.com/ja-vazquez/Python_compendium/tree/master/multiprocessing). Plot a bunch of SDSS spectra in parallel via multiprocessing.
 * [The GM-Sampler](https://github.com/ja-vazquez/GM_Sampler/blob/master/GM/game.py)  parallelize with 
-  [mpi4py](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/Mpi4y.ipynb).  
+  [mpi4py](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/Mpi4y.ipynb), [MPI with IPython](https://github.com/ipython/ipyparallel)
 * [Example of GMSampler](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/GMSampler.ipynb): one of 
 	the outcomes that uses a unimodal Gaussian likelihood. 
 
@@ -161,6 +164,7 @@ SciPy is a Python-based ecosystem of open-source software for mathematics, scien
 * [Statsmodels](http://statsmodels.sourceforge.net/devel/index.html):
 Provides classes and functions for the estimation of many different statistical models.
 * [Scikit-learn](http://scikit-learn.org/stable/index.html): Machine Learning in Python
+* [Astropy](http://www.astropy.org/)
 
 ### Databases
 
@@ -213,17 +217,33 @@ REST is an architecture style for designing networked applications.
 ### Miscellaneous
 * [Enaml](http://nucleic.github.io/enaml/docs/): For creating professional quality user interfaces with minimal effort.
 * [PyQwt](http://pyqwt.sourceforge.net/): It provides a widget to plot 2-dimensional data.
-* [MPI with IPython](https://github.com/ipython/ipyparallel)
-* [Astropy](http://www.astropy.org/)
+* [Binder](http://mybinder.org/): Turn a GitHub repo into a collection of interactive notebooks.
+* [Searchcode](https://searchcode.com/): Google for coding.
+
 
 ----
 ----
 
 
-### * Websites worthwhile reading
+### * Webpages worthwhile reading
 
 * [Machine Learning Projects](http://www.kdnuggets.com/2016/06/five-more-machine-learning-projects-cant-overlook.html#.V3KHYJWh9Sg.facebook): 5 Machine Learning Projects You Can No Longer Overlook.
 * [Data Science](http://p.migdal.pl/2016/03/15/data-science-intro-for-math-phys-background.html): Data science intro for math/phys background.
+* [30 Articles](http://www.kdnuggets.com/2015/09/30-hbr-articles-analytics-big-data-science.html): 30 Can’t miss Review articles on Data Science, Big Data and Analytics.
+* [Preparing for Insight](http://insightdatascience.com/blog/preparing_for_insight.html): Data Science Resources from Insight Data Science.
+* [Coding Bootcamps](http://www.skilledup.com/articles/coding-bootcamps-new-york): The Complete Guide To Coding Bootcamps in New York.
+* [Data analyst](https://www.udacity.com/career-paths/data-analyst): 
+Become a Data Analyst, A Beginner's Guide.
+* [Data Science](http://learnds.com/): Open content for self-directed learning in data science.
+* [Data Science Masters](http://datasciencemasters.org/): The Open Source Data Science Masters.
+* [Data quest](https://www.dataquest.io/path/data-scientist): Becoming a Data Scientist.
+* [Data Science is cool](http://will-stanton.com/how-do-i-get-my-first-job-in-data-science/): How do I get my first job in data science? 
+* [Quant](http://www.academicinvest.com/science-careers/mathematics-careers/how-to-become-a-quantitative-analyst): How to Become a Quantitative Analyst.
+* [Sport of Data Science](http://blog.kaggle.com/2011/03/23/getting-in-shape-for-the-sport-of-data-sciencetalk-by-jeremy-howard/): Getting In Shape For The Sport Of Data Science.
+* [Programming](https://www.quora.com/What-are-the-best-programming-bootcamps-courses-available-in-the-United-States): What are the best programming bootcamps/courses available in US
+
+
+
 
 ------
 -----
