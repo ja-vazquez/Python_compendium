@@ -60,9 +60,9 @@ Getting tweets with hashtag (i.e. Data).
 * [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): IPython notebook and Pandas connecting with SQLite.
 * [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_basic.sql) , [extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql)  : Basic scripts to write SQL language. 
 * [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
-[Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) - 
-[Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql): Some examples on a database.	 
-* [MySQL Sets](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_sets.sql): Working with sets.
+[Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) : Some examples on a database.	 
+* [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql) - [Sets](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_sets.sql) : Working with sets.
+* [Data Manipulation](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_data_manipulation.sql) : String, numeric and temporal data. 
 * [MySQL DBs](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
 [Countries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_countries.sql) - 
 [Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql). Some tables to practice over examples.
