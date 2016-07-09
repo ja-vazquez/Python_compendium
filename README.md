@@ -62,7 +62,7 @@ Getting tweets with hashtag (i.e. Data).
 * [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
 [Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) : Some examples on a database: Query clauses and filtering. 
 * [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql) - [Sets](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_sets.sql) : Querying Multiple Tables and Working with sets.
-* [Data Manipulation](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_data_manipulation.sql) - [Data Manipulation](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_grouping.sql) : String, numeric and temporal data. Grouping. 
+* [Data Manipulation](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_data_manipulation.sql) - [Grouping and aggregation](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_grouping.sql) : String, numeric and temporal data. Grouping. 
 * [MySQL DBs](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
 [Countries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_countries.sql) - 
 [Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql). Some tables to practice over examples.
