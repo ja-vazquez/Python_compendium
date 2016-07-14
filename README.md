@@ -87,7 +87,7 @@ Visualizing maps.
 ### R
 
 * [Using other languages within R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Compiled_C_F/other_lang.R): Working 	with C/C++/Fortran/Python.
-* [The basics](https://github.com/ja-vazquez/Python_compendium/blob/master/R/The_basics.R): Vectors, Matrices, Data Frames,
+* [The basics](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Intro.R): Vectors, Matrices, Data Frames,
 	Data input: Mysql.
 	* [R Walkthrough](https://github.com/ja-vazquez/Python_compendium/blob/master/R/R_Walkthrough.pdf). From Scicoder Workshop.
 * [Descriptive Stats](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Descriptive_statistics.R): Descriptive
