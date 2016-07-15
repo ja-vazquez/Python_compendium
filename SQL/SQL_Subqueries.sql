@@ -158,13 +158,84 @@ WHERE EXISTS (SELECT 1
 
 
 
+#######################################################################
+
+# When to use subqueries
+
+# Subqueries as Data Sources
+
+SELECT d.dept_id, d.name, e_cnt.how_many num_employees
+FROM department d INNER JOIN
+	(SELECT dept_id, COUNT(*) how_many
+	FROM employee
+	GROUP BY dept_id) e_cnt
+	ON d.dept_id = e_cnt.dept_id;
+
+
+
+SELECT SUM(a.avail_balance) cust_balance
+FROM account a INNER JOIN product p
+	ON a.product_cd = p.product_cd
+WHERE p.product_type_cd = 'ACCOUNT'
+GROUP BY a.cust_id;
+
+
+
+# Task-oriented subqueries
+
+SELECT p.name product, b.name brach,
+	CONCAT(e.fname, ' ', e.lname) name,
+	SUM(a.avail_balance) tot_deposits
+FROM account a INNER JOIN employee e
+	ON a.open_emp_id = e.emp_id
+	INNER JOIN branch b
+	ON a.open_branch_id = b.branch_id
+	INNER JOIN product p
+	ON a.product_cd = p.product_cd
+WHERE p.product_type_cd = 'ACCOUNT'
+GROUP BY p.name, b.name, e.fname, e.lname
+ORDER BY 1,2;
+
+
+
+# Subqueries filter Conditions
+
+SELECT open_emp_id, COUNT(*) how_many
+FROM account
+GROUP BY open_emp_id
+HAVING COUNT(*) = (SELECT MAX(emp_cnt.how_many)
+	FROM (SELECT COUNT(*) how_many
+		FROM account
+		GROUP BY open_emp_id) emp_cnt);
 
 
 
 
 
+# Subqueries as expression generators
+
+SELECT
+	(SELECT p.name FROM product p
+	WHERE p.product_cd = a.product_cd
+		AND p.product_type_cd = 'ACCOUNT') product,
+	(SELECT b.name FROM branch b
+	WHERE b.branch_id = a.open_branch_id) branch,
+	(SELECT CONCAT(e.fname, ' ', e.lname) FROM employee e
+	WHERE e.emp_id = a.open_emp_id) name,
+		SUM(a.avail_balance) tot_deposits
+	FROM account a
+	GROUP BY a.product_cd, a.open_branch_id, a.open_emp_id
+	ORDER BY 1,2;
 
 
 
+SELECT emp.emp_id, CONCAT(emp.fname, ' ', emp.lname) emp_name,
+	(SELECT CONCAT(boss.fname, ' ', boss.lname)
+	FROM employee boss
+	WHERE boss.emp_id = emp.superior_emp_id) boss_name
+FROM employee emp
+WHERE emp.superior_emp_id IS NOT NULL
+ORDER BY (SELECT boss.lname FROM employee boss
+	WHERE boss.emp_id = emp.superior_emp_id), emp.lname;
 
 
