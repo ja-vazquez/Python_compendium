@@ -1,4 +1,17 @@
-#Python notes
+#Python notes - TO DO
+
+### [Machine Learning must do](http://www.analyticsvidhya.com/blog/2015/09/full-cheatsheet-machine-learning-algorithms/)
+
+### [Mining Twitter](https://marcobonzanini.com/2015/03/02/mining-twitter-data-with-python-part-1/)
+
+
+### [SVM and classifiers](http://www.kdnuggets.com/2016/07/support-vector-machines-simple-explanation.html#.V36r2_vDA0o.facebook) and do this [example](http://www.eric-kim.net/eric-kim-net/posts/1/kernel_trick.html)
+
+### [Machine Learning courses](https://www.springboard.com/blog/machine-learning-online-courses/)
+
+---
+---
+
 
 ### [Pandas vs SQL](http://pandas.pydata.org/pandas-docs/stable/comparison_with_sql.html)
 
