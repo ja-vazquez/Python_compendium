@@ -55,20 +55,6 @@ Getting tweets with hashtag (i.e. Data).
 * [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
 * [IPython Notebook & Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
 
-### SQL
-
-* [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): IPython notebook and Pandas connecting with SQLite.
-* [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_basic.sql) - [extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql)  : Basic scripts to write SQL language. 
-* [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
-[Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) : Some examples on a database: Query clauses and filtering. 
-* [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql) - [Sets](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_sets.sql) : Querying Multiple Tables and Working with sets.
-* [Data Manipulation](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_data_manipulation.sql) - [Grouping and aggregation](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_grouping.sql) : String, numeric and temporal data. Grouping. 
-* [MySQL DBs](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
-[Countries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_countries.sql) - 
-[Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql). Some tables to practice over examples.
-
-
-
 ###Visualizations
 
 * [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Visualizing_Data.ipynb):
@@ -80,7 +66,6 @@ Visualizing maps.
 * [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.	 
 * x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
-
 
 
 
@@ -98,6 +83,24 @@ Visualizing maps.
 	Bootstrapping. 
 * [Model Selection](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Model_selection.R): AIC and BIC, R^2.
 * [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS
+
+
+### SQL
+
+* [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): IPython notebook and Pandas connecting with SQLite.
+* [MySQL basics](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_basic.sql) - [extras](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_extras.sql)  : Basic scripts to write SQL language. 
+* [Queries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Queries.sql) - 
+[Filtering](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_Filtering.sql) : Some examples on a database: Query clauses and filtering. 
+* [Multiple tables](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_multiple_tables.sql) - [Sets](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_sets.sql) : Querying Multiple Tables and Working with sets.
+* [Data Manipulation](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_data_manipulation.sql) - [Grouping and aggregation](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/SQL_grouping.sql) : String, numeric and temporal data. Grouping. 
+* [MySQL DBs](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
+[Countries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_countries.sql) - 
+[Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql). Some tables to practice over examples.
+
+
+
+
+
 
 
 ### Machine Learning, Stats and other magic tricks

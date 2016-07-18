@@ -1,5 +1,9 @@
 #Python notes - TO DO
 
+### [DS Toolkit](http://www.datasciencetoolkit.org/)
+
+### [All python](http://docs.python-guide.org/en/latest/intro/learning/#beginner)
+
 ### [Machine Learning must do](http://www.analyticsvidhya.com/blog/2015/09/full-cheatsheet-machine-learning-algorithms/)
 
 ### [Mining Twitter](https://marcobonzanini.com/2015/03/02/mining-twitter-data-with-python-part-1/)
