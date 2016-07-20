@@ -85,6 +85,11 @@ Visualizing maps.
 * [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS
 
 
+###Visualizations
+
+* [Creating graphs](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Creating_graphs.R):
+
+
 ### SQL
 
 * [Interacting with databases (SQLite3)](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/SQL/Interacting_with_databases.ipynb): IPython notebook and Pandas connecting with SQLite.
