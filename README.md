@@ -55,7 +55,7 @@ Getting tweets with hashtag (i.e. Data).
 * [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
 * [IPython Notebook & Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ### Visualizations
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h4> Visualizations <h4>
 	
 
 * [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Visualizing_Data.ipynb):
