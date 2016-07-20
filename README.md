@@ -55,21 +55,6 @@ Getting tweets with hashtag (i.e. Data).
 * [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
 * [IPython Notebook & Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h4> Visualizations <h4>
-	
-
-* [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Visualizing_Data.ipynb):
-General Matplotlib intro, and some examples with pandas.
-* [Pandas and Basemap](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Pandas_Basemap.ipynb):
-Visualizing maps.
-* [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Bokeh_examples.ipynb):
-	Map of NY Unemployment.
-* [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.	 
-* x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
-* x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
-
-
-
 ### R
 
 * [Using other languages within R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Compiled_C_F/other_lang.R): Working 	with C/C++/Fortran/Python.
@@ -86,9 +71,26 @@ Visualizing maps.
 * [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS.
 
 
-###Visualizations
+### Visualization
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h4> Python </h4>
+
+* [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Visualizing_Data.ipynb):
+General Matplotlib intro, and some examples with pandas.
+* [Pandas and Basemap](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Pandas_Basemap.ipynb):
+Visualizing maps.
+* [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Bokeh_examples.ipynb):
+	Map of NY Unemployment.
+* [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.
+* x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h4> R </h4>
 
 * [Creating graphs](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Creating_graphs.R): Working with graphs in R.
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h4> JS </h4>
+* x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
+
 
 
 ### SQL
