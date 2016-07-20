@@ -44,6 +44,8 @@ a[2:6]
 
 
 vec1 <- c(1,9,3,-10,pi); vec1
+names(vec1) <- c('one', 'nine', 'three', 'minus', 'pi')
+vec1
 
 vec2 <- 1:50; vec2
 vec3 <- seq(from=-2*pi, to=2*pi, length=50); vec3
@@ -107,10 +109,9 @@ mymatrix
 #if filled by columns, use byrow=FALSE
 
 
-## Usiing matrix subscripts
+## Using matrix subscripts
 
 x <- matrix(1:10, nrow = 2)
-x
 
 x[,2]
 x[1,4]
@@ -129,6 +130,9 @@ mat1 %*% mat1
 #and element-wise
 mat1 * mat1
 
+m <- matrix(1:4, nrow=2, ncol=2)
+dimnames(m) <- list(c('a', 'b'), c('c', 'd'))
+m
 
 ########## Arrays
 
@@ -190,6 +194,8 @@ with (mtcars, {
 ########## Factors
 # are categorical (nominal) and ordered categorical (ordinal) variables
 
+x <- factor(c('yes', 'yes', 'no', 'yes', 'no'), levels =c('yes', 'no'))
+x
 
 patientID <- c(1, 2, 3, 4)
 age <- c(25, 34, 28, 52)
@@ -202,6 +208,7 @@ status <- factor(status, order=TRUE)  #will order from poor to excellent, and gr
 patientdata <- data.frame(patientID, age, diabetes, status)
 
 summary(patientdata)
+
 
 
 ########## Lists
@@ -248,23 +255,27 @@ mydata <- edit(mydata)
 
 
 ## Importing data from a delimited text file
-#   mydataframe <- read.table(file, options)
+#   mydataframe <- read.table(file, options) 
+#   or read.csv (default sepatator is a comma)
 
 setwd("/Users/josevazquezgonzalez/Desktop/Programs/Python_compendium/data")
 
-message <- read.table("ex5.csv", header = TRUE, sep=',', row.names="something")
+message <- read.table(file="ex5.csv", header = TRUE, sep=',', row.names="something")
 message
 str(message)
 
+#readLines for reading line of a text file
 
 # including the option stringsAsFactors=FALSE turns off character behaviour
 
-
-message <- read.table("ex5.csv", header = TRUE, sep=',',
+message <- read.table(file="ex5.csv", header = TRUE, sep=',',
             row.names="something", 
             colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
 message
 str(message)
+
+# there are analogous function to write
+
 
 
 ####### Import data from Excel
@@ -272,6 +283,7 @@ str(message)
 library(xlsx)
 workbook <- "c:/myworkbook.xlsx"
 mydataframe <- read.xlsx(workbook, 1)
+
 
 
 ########## Accessing database managements systems (DBMSs)
