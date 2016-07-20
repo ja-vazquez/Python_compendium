@@ -55,7 +55,8 @@ Getting tweets with hashtag (i.e. Data).
 * [Data Analysis with Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/Data_Analysis_with_Pandas.ipynb): Examples: stocks, baby names, elections.
 * [IPython Notebook & Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Working_data/IPythonNB_Pandas.ipynb): Correlation between people cycling and weather in Montreal. 
 
-###Visualizations
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ### Visualizations
+	
 
 * [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Visualizing_Data.ipynb):
 General Matplotlib intro, and some examples with pandas.
@@ -82,12 +83,12 @@ Visualizing maps.
 * [Bootstrapping](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Bootstrapping.R): Parametric and Nonparametric
 	Bootstrapping. 
 * [Model Selection](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Model_selection.R): AIC and BIC, R^2.
-* [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS
+* [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS.
 
 
 ###Visualizations
 
-* [Creating graphs](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Creating_graphs.R):
+* [Creating graphs](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Creating_graphs.R): Working with graphs in R.
 
 
 ### SQL
