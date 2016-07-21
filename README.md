@@ -76,7 +76,7 @@ Getting tweets with hashtag (i.e. Data).
 
 ### Visualization
 
-.	** Python **
+.**py** 
 
 * [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Visualizing_Data.ipynb):
 General Matplotlib intro, and some examples with pandas.
@@ -87,12 +87,11 @@ Visualizing maps.
 * [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
 
-
 .**R**
 
-* [Creating graphs](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Creating_graphs.R): Working with graphs in R.
+* [Creating graphs](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Creating_graphs.R): Working with graphs in R. 
 
-.**JS**
+**js** 
 
 * x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
 
