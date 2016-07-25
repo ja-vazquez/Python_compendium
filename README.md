@@ -76,22 +76,20 @@ Getting tweets with hashtag (i.e. Data).
 
 ### Visualization
 
-.**py** 
 
 * [Basics of Matplotlib and pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Visualizing_Data.ipynb):
 General Matplotlib intro, and some examples with pandas.
-* [Pandas and Basemap](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Pandas_Basemap.ipynb):
+* [Basemap and Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Pandas_Basemap.ipynb):
 Visualizing maps.
-* [Plotting with Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Bokeh_examples.ipynb):
+* [Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Bokeh_examples.ipynb):
 	Map of NY Unemployment.
 * [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
-
-.**R**
+* x - Seaborn, Folium, Ploty
 
 * [Creating graphs](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Creating_graphs.R): Working with graphs in R. 
 
-**js** 
+
 
 * x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
 
@@ -109,7 +107,7 @@ Visualizing maps.
 * [MySQL DBs](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
 [Countries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_countries.sql) - 
 [Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql). Some tables to practice over examples.
-
+* [SkyServer](http://skyserver.sdss.org/dr13/en/home.aspx): Using SQL with SkyServer [SDSS - internal].
 
 
 

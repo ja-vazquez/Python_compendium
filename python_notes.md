@@ -6,6 +6,8 @@
 
 ### [Machine Learning must do](http://www.analyticsvidhya.com/blog/2015/09/full-cheatsheet-machine-learning-algorithms/)
 
+### [Python vs R](https://www.dataquest.io/blog/python-vs-r/)
+
 ### [Mining Twitter](https://marcobonzanini.com/2015/03/02/mining-twitter-data-with-python-part-1/)
 
 
