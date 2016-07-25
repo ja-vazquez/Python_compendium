@@ -63,15 +63,9 @@ Getting tweets with hashtag (i.e. Data).
 * [The basics](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Intro.R): Vectors, Matrices, Data Frames,
 	Data input: Mysql.
 	* [R Walkthrough](https://github.com/ja-vazquez/Python_compendium/blob/master/R/R_Walkthrough.pdf). From Scicoder Workshop.
+* [Data management](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Data_management.R). Manipulating data.
 * [Descriptive Stats](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Descriptive_statistics.R): Descriptive
-	Statistics and Exploratory Analysis. Data Visualization. Statistical Inference.
-* [Regression](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Regression.R): Linear Regression, Confidence
-	Ellipses and Bands. Polynomial regression. Non-linear Regression.
-* [Bootstrapping](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Bootstrapping.R): Parametric and Nonparametric
-	Bootstrapping. 
-* [Model Selection](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Model_selection.R): AIC and BIC, R^2.
-* [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS.
-
+	Statistics and Exploratory Analysis. Data Visualization. 
 
 
 ### Visualization
@@ -116,6 +110,12 @@ Visualizing maps.
 
 ### Machine Learning, Stats and other magic tricks
 
+* [Regression](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Regression.R): Linear Regression, Confidence
+	Ellipses and Bands. Polynomial regression. Non-linear Regression.
+* [Bootstrapping](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Bootstrapping.R): Parametric and Nonparametric
+	Bootstrapping. 
+* [Model Selection](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Model_selection.R): AIC and BIC, R^2.
+* [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS.
 * [Inverse problems](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/inverse_problems.ipynb): Linear Regression, Gradient Descent.
 * [Sparcity](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/sparsity.ipynb): FFT, Denoising functions.
 * [Wavelets](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/wavelets.ipynb): Discrete Fourier Transform, Multiresolution Analysis.
