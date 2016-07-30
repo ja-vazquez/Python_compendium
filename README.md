@@ -1,11 +1,10 @@
 # * The Python compendium
 
-This folder contains several scripts, notes and examples collected through many nights of 
-coding (hopefully they'll be useful in future references). 
-**N.B.** highly encouraged to recycle and make use of them in any possible way.
-More elaborated examples may be found in the astro/cosmo folders. 
+This folder contains several scripts, notes and examples elaborated through many nights of coding (hopefully they'll be useful in future references). 
+**N.B.** highly encouraged to recycle and make use of them in any possible ways.
+More elaborated examples may be found in the astro/cosmo folders withing this GitHub account. 
 
-As you can see below, Python is the dominant language, however
+As you can see from below, Python is the dominant language, however
 due to the popularity of R I have added some standard notes, visualizations
 and basic statistic examples.
 There are also couple of SQL examples, based on SQLite and MYSQL. 
@@ -64,6 +63,7 @@ Getting tweets with hashtag (i.e. Data).
 	Data input: Mysql.
 	* [R Walkthrough](https://github.com/ja-vazquez/Python_compendium/blob/master/R/R_Walkthrough.pdf). From Scicoder Workshop.
 * [Data management](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Data_management.R). Manipulating data.
+* [Stats with R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Basic_stats.R). Descriptive Statistics with R.
 * [Descriptive Stats](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Descriptive_statistics.R): Descriptive
 	Statistics and Exploratory Analysis. Data Visualization. 
 
@@ -78,11 +78,9 @@ Visualizing maps.
 * [Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Bokeh_examples.ipynb):
 	Map of NY Unemployment.
 * [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.
-* x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/)
-* x - Seaborn, Folium, Ploty
-
+* x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/) - Seaborn, Folium, Ploty
 * [Creating graphs](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Creating_graphs.R): Working with graphs in R. 
-
+* [Basic graphs in R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Basic_graphs.R): Bars, Pie, Hist, Dots, etc.
 
 
 * x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)

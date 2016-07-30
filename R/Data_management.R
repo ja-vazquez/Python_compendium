@@ -154,3 +154,144 @@ newdata <- subset(leadership, age >= 35 | age <24,
 
 
 
+
+
+
+
+########################################
+########## More Data management
+
+
+########## Numerical Functions
+
+x <- c(1, 2, 3, 4, 5, 6, 7, 8)
+
+mean(x)
+z <- mean(x, trim =0.05, na.rm=TRUE)
+
+sd(x)
+
+n <- length(x)
+meanx <- sum(x)/n
+css <- sum((x - meanx)^2)
+sdx <- sqrt(css / (n-1))
+
+
+########## Probability Functions
+
+# d = density
+# p = distribution function
+# q = quantile function
+# r = random generation
+
+?pretty
+x <- pretty(c(-3, 3), 50)
+y <- dnorm(x)
+plot(x, y, type='l', xlab='Normal Deviate', ylab='Density', yaxs='i')
+
+#area to the left of 1.96
+pnorm(1.96)
+
+#90th percentile
+qnorm(0.9, mean=500, sd=100)
+
+#50 random normal deviates
+rnorm(50, mean=50, sd=10)
+
+#5 random numbers from uniform distribution
+runif(5)
+
+
+## Multivariate normal data - mvrnorm()
+
+library(MASS)
+options(digits = 3)
+set.seed(1234)
+
+mean <- c(230.7, 1246.7, 3.6)
+sigma <- matrix( c(15360.8, 6721.2, -47.1,                              
+                   6721.2, 4700.9, -16.5,
+                   -47.1, -16.5, 0.3), nrow=3, ncol=3)
+
+mydata <- mvrnorm(500, mean, sigma)
+mydata <- as.data.frame(mydata)
+names(mydata) <- c('y', 'x1', 'x2')
+head(mydata, n=10)
+plot(mydata$x1, mydata$y)
+
+
+
+
+# apply function
+
+mydata <- matrix(rnorm(30), nrow=6)
+mydata
+apply(mydata, 2, mean)
+
+apply(mydata, 2, mean, trim=0.3)
+
+
+########## An Example of test scores
+
+
+options(digits=2)
+Student <- c("John Davis", "Angela Williams", "Bullwinkle Moose",
+             "David Jones", "Janice Markhammer", "Cheryl Cushing",
+             "Reuven Ytzrhak", "Greg Knox", "Joel England",
+             "Mary Rayburn")
+Math <- c(502, 600, 412, 358, 495, 512, 410, 625, 573, 522)
+Science <- c(95, 99, 80, 82, 75, 85, 80, 95, 89, 86)
+English <- c(25, 22, 18, 15, 20, 28, 15, 30, 27, 18)
+roster <- data.frame(Student, Math, Science, English,
+                     stringsAsFactors=FALSE)
+
+
+# standarize scores
+z <- scale(roster[,2:4])
+score <- apply(z, 1, mean)
+
+# attach mean to df
+roster <- cbind(roster, score)
+y <- quantile(score, c(0.8, 0.6, 0.4, 0.2))
+
+#etc ..
+
+
+
+########## Control Flow
+
+for (i in 1:10) print('Hello')
+
+i <- 10
+while (i>0) {
+  print('Hello'); 
+  i <- i-1}
+
+
+if(cond) statement1 else statement2
+
+ifelse(score> 0.5, print('Passed'), print('Failed'))
+
+switch(expr, ...)
+
+
+########## User-written functions
+
+myfunction <- function(arg1, arg2, ...){
+  statements
+  return(object)}
+
+
+
+########## reshape2 package
+
+help(package="reshape2")
+
+# Better to have a look!
+
+
+
+
+
+
+
