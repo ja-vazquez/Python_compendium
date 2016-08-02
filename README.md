@@ -79,9 +79,10 @@ Visualizing maps.
 	Map of NY Unemployment.
 * [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/) - Seaborn, Folium, Ploty
-* [Creating graphs](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Creating_graphs.R): Working with graphs in R. 
+* [Creating graphs in R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Creating_graphs.R): Working with graphs in R. 
 * [Basic graphs in R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Basic_graphs.R): Bars, Pie, Hist, Dots, etc.
-
+* [More plots with R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Intermediate_plots.R): Scatter, Corrgrams, Mosaic, etc.
+* [ggplot2](https://github.com/ja-vazquez/Python_compendium/blob/master/R/ggplot2.R): An introduction to the package.
 
 * x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
 
