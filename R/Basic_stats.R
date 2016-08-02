@@ -159,12 +159,31 @@ y <- states[, c("Life Exp", "Murder")]
 cor(x, y)
 
 
-########## Correlation coefficient
+########## Correlation coefficients
 
 cor.test(states[,3], states[,5])
 
 # p-value = 1.258e-08, they are correlated !
 
+
+# Test of significance via corr.test()
+# shows correlation and p-values
+library(psych)
+corr.test(states, use='complete')
+
+
+########## T-tests
+
+library(MASS)
+t.test(Prob ~ So, data = UScrime)
+# reject the hypothesis that states have equal probabilities
+
+ 
+### Dependent test
+library(MASS)
+sapply(UScrime[c("U1", "U2")], function(x)(c(mean=mean(x), sd=sd(x))))
+
+with(UScrime, t.test(U1, U2, paired = TRUE))
 
 
 
