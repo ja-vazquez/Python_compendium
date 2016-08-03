@@ -58,13 +58,13 @@ Getting tweets with hashtag (i.e. Data).
 
 ### R
 
-* [Using other languages within R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Compiled_C_F/other_lang.R): Working 	with C/C++/Fortran/Python.
+* [Using other languages within R](https://github.com/ja-vazquez/Python_compendium/blob/master/PennState/Compiled_C_F/other_lang.R): Working 	with C/C++/Fortran/Python.
 * [The basics](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Intro.R): Vectors, Matrices, Data Frames,
 	Data input: Mysql.
-	* [R Walkthrough](https://github.com/ja-vazquez/Python_compendium/blob/master/R/R_Walkthrough.pdf). From Scicoder Workshop.
+	* [R Walkthrough](https://github.com/ja-vazquez/Python_compendium/blob/master/Scicoder/R_Walkthrough.pdf). From Scicoder Workshop.
 * [Data management](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Data_management.R). Manipulating data.
 * [Stats with R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Basic_stats.R). Descriptive Statistics with R.
-* [Descriptive Stats](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Descriptive_statistics.R): Descriptive
+* [Descriptive Stats](https://github.com/ja-vazquez/Python_compendium/blob/master/PennState/Descriptive_statistics.R): Descriptive
 	Statistics and Exploratory Analysis. Data Visualization. 
 
 
@@ -83,7 +83,6 @@ Visualizing maps.
 * [Basic graphs in R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Basic_graphs.R): Bars, Pie, Hist, Dots, etc.
 * [More plots with R](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Intermediate_plots.R): Scatter, Corrgrams, Mosaic, etc.
 * [ggplot2](https://github.com/ja-vazquez/Python_compendium/blob/master/R/ggplot2.R): An introduction to the package.
-
 * x - [D3 Turorials](https://github.com/mbostock/d3/wiki/Tutorials)
 
 
@@ -100,7 +99,7 @@ Visualizing maps.
 * [MySQL DBs](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_Example.sql) - 
 [Countries](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_countries.sql) - 
 [Person](https://github.com/ja-vazquez/Python_compendium/blob/master/SQL/TSQL_person.sql). Some tables to practice over examples.
-* [SkyServer](http://skyserver.sdss.org/dr13/en/home.aspx): Using SQL with SkyServer [SDSS - internal].
+* [SQL-SkyServer](http://skyserver.sdss.org/dr13/en/tools/search/sql.aspx): Using SQL with SkyServer [SDSS - internal].
 
 
 
@@ -109,12 +108,12 @@ Visualizing maps.
 
 ### Machine Learning, Stats and other magic tricks
 
-* [Regression](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Regression.R): Linear Regression, Confidence
+* [Regression](https://github.com/ja-vazquez/Python_compendium/blob/master/PennState/Regression.R): Linear Regression, Confidence
 	Ellipses and Bands. Polynomial regression. Non-linear Regression.
-* [Bootstrapping](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Bootstrapping.R): Parametric and Nonparametric
+* [Bootstrapping](https://github.com/ja-vazquez/Python_compendium/blob/master/PennState/Bootstrapping.R): Parametric and Nonparametric
 	Bootstrapping. 
-* [Model Selection](https://github.com/ja-vazquez/Python_compendium/blob/master/R/Model_selection.R): AIC and BIC, R^2.
-* [Gaussian, Bernoulli, Count models](): Fitting curves with JAGS.
+* [Model Selection](https://github.com/ja-vazquez/Python_compendium/blob/master/PennState/Model_selection.R): AIC and BIC, R^2.
+* [Gaussian, Bernoulli, Count models](https://github.com/ja-vazquez/Python_compendium/blob/master/Greece_ADA/ADA_R/Bernoulli/Ex4_Bernoulli_JAGS_x1.R): Fitting curves with JAGS.
 * [Inverse problems](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/inverse_problems.ipynb): Linear Regression, Gradient Descent.
 * [Sparcity](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/sparsity.ipynb): FFT, Denoising functions.
 * [Wavelets](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/wavelets.ipynb): Discrete Fourier Transform, Multiresolution Analysis.

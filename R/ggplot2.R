@@ -128,3 +128,91 @@ ggplot(Salaries, aes(x=yrs.since.phd, y=salary, linetype=sex, shape=sex, color=s
   
   
 
+########## Modifying the appearance
+  
+data(Salaries, package = 'car')
+  
+### Axes
+
+#boxplot, adjust the x/y ticks with labels
+ggplot(data=Salaries, aes(x=rank, y=salary, fill=sex)) +
+      geom_boxplot() + 
+      scale_x_discrete(breaks=c('AsstProf', 'AssocProf', 'Prof'), 
+                       labels=c('asiprof', 'asoprof', 'prof'))      +
+      scale_y_continuous(breaks=c(50000, 100000, 150000, 200000),
+                         labels=c('$50k','$100k', '$150k', '$200k')) +
+      labs(title='Faculty', x='', y='')
+  
+  
+  
+### Legends
+
+ggplot(data=Salaries, aes(x=rank, y=salary, fill=sex)) +
+      geom_boxplot() + 
+      scale_x_discrete(breaks=c('AsstProf', 'AssocProf', 'Prof'), 
+                       labels=c('asiprof', 'asoprof', 'prof'))  +
+      scale_y_continuous(breaks=c(50000, 100000, 150000, 200000),
+                     labels=c('$50k','$100k', '$150k', '$200k')) +      
+      labs(title='Faculty', x='', y='', fill='Gender') +
+      theme(legend.position=c(0.1, 0.8))
+      
+  
+### Scales
+
+ggplot(mtcars, aes(x=wt, y=mpg, size=disp)) +
+      geom_point(shape=21, color='black', fill='cornsilk') +
+      labs(x='weight', y='miles per gallon', 
+            title='bubble chart', size='Engine\nDisplacement')
+  
+  
+ggplot(data=Salaries, aes(x=yrs.since.phd, y=salary, color=rank)) +
+      scale_color_brewer(palette='Set1') + #values=c('orange', 'olivedrab', 'navy')) +
+      geom_point(size=2)
+   
+
+### Themes
+
+mytheme <- theme(plot.title=element_text(face="bold.italic",
+                                         size="14", color="brown"),
+                 axis.title=element_text(face="bold.italic",
+                                         size=10, color="brown"),
+                 axis.text=element_text(face="bold", size=9,
+                                        color="darkblue"),
+                 panel.background=element_rect(fill="white",
+                                               color="darkblue"),
+                 panel.grid.major.y=element_line(color="grey",
+                                                 linetype=1),
+                 panel.grid.minor.y=element_line(color="grey",
+                                                 linetype=2),
+                 panel.grid.minor.x=element_blank(),
+                 legend.position="top")
+
+ggplot(Salaries, aes(x=rank, y=salary, fill=sex)) + 
+      geom_boxplot() +
+      labs(title='salary', x='rank', y='salary')  +
+      mytheme
+
+
+
+### Multiple graphs
+
+p1 <- ggplot(data=Salaries, aes(x=rank)) + geom_bar()
+p2 <- ggplot(data=Salaries, aes(x=sex)) + geom_bar()
+p3 <- ggplot(data=Salaries, aes(x=yrs.since.phd, y=salary)) + geom_point()
+
+
+library(gridExtra)
+grid.arrange(p1, p2, p3, ncol=3)
+
+
+###saving graphs
+
+ggplot(data=mtcars, aes(x=mpg)) + geom_histogram()
+ggsave(file='mygraph.pdf')
+
+
+
+
+  
+  
+  
