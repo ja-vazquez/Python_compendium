@@ -44,7 +44,8 @@ Before starting, have a look of  [Git](http://rogerdudler.github.io/git-guide/):
 	- Yahoo's finance, Options.	 Long Island Rail Road (XML).
 * [Using Twython API](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Getting_data/Twython_API.ipynb): 
 Getting tweets with hashtag (i.e. Data).
-
+* [Searching for Quasars](http://nbviewer.jupyter.org/github/ja-vazquez/ForetFusion/blob/master/sdss_catalog.ipynb)(Mechanize).
+	- Building a catalog of selecting qusars for the sdss collaboration. 
 
 ### Working with data 
 
@@ -117,7 +118,7 @@ Visualizing maps.
 * [Inverse problems](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/inverse_problems.ipynb): Linear Regression, Gradient Descent.
 * [Sparcity](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/sparsity.ipynb): FFT, Denoising functions.
 * [Wavelets](http://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/ML/wavelets.ipynb): Discrete Fourier Transform, Multiresolution Analysis.
-
+* [Jack-knife and bootstrap resampling](https://github.com/ja-vazquez/Upsilon/tree/master/Results): Module to analize measurements of galaxy-galaxy weak lensing and galaxy clustering.
 
 
 ### Parallel Computing
