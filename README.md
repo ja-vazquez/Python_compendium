@@ -129,6 +129,10 @@ Visualizing maps.
 * [Example of GMSampler](http://nbviewer.jupyter.org/github/ja-vazquez/GM_Sampler/blob/master/GM/GMSampler.ipynb): one of 
 	the outcomes that uses a unimodal Gaussian likelihood. 
 
+### Web
+
+*[Flask](https://github.com/ja-vazquez/Python_compendium/tree/master/Flask_Bokeh/):
+Flask using Bokeh for visualizations.
 
 ----
 ------
@@ -232,7 +236,7 @@ REST is an architecture style for designing networked applications.
 * [PyQwt](http://pyqwt.sourceforge.net/): It provides a widget to plot 2-dimensional data.
 * [Binder](http://mybinder.org/): Turn a GitHub repo into a collection of interactive notebooks.
 * [Searchcode](https://searchcode.com/): Google for coding.
-
+* [Virtual Enviroment](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/): Create virtual environments for python with conda.
 
 ----
 ----

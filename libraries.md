@@ -59,4 +59,16 @@ pd.set_option('display.max_columns', 60)
 
 pd.set_option('display.mpl_style', 'default')
 
+To create a virtual enviroment 
 
+	conda create -n yourenvname python=x.x anaconda
+	source activate yourenvname
+install additional packages
+	
+	conda install -n yourenvname [package]
+
+source deactivate
+
+deactivate a no longer needed
+
+	conda remove -n yourenvname -all
