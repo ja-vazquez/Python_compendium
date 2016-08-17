@@ -131,7 +131,7 @@ Visualizing maps.
 
 ### Web
 
-*[Flask](https://github.com/ja-vazquez/Python_compendium/tree/master/Flask_Bokeh/):
+*	[Flask](https://github.com/ja-vazquez/Python_compendium/tree/master/Flask_Bokeh/):
 Flask using Bokeh for visualizations.
 
 ----
@@ -237,6 +237,10 @@ REST is an architecture style for designing networked applications.
 * [Binder](http://mybinder.org/): Turn a GitHub repo into a collection of interactive notebooks.
 * [Searchcode](https://searchcode.com/): Google for coding.
 * [Virtual Enviroment](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/): Create virtual environments for python with conda.
+* [Jinja2](http://jinja.pocoo.org/docs/dev/templates/#builtin-filters): Template Designer Documentation
+* [Bootstrap](getbootstrap.com/css/): Global CSS settings
+
+
 
 ----
 ----
