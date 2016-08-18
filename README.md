@@ -76,7 +76,7 @@ Getting tweets with hashtag (i.e. Data).
 General Matplotlib intro, and some examples with pandas.
 * [Basemap and Pandas](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Pandas_Basemap.ipynb):
 Visualizing maps.
-* [Bokeh](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Visualization/Plotting_with_Bokeh.html):
+* [Bokeh](http://www.cosmo.bnl.gov/www/jvazquez/Plotting_with_Bokeh.html):
 	Several plots with bokeh, including chisq distributions for quasars.
 * [Constraints](http://nbviewer.jupyter.org/github/ja-vazquez/BOSS_files/blob/master/DR12/dr12_constraints.ipynb), [Getdist](http://getdist.readthedocs.org/en/latest/plot_gallery.html): Given MCMC chains, we're able to produce constraint plots.
 * x - [Cartobd](http://docs.cartodb.com/tutorials/named_maps/) - Seaborn, Folium, Ploty
