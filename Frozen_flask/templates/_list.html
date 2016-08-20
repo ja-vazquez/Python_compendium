@@ -1,0 +1,15 @@
+<ul>
+{% for page in pages %}
+    <li>
+        <a href="/Users/josevazquezgonzalez/Desktop/Programs/Flask/Frozen_flask/build/{{ url_for("page", path=page.path) }}/index.html">{{ page.title }}</a>
+    {% if page.meta.tags|length %}
+        | Tagged:
+        {% for page_tag in page.meta.tags %}
+            <a href="/Users/josevazquezgonzalez/Desktop/Programs/Flask/Frozen_flask/build/{{ url_for("tag", tag=page_tag) }}/index.html">{{ page_tag }}</a>
+        {% endfor %}
+    {% endif %}
+    </li>
+{% else %}
+    <li>No page.</li>
+{% endfor %}
+</ul>
