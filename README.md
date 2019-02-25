@@ -125,6 +125,14 @@ Getting tweets with hashtag (i.e. Data).
 *   [Flask](https://github.com/ja-vazquez/Python_compendium/tree/master/Flask_Bokeh/): Flask using Bokeh for visualizations.
 *   [Flask Frozen](https://github.com/ja-vazquez/Python_compendium/tree/master/Flask_Bokeh/): Flask_frozen and flask_pages to create a static website
 
+
+----
+------
+
+# * Lecture notes -  Python 
+
+* [Lectures](https://github.com/ja-vazquez/Python_compendium/tree/master/Curso_python/)
+
 ----
 ------
 
