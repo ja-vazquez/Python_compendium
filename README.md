@@ -1,8 +1,8 @@
 # * The Python compendium
 
 This folder contains several scripts, notes and examples elaborated through many nights of coding (hopefully they'll be useful in future references). 
-**N.B.** highly encouraged to recycle and make use of them in any possible ways.
-More elaborated examples may be found in the astro/cosmo folders withing this GitHub account. 
+**N.B.** highly encouraged to recycle and make use of them in any possible way.
+More elaborated examples may be found in the astro/cosmo folders within this GitHub account. 
 
 As you can see from below, Python is the dominant language, however
 due to the popularity of R I have added some standard notes, visualizations
@@ -11,7 +11,7 @@ There are also several SQL examples, based on SQLite and MYSQL, that have been t
 Finally, to integrate HTML, CSS, JS with Python and SQL, I included some files to create websites using Flask.
 
 
-The majority of the content may be found spread around the web or throughout books, but 
+The majority of the content may be found spread around the web or throughout several books, but 
 the bibliography I used, and possibly where all the info is coming from, 
 is displayed on the bottom of the page.
 
