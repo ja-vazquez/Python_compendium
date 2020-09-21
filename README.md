@@ -131,8 +131,9 @@ Getting tweets with hashtag (i.e. Data).
 
 #  Lecture notes -  Python 
 
-* [1 - Basic Intro](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/1_Intro_to_python.ipynb)
-
+* [1 - Basic Intro to the Notebook](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/1_Intro_to_python.ipynb)
+* [2 - Types and Operations](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/2_Types_and_operations.ipynb)
+* 
 ----
 ------
 
