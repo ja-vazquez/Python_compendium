@@ -137,6 +137,7 @@ Getting tweets with hashtag (i.e. Data).
 * [7 - Symbolic python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/7_Symbolic_python.ipynb)
 * [8 - Symbolic python II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/8_Symbolic_python.ipynb)
   
+  
 ----
 ------
 
