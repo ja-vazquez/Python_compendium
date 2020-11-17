@@ -137,7 +137,16 @@ Getting tweets with hashtag (i.e. Data).
 * [6 - Files and Matplotlib](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Curso_python/6_Matplotlib_Files.ipynb)
 * [7 - Symbolic python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/7_Symbolic_python.ipynb)
 * [8 - Symbolic python II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/8_Symbolic_python.ipynb)
-  
+* [10 - More Plotting](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/10_More_Plotting.ipynb)  
+* [11 - Scipy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/11_Scipy.ipynb)  
+* [12 - Stats](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/12_Stats.ipynb)
+* [13 - Fourier](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/13_Fourier.ipynb)
+* [14 - Seaborn and D3](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/14_Seaborn_D3.ipynb)  
+* [14 - Housing and Titanic](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/20_Housing_Titanic.ipynb) 
+
+
+
+
   
 ----
 ------
