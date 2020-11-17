@@ -142,11 +142,20 @@ Getting tweets with hashtag (i.e. Data).
 * [12 - Stats](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/12_Stats.ipynb)
 * [13 - Fourier](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/13_Fourier.ipynb)
 * [14 - Seaborn and D3](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/14_Seaborn_D3.ipynb)  
-* [14 - Housing and Titanic](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/20_Housing_Titanic.ipynb) 
+* [20 - Housing and Titanic](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/20_Housing_Titanic.ipynb) 
 
 
+----
+------
 
+#  Lecture notes -  NM
 
+ * [1 - Error Estimates](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Error_estimates.ipynb) 
+ * [2 - Roots](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Roots.ipynb) 
+ * [3 - Optimization](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Optimization.ipynb) 
+ * [4 - Interpolation](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Interpolation.ipynb) 
+ * [5 - Fitting](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Fitting.ipynb)  
+  
   
 ----
 ------
