@@ -140,6 +140,7 @@ Getting tweets with hashtag (i.e. Data).
 * [10 - More Plotting](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/10_More_Plotting.ipynb)  
 * [11 - Scipy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/11_Scipy.ipynb)  
 * [12 - Stats](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/12_Stats.ipynb)
+* [12b - RK4](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Clase_12b_RK4.ipynb)
 * [13 - Fourier](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/13_Fourier.ipynb)
 * [14 - Seaborn and D3](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/14_Seaborn_D3.ipynb)  
 * [20 - Housing and Titanic](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/20_Housing_Titanic.ipynb) 
