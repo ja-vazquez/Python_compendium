@@ -156,7 +156,9 @@ Getting tweets with hashtag (i.e. Data).
  * [3 - Optimization](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Optimization.ipynb) 
  * [4 - Interpolation](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Interpolation.ipynb) 
  * [5 - Fitting](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Fitting.ipynb)  
- * [6 - Integrals](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Integrals.ipynb)   
+ * [6 - Integrals](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Integrals.ipynb)
+ * [7 - ODEs](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/ODE.ipynb)
+ * [8 - MCMC](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/Curso_BUAP.ipynb)   
   
 ----
 ------
