@@ -134,6 +134,8 @@ Getting tweets with hashtag (i.e. Data).
 * [1 - Basic Intro to the Notebook](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/1_Intro_to_python.ipynb)
 * [2 - Types and Operations](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/2_Types_and_operations.ipynb)
 * [3 - Strings and Lists](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/3_Strings_Lists.ipynb)
+* [4 - Tuples, Sets, Dics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/4_Tuples_Sets_Dics.ipynb)
+* [5 - Not so basics](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/5_Not_so_basics.ipynb)
 * [6 - Files and Matplotlib](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/6_Matplotlib_Files.ipynb)
 * [7 - Symbolic python](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/7_Symbolic_python.ipynb)
 * [8 - Symbolic python II](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Curso_python/8_Symbolic_python.ipynb)
