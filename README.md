@@ -168,7 +168,7 @@ Getting tweets with hashtag (i.e. Data).
 # * Cosmo
 
  * [Gravipy](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Cosmo/Gravipy_geometry.ipynb) 
- * [Gravipy FLRW](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Cosmo/Gravipy_geometry.ipynb) 
+ * [Gravipy FLRW](https://nbviewer.jupyter.org/github/ja-vazquez/Python_compendium/blob/master/Cosmo/Gravipy_Friedmann.ipynb) 
  * [Einsteinpy](https://gke.mybinder.org/v2/gh/einsteinpy/einsteinpy/main?filepath=index.ipynb)
  
 ----
